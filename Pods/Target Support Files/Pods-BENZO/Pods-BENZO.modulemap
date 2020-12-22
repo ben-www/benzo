@@ -1,0 +1,6 @@
+framework module Pods_BENZO {
+  umbrella header "Pods-BENZO-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,551 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5BFE47F63D4850C579C4063C /* Pods_BENZO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FDB8313DBCABB296802B7AE /* Pods_BENZO.framework */; };
+		ED053E46257958280090F78D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E45257958280090F78D /* AppDelegate.swift */; };
+		ED053E48257958280090F78D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E47257958280090F78D /* SceneDelegate.swift */; };
+		ED053E4D257958280090F78D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED053E4B257958280090F78D /* Main.storyboard */; };
+		ED053E4F257958290090F78D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED053E4E257958290090F78D /* Assets.xcassets */; };
+		ED053E52257958290090F78D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED053E50257958290090F78D /* LaunchScreen.storyboard */; };
+		ED053E61257958C10090F78D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E60257958C10090F78D /* HomeViewController.swift */; };
+		ED053E6525795B4F0090F78D /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E6425795B4F0090F78D /* MovieCell.swift */; };
+		ED053E6825795BF50090F78D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E6725795BF50090F78D /* Constants.swift */; };
+		ED053E6B25795DC70090F78D /* MovieInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E6A25795DC70090F78D /* MovieInfoCell.swift */; };
+		ED053E6E25795E830090F78D /* MovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E6D25795E830090F78D /* MovieInfoViewController.swift */; };
+		ED3A0A49259150E400FF7932 /* JBenzoScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3A0A48259150E400FF7932 /* JBenzoScore.swift */; };
+		ED3A0A4C2591513E00FF7932 /* BenzoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */; };
+		ED3A0A4F25918FCC00FF7932 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */; };
+		ED8F7CDF25795FC800D12764 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7CDE25795FC800D12764 /* Movie.swift */; };
+		ED8F7CE62579627600D12764 /* moviesJson.json in Resources */ = {isa = PBXBuildFile; fileRef = ED8F7CE52579627600D12764 /* moviesJson.json */; };
+		ED8F7CE92579637B00D12764 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7CE82579637B00D12764 /* MovieData.swift */; };
+		ED8F7CEE257999ED00D12764 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7CED257999ED00D12764 /* SearchViewController.swift */; };
+		ED8F7CF12579A06A00D12764 /* SearchTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7CF02579A06A00D12764 /* SearchTitleCell.swift */; };
+		ED8F7CF5257C1D5800D12764 /* MovieExtraInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7CF4257C1D5700D12764 /* MovieExtraInfoViewController.swift */; };
+		ED8F7CF8257C622300D12764 /* DirectorMovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7CF7257C622300D12764 /* DirectorMovieListViewController.swift */; };
+		ED8F7D24257C6C3600D12764 /* DirectorMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D23257C6C3600D12764 /* DirectorMovieCell.swift */; };
+		ED8F7D27257C9B3100D12764 /* DirectorMovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D26257C9B3100D12764 /* DirectorMovieInfoViewController.swift */; };
+		ED8F7D2E257F199C00D12764 /* JBENZOCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D2D257F199C00D12764 /* JBENZOCalculatorViewController.swift */; };
+		ED8F7D362585D16800D12764 /* JBenzoSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D352585D16800D12764 /* JBenzoSwipeViewController.swift */; };
+		EDEC2FBF2586D3D3001A6648 /* HowToWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6AE6237866651AC6E6EDBCD3 /* Pods-BENZO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BENZO.debug.xcconfig"; path = "Target Support Files/Pods-BENZO/Pods-BENZO.debug.xcconfig"; sourceTree = "<group>"; };
+		9FDB8313DBCABB296802B7AE /* Pods_BENZO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BENZO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C747D6FBAE0D0F5E616F5A38 /* Pods-BENZO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BENZO.release.xcconfig"; path = "Target Support Files/Pods-BENZO/Pods-BENZO.release.xcconfig"; sourceTree = "<group>"; };
+		ED053E42257958280090F78D /* BENZO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BENZO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED053E45257958280090F78D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED053E47257958280090F78D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		ED053E4C257958280090F78D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ED053E4E257958290090F78D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED053E51257958290090F78D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ED053E53257958290090F78D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED053E60257958C10090F78D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		ED053E6425795B4F0090F78D /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		ED053E6725795BF50090F78D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		ED053E6A25795DC70090F78D /* MovieInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoCell.swift; sourceTree = "<group>"; };
+		ED053E6D25795E830090F78D /* MovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoViewController.swift; sourceTree = "<group>"; };
+		ED3A0A48259150E400FF7932 /* JBenzoScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBenzoScore.swift; sourceTree = "<group>"; };
+		ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenzoUser.swift; sourceTree = "<group>"; };
+		ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ED8F7CDE25795FC800D12764 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		ED8F7CE52579627600D12764 /* moviesJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moviesJson.json; sourceTree = "<group>"; };
+		ED8F7CE82579637B00D12764 /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
+		ED8F7CED257999ED00D12764 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		ED8F7CF02579A06A00D12764 /* SearchTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTitleCell.swift; sourceTree = "<group>"; };
+		ED8F7CF4257C1D5700D12764 /* MovieExtraInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieExtraInfoViewController.swift; sourceTree = "<group>"; };
+		ED8F7CF7257C622300D12764 /* DirectorMovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorMovieListViewController.swift; sourceTree = "<group>"; };
+		ED8F7D23257C6C3600D12764 /* DirectorMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorMovieCell.swift; sourceTree = "<group>"; };
+		ED8F7D26257C9B3100D12764 /* DirectorMovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorMovieInfoViewController.swift; sourceTree = "<group>"; };
+		ED8F7D2D257F199C00D12764 /* JBENZOCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBENZOCalculatorViewController.swift; sourceTree = "<group>"; };
+		ED8F7D352585D16800D12764 /* JBenzoSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBenzoSwipeViewController.swift; sourceTree = "<group>"; };
+		EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToWatchViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED053E3F257958280090F78D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BFE47F63D4850C579C4063C /* Pods_BENZO.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1883C72C351D41A934E4E6AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FDB8313DBCABB296802B7AE /* Pods_BENZO.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A2EF878CCB22B4F27EB1D3E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6AE6237866651AC6E6EDBCD3 /* Pods-BENZO.debug.xcconfig */,
+				C747D6FBAE0D0F5E616F5A38 /* Pods-BENZO.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		ED053E39257958280090F78D = {
+			isa = PBXGroup;
+			children = (
+				ED053E44257958280090F78D /* BENZO */,
+				ED053E43257958280090F78D /* Products */,
+				A2EF878CCB22B4F27EB1D3E4 /* Pods */,
+				1883C72C351D41A934E4E6AA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		ED053E43257958280090F78D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED053E42257958280090F78D /* BENZO.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED053E44257958280090F78D /* BENZO */ = {
+			isa = PBXGroup;
+			children = (
+				ED053E5F257958A80090F78D /* Models */,
+				ED053E5E2579589D0090F78D /* Cells */,
+				ED053E5C257958420090F78D /* Controllers */,
+				ED053E5B257958370090F78D /* Storyboards */,
+				ED053E5A257958310090F78D /* Helpers */,
+				ED053E45257958280090F78D /* AppDelegate.swift */,
+				ED8F7CE52579627600D12764 /* moviesJson.json */,
+				ED053E47257958280090F78D /* SceneDelegate.swift */,
+				ED053E4E257958290090F78D /* Assets.xcassets */,
+				ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */,
+				ED053E53257958290090F78D /* Info.plist */,
+			);
+			path = BENZO;
+			sourceTree = "<group>";
+		};
+		ED053E5A257958310090F78D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ED053E6725795BF50090F78D /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		ED053E5B257958370090F78D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				ED053E4B257958280090F78D /* Main.storyboard */,
+				ED053E50257958290090F78D /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		ED053E5C257958420090F78D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED053E60257958C10090F78D /* HomeViewController.swift */,
+				ED8F7D26257C9B3100D12764 /* DirectorMovieInfoViewController.swift */,
+				ED053E6D25795E830090F78D /* MovieInfoViewController.swift */,
+				ED8F7CED257999ED00D12764 /* SearchViewController.swift */,
+				ED8F7CF4257C1D5700D12764 /* MovieExtraInfoViewController.swift */,
+				ED8F7CF7257C622300D12764 /* DirectorMovieListViewController.swift */,
+				ED8F7D2D257F199C00D12764 /* JBENZOCalculatorViewController.swift */,
+				ED8F7D352585D16800D12764 /* JBenzoSwipeViewController.swift */,
+				EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ED053E5E2579589D0090F78D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ED053E6425795B4F0090F78D /* MovieCell.swift */,
+				ED053E6A25795DC70090F78D /* MovieInfoCell.swift */,
+				ED8F7CF02579A06A00D12764 /* SearchTitleCell.swift */,
+				ED8F7D23257C6C3600D12764 /* DirectorMovieCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		ED053E5F257958A80090F78D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED8F7CDE25795FC800D12764 /* Movie.swift */,
+				ED8F7CE82579637B00D12764 /* MovieData.swift */,
+				ED3A0A48259150E400FF7932 /* JBenzoScore.swift */,
+				ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED053E41257958280090F78D /* BENZO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED053E56257958290090F78D /* Build configuration list for PBXNativeTarget "BENZO" */;
+			buildPhases = (
+				230EB743EC5D302F79122777 /* [CP] Check Pods Manifest.lock */,
+				ED053E3E257958280090F78D /* Sources */,
+				ED053E3F257958280090F78D /* Frameworks */,
+				ED053E40257958280090F78D /* Resources */,
+				D6E119E2CE6B6A1863671B4A /* [CP] Embed Pods Frameworks */,
+				F833B1DBEDB955690EBF256E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BENZO;
+			productName = BENZO;
+			productReference = ED053E42257958280090F78D /* BENZO.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED053E3A257958280090F78D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					ED053E41257958280090F78D = {
+						CreatedOnToolsVersion = 12.2;
+					};
+				};
+			};
+			buildConfigurationList = ED053E3D257958280090F78D /* Build configuration list for PBXProject "BENZO" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED053E39257958280090F78D;
+			productRefGroup = ED053E43257958280090F78D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED053E41257958280090F78D /* BENZO */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED053E40257958280090F78D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED8F7CE62579627600D12764 /* moviesJson.json in Resources */,
+				ED053E52257958290090F78D /* LaunchScreen.storyboard in Resources */,
+				ED3A0A4F25918FCC00FF7932 /* GoogleService-Info.plist in Resources */,
+				ED053E4F257958290090F78D /* Assets.xcassets in Resources */,
+				ED053E4D257958280090F78D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		230EB743EC5D302F79122777 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BENZO-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6E119E2CE6B6A1863671B4A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BENZO/Pods-BENZO-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BENZO/Pods-BENZO-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BENZO/Pods-BENZO-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F833B1DBEDB955690EBF256E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BENZO/Pods-BENZO-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BENZO/Pods-BENZO-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BENZO/Pods-BENZO-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED053E3E257958280090F78D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDEC2FBF2586D3D3001A6648 /* HowToWatchViewController.swift in Sources */,
+				ED8F7CEE257999ED00D12764 /* SearchViewController.swift in Sources */,
+				ED053E6E25795E830090F78D /* MovieInfoViewController.swift in Sources */,
+				ED3A0A4C2591513E00FF7932 /* BenzoUser.swift in Sources */,
+				ED3A0A49259150E400FF7932 /* JBenzoScore.swift in Sources */,
+				ED8F7D24257C6C3600D12764 /* DirectorMovieCell.swift in Sources */,
+				ED053E6B25795DC70090F78D /* MovieInfoCell.swift in Sources */,
+				ED8F7CF12579A06A00D12764 /* SearchTitleCell.swift in Sources */,
+				ED8F7D27257C9B3100D12764 /* DirectorMovieInfoViewController.swift in Sources */,
+				ED8F7CF8257C622300D12764 /* DirectorMovieListViewController.swift in Sources */,
+				ED8F7CF5257C1D5800D12764 /* MovieExtraInfoViewController.swift in Sources */,
+				ED053E6825795BF50090F78D /* Constants.swift in Sources */,
+				ED8F7D2E257F199C00D12764 /* JBENZOCalculatorViewController.swift in Sources */,
+				ED8F7CE92579637B00D12764 /* MovieData.swift in Sources */,
+				ED053E46257958280090F78D /* AppDelegate.swift in Sources */,
+				ED053E48257958280090F78D /* SceneDelegate.swift in Sources */,
+				ED053E6525795B4F0090F78D /* MovieCell.swift in Sources */,
+				ED8F7D362585D16800D12764 /* JBenzoSwipeViewController.swift in Sources */,
+				ED8F7CDF25795FC800D12764 /* Movie.swift in Sources */,
+				ED053E61257958C10090F78D /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		ED053E4B257958280090F78D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED053E4C257958280090F78D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ED053E50257958290090F78D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED053E51257958290090F78D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ED053E54257958290090F78D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ED053E55257958290090F78D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED053E57257958290090F78D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AE6237866651AC6E6EDBCD3 /* Pods-BENZO.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 28XNS47Q3J;
+				INFOPLIST_FILE = BENZO/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bsonollc.BENZO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED053E58257958290090F78D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C747D6FBAE0D0F5E616F5A38 /* Pods-BENZO.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 28XNS47Q3J;
+				INFOPLIST_FILE = BENZO/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bsonollc.BENZO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED053E3D257958280090F78D /* Build configuration list for PBXProject "BENZO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED053E54257958290090F78D /* Debug */,
+				ED053E55257958290090F78D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED053E56257958290090F78D /* Build configuration list for PBXNativeTarget "BENZO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED053E57257958290090F78D /* Debug */,
+				ED053E58257958290090F78D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ED053E3A257958280090F78D /* Project object */;
+}
