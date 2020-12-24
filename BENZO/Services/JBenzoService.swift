@@ -111,6 +111,9 @@ class JBenzoService {
         
     }
     
+    
+    
+    // MARK: UPDATE Functions
     static func updateJBenzoScores(scoresDict:[String:Double]) {
         
         let docId = LocalStorageService.loadUserID()
@@ -118,6 +121,22 @@ class JBenzoService {
         db.collection("JBenzoUserData").document(docId!).updateData(["JBenzoScores" : scoresDict])
         
     }
+    
+    
+    static func updateShowJBenzo(flag:Bool) {
+        let docId = LocalStorageService.loadUserID()
+        let db = Firestore.firestore()
+        db.collection("JBenzoUserData").document(docId!).updateData(["showJBenzo" : flag])
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -143,8 +162,7 @@ class JBenzoService {
                 // Yes, count the "," to pick JBenzo Algo
                 let catArr = movieCats!.components(separatedBy: ",")
 
-                //jbScore = getJBENZOScore(mov: mov, catArr: catArr)
-
+                jbScore = getJBENZOScore(mov: mov, genrePercentages: genrePercentages, catArr: catArr)
                 var temp = mov
                 temp.jBENZO = jbScore
                 result[mov.Title!] = temp.jBENZO
@@ -156,7 +174,7 @@ class JBenzoService {
     }
     
     
-    private static func createCatList(mov:Movie) -> String? {
+    static func createCatList(mov:Movie) -> String? {
         
         var joinedCategories = [String]()
 
@@ -180,37 +198,37 @@ class JBenzoService {
     }
     
     
-//    private static func getJBENZOScore(mov:Movie, catArr: [String]) -> Double {
-//        var newScore:Double?
-//        var scoresArr = [Double]()
-//
-//        for cat in catArr {
-//            let catTrimmed = cat.trimmingCharacters(in: .whitespaces)
-//            let genreScore = self.genrePercentages[catTrimmed]
-//            scoresArr.append(genreScore!)
-//        }
-//
-//        scoresArr = scoresArr.sorted().reversed()
-//
-//
-//        if catArr.count == 1 {
-//            newScore = (scoresArr[0] * mov.BENZO! * 1.5)/100
-//
-//        }
-//
-//        if catArr.count == 2 {
-//            newScore = (scoresArr[0] * 0.7 + scoresArr[1] * 0.3) * mov.BENZO! * 1.5/100
-//
-//        }
-//
-//        if catArr.count == 3 {
-//            newScore = (scoresArr[0] * 0.7 + scoresArr[1] * 0.2 + scoresArr[2] * 0.1) * mov.BENZO! * 1.5/100
-//
-//
-//        }
-//
-//
-//        return newScore ?? 0.0
-//    }
+    private static func getJBENZOScore(mov:Movie, genrePercentages:[String:Double], catArr: [String]) -> Double {
+        var newScore:Double?
+        var scoresArr = [Double]()
+
+        for cat in catArr {
+            let catTrimmed = cat.trimmingCharacters(in: .whitespaces)
+            let genreScore = genrePercentages[catTrimmed]
+            scoresArr.append(genreScore!)
+        }
+
+        scoresArr = scoresArr.sorted().reversed()
+
+
+        if catArr.count == 1 {
+            newScore = (scoresArr[0] * mov.BENZO! * 1.5)/100
+
+        }
+
+        if catArr.count == 2 {
+            newScore = (scoresArr[0] * 0.7 + scoresArr[1] * 0.3) * mov.BENZO! * 1.5/100
+
+        }
+
+        if catArr.count == 3 {
+            newScore = (scoresArr[0] * 0.7 + scoresArr[1] * 0.2 + scoresArr[2] * 0.1) * mov.BENZO! * 1.5/100
+
+
+        }
+
+
+        return newScore ?? 0.0
+    }
     
 }

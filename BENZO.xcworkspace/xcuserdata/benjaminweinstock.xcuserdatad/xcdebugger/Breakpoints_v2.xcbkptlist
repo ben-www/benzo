@@ -7,15 +7,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6EDA62C6-B932-4BA8-9C1D-57B718FC5C11"
-            shouldBeEnabled = "Yes"
+            uuid = "942C4D50-A7B4-43AB-8F4C-76D0E36A01A5"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BENZO/Controllers/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,47 +23,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5617ACF8-5F49-4BA8-8D39-F36B02208299"
-            shouldBeEnabled = "Yes"
+            uuid = "9EEECE8B-B7D0-4FCC-AF4C-3BF85B980F9D"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BENZO/Controllers/HomeViewController.swift"
+            filePath = "BENZO/Controllers/JBenzoSwipeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B34315DA-F67E-4A95-A1DE-90AF09129AF2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BENZO/Services/JBenzoService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "retrieveJBenzoData(data:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DC5905F9-AB42-4085-923F-4D993268A9B0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BENZO/Controllers/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -71,17 +39,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "468687E2-C885-4B67-8D24-C9DE7D76E076"
+            uuid = "3A972980-5A81-4374-B687-D87297FD9F3C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BENZO/Services/JBenzoService.swift"
+            filePath = "BENZO/Controllers/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "retrieveJBenzoData(data:completion:)"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "buildFilteredData()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3A972980-5A81-4374-B687-D87297FD9F3C - fd5d2b33f33d6501"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BENZO.HomeViewController.buildFilteredData() -&gt; ()"
+                  moduleName = "BENZO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/benjaminweinstock/Desktop/BENZO/BENZO/Controllers/HomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "4292">
+               </Location>
+               <Location
+                  uuid = "3A972980-5A81-4374-B687-D87297FD9F3C - 3c10bfa51da68ab8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (BENZO.Movie, BENZO.Movie) -&gt; Swift.Bool in BENZO.HomeViewController.buildFilteredData() -&gt; ()"
+                  moduleName = "BENZO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/benjaminweinstock/Desktop/BENZO/BENZO/Controllers/HomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

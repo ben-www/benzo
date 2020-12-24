@@ -11,6 +11,7 @@ import FirebaseAuth
 class HomeViewController: UIViewController, MovieDataProtocol {
 
     
+    @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var JBENZObutton: UIButton!
     @IBOutlet var popoverView: UIView!
     @IBOutlet weak var picker: UIPickerView!
@@ -46,6 +47,14 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         // Connect data:
         self.picker.delegate = self
         self.picker.dataSource = self
+
+        profileButton.layer.shadowColor = UIColor.black.cgColor
+        profileButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        profileButton.layer.shadowOpacity = 1.0
+        profileButton.layer.shadowRadius = 3
+
+        
+        
         
         addRefreshControl()
 
@@ -70,10 +79,20 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         
         JBenzoService.retrieveJBenzoData(data: self.data) { (retrievedData) in
             self.jBenzoData = retrievedData
+            self.data.sort(by: { $0.BENZO! > $1.BENZO! })
+
             
-            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && ((self.jBenzoData?.showJBenzo) != nil) {
-                // use self.jBenzoData.JBenzoScores to add var to self.data
+            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+
+                for (index, mov) in self.data.enumerated() {
+                    
+                    let title = mov.Title
+                    self.data[index].jBENZO = self.jBenzoData?.JBenzoScores![title!]
+                }
                 
+                
+                self.data.sort(by: { $0.jBENZO! > $1.jBENZO! })
+                self.JBENZObutton.setImage(UIImage(systemName: "j.circle.fill"), for: .normal)
             }
             
             self.tableView.reloadData()
@@ -87,10 +106,19 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         
         JBenzoService.retrieveJBenzoData(data: self.data) { (retrievedData) in
             self.jBenzoData = retrievedData
-            
-            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && ((self.jBenzoData?.showJBenzo) != nil) {
-                // use self.jBenzoData.JBenzoScores to add var to self.data
+            self.data.sort(by: { $0.BENZO! > $1.BENZO! })
+
+            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+
+                for (index, mov) in self.data.enumerated() {
+                    
+                    let title = mov.Title
+                    self.data[index].jBENZO = self.jBenzoData?.JBenzoScores![title!]
+                }
                 
+                
+                self.data.sort(by: { $0.jBENZO! > $1.jBENZO! })
+                self.JBENZObutton.setImage(UIImage(systemName: "j.circle.fill"), for: .normal)
             }
             
             self.tableView.reloadData()
@@ -194,10 +222,10 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         self.filteredData = temp
         self.filteredData.sort(by: { $0.BENZO! > $1.BENZO! })
         
-//        if self.jBENZO {
-//            self.filteredData.sort(by: { $0.jBENZO! > $1.jBENZO! })
-//        }
-        
+        if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+            print("Filtering w/ Jbenzo")
+            self.filteredData.sort(by: { $0.jBENZO! > $1.jBENZO! })
+        }
 
         print("TEST")
     }
@@ -284,46 +312,101 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     }
     
     
+    // MARK: J Benzo Toggle Msg
+    func showToggleAlert(title:String, message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+                print("Toggled Off")
+                self.data.sort(by: { $0.BENZO! > $1.BENZO! })
+                self.jBenzoData?.showJBenzo = false
+                self.JBENZObutton.setImage(UIImage(systemName: "j.circle"), for: .normal)
+
+                // update in Firestore db
+                JBenzoService.updateShowJBenzo(flag: false)
+                
+                self.filteredData.sort(by: { $0.BENZO! > $1.BENZO! })
+                self.tableView.reloadData()
+
+            }
+            else if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (!((self.jBenzoData?.showJBenzo)!)) {
+                print("Toggled On")
+                for (index, mov) in self.data.enumerated() {
+                    
+                    let title = mov.Title
+                    self.data[index].jBENZO = self.jBenzoData?.JBenzoScores![title!]
+                }
+                
+                
+                self.data.sort(by: { $0.jBENZO! > $1.jBENZO! })
+                self.jBenzoData?.showJBenzo = true
+                self.JBENZObutton.setImage(UIImage(systemName: "j.circle.fill"), for: .normal)
+
+                // update in Firestore db
+                JBenzoService.updateShowJBenzo(flag: true)
+
+                self.filteredData.sort(by: { $0.jBENZO! > $1.jBENZO! })
+                self.tableView.reloadData()
+
+
+            }
+
+        }
+        
+        alert.addAction(yesAction)
+
+        
+        let noAction = UIAlertAction(title: "No", style: .default) { (action) in
+        }
+        
+        let swipeSegue = UIAlertAction(title: "Enhance", style: .default) { (action) in
+            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) {
+                self.performSegue(withIdentifier: Constants.Segue.jBenzoSwipe, sender: nil)
+
+            }
+        }
+        
+        alert.addAction(noAction)
+        
+        if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+            alert.addAction(swipeSegue)
+
+        }
+
+        // Show Alert
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
 
     // MARK: J Benzo Tapped
-    
     @IBAction func JBENZOtapped(_ sender: Any) {
+        if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!))  {
+            //print("Toggled On")
+            showToggleAlert(title: "JBenzo is 'ON'", message: "Turn OFF JBENZO scores?")
+            return
+        }
+        else if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (!((self.jBenzoData?.showJBenzo)!)) {
+            //print("Toggled Off")
+            showToggleAlert(title: "JBenzo is 'OFF'", message: "Turn ON JBENZO scores?")
+            return
+        }
+        
+        
         if self.jBenzoData == nil {
             self.performSegue(withIdentifier: Constants.Segue.genreCalculator, sender: nil)
         }
-        if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) {
-            self.performSegue(withIdentifier: Constants.Segue.jBenzoSwipe, sender: nil)
 
-        }
         
-        if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && ((self.jBenzoData?.showJBenzo) != nil) {
-            
-        }
-        
-        
-//        if self.JBENZObutton.currentImage == UIImage(systemName: "j.circle") {
-//            self.JBENZObutton.isEnabled = false
-//            self.JBENZObutton.setImage(UIImage(systemName: "j.circle.fill"), for: .normal)
-////            self.jBENZO = true
-//
-//            // Reload Table
-//            self.tableView.reloadData()
-//            return
-//        }
-//        else {
-////            self.jBENZO = false
-//
-//            self.JBENZObutton.setImage(UIImage(systemName: "j.circle"), for: .normal)
-//            self.tableView.reloadData()
-//
-//        }
     }
+    
+    
     
 
 
 
     // MARK: SIGN OUT
-    
     func showSignOutAlert(title:String, message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -489,13 +572,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         if movie != nil {
             cell?.displayMovieTitle(title:(movie?.Title!)!, rank: String((movie?.BENZO!)!))
-//            if self.jBENZO {
-//                if let score = movie?.jBENZO {
-//                    let finalScore = round(10000.0 * score) / 10000.0
-//
-//                    cell?.displayMovieTitle(title:(movie?.Title!)!, rank: String(finalScore),jBenzo: true)
-//                }
-//            }
+            
+            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+              
+                if let score = movie?.jBENZO {
+                    let finalScore = round(10000.0 * score) / 10000.0
+
+                    cell?.displayMovieTitle(title:(movie?.Title!)!, rank: String(finalScore),jBenzo: true)
+                }
+            }
+
             //self.rank += 1
         }
         return cell!

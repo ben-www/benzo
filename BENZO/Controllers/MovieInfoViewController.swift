@@ -11,6 +11,7 @@ class MovieInfoViewController: UIViewController {
     
     @IBOutlet weak var titleButton: UIButton!
     @IBOutlet weak var directorButton: UIButton!
+    @IBOutlet weak var jBenzoScore: UILabel!
     
     
     @IBOutlet weak var rankLabel: UILabel!
@@ -38,6 +39,13 @@ class MovieInfoViewController: UIViewController {
         super.viewDidLoad()
 //        tableView.delegate = self
 //        tableView.dataSource = self
+        
+        jBenzoScore.alpha = 0
+        if self.movie?.jBENZO != nil  {
+            jBenzoScore.alpha = 1
+            jBenzoScore.text = "\(movie!.jBENZO!)"
+            
+            }
         
         
         var dir = "n/a"

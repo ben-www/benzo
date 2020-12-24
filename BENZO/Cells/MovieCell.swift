@@ -31,6 +31,9 @@ class MovieCell: UITableViewCell {
         if jBenzo {
             benzoScoreLabel.textColor = .systemPurple
         }
+        else {
+            
+        }
         
         return
     }
