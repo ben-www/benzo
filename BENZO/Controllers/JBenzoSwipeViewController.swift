@@ -16,11 +16,16 @@ class JBenzoSwipeViewController: UIViewController {
     
     var data = [Movie]()
     var genres: [String] = [String]()
+    var jBenzoData:JBenzoData?
+
     
     var testIndx = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //self.navigationItem.hidesBackButton = true
+        self.title = "J BENZO"
         
         titleLabel.text = data[0].Title
         rawScoreLabel.text = String(data[0].Raw!)

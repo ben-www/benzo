@@ -30,6 +30,7 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        
         for mov in data {
             let title = String(mov.Title!)
             let year = String(mov.Year!)
@@ -49,7 +50,7 @@ class SearchViewController: UIViewController {
 
         
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let movieInfoController = segue.destination as! MovieInfoViewController
@@ -224,6 +225,14 @@ extension SearchViewController: UISearchBarDelegate {
         self.searching = false
         tableView.reloadData()
         
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
     }
     
 }

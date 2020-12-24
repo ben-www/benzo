@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class HomeViewController: UIViewController, MovieDataProtocol {
 
@@ -15,26 +16,23 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
     
-    
     var blurEffectView = UIVisualEffectView()
-
     
     var movieData = MovieData()
     var data = [Movie]()
     var searching = false
-
+    
+    var jBenzoData:JBenzoData?
     
     var filteredData = [Movie]()
     var filtering = false
 
     
-    var ratings: [String:Double] = [:]
     var pickerData: [String] = [String]()
-    var genre = "All"
+    var genre = "BENZO"
 
-//
-//    var JBENZOData = [Movie]()
-//    var jBENZO = false
+
+    //var JBENZOData = [Movie]()
     
     //var rank = 1
     
@@ -70,20 +68,37 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         movieData.getMovieData()
         pickerData = getGenres()
         
-        
-//        // J-Benzo is ACTIVE: calculate (JBENZOData) using (self.ratings)
-//        if  self.jBENZO == true && self.JBENZObutton.currentImage == UIImage(systemName: "j.circle") {
-//            self.JBENZObutton.setImage(UIImage(systemName: "j.circle.fill"), for: .normal)
-//            self.JBENZObutton.isEnabled = false
-//            self.data = getJBENZOdata()
-//
-//            self.data.sort(by: { $0.jBENZO! > $1.jBENZO! })
-//
-//        }
-        
-        
-
+        JBenzoService.retrieveJBenzoData(data: self.data) { (retrievedData) in
+            self.jBenzoData = retrievedData
+            
+            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && ((self.jBenzoData?.showJBenzo) != nil) {
+                // use self.jBenzoData.JBenzoScores to add var to self.data
+                
+            }
+            
+            self.tableView.reloadData()
+            
+        }
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Works")
+        
+        JBenzoService.retrieveJBenzoData(data: self.data) { (retrievedData) in
+            self.jBenzoData = retrievedData
+            
+            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && ((self.jBenzoData?.showJBenzo) != nil) {
+                // use self.jBenzoData.JBenzoScores to add var to self.data
+                
+            }
+            
+            self.tableView.reloadData()
+            
+        }
+    }
+    
+    
     
     func addRefreshControl() {
         
@@ -98,7 +113,9 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     }
 
     
+    
     // MARK: MovieData Delgate
+    
     func moviesRetrieved(_ movies: [Movie]) {
         print("Movies: retrieved from the MovieData.")
         self.data = movies
@@ -106,87 +123,10 @@ class HomeViewController: UIViewController, MovieDataProtocol {
 
         
     }
-    
-    
-    
-    // MARK: JBENZO Functions
-//
-//    func getJBENZOdata() -> [Movie] {
-//        var newData = [Movie]()
-//        //var catArr = [String]()
-//
-//        for mov in self.data {
-//            let movieCats = createCatList(mov: mov)
-//
-//            // add JBENZO score to mov obj and and to data
-//            var jbScore = 0.0
-//
-//
-//            if movieCats == nil {
-//                // Does the Movie have Categories?
-//                var temp = mov
-//                temp.jBENZO = temp.BENZO
-//                newData.append(temp)
-//
-//            } else {
-//                // Yes, count the "," to pick JBenzo Algo
-//                let catArr = movieCats!.components(separatedBy: ",")
-//
-//                jbScore = getJBENZOScore(mov: mov, catArr: catArr)
-//
-//                print(mov.Title!,jbScore)
-//                var temp = mov
-//                temp.jBENZO = jbScore
-//                newData.append(temp)
-//
-//            }
-//
-//
-//        }
-//        return newData
-//
-//    }
-//
-//
-//
-//    func getJBENZOScore(mov:Movie, catArr: [String]) -> Double {
-//        var newScore:Double?
-//        var scoresArr = [Double]()
-//
-//        for cat in catArr {
-//            let catTrimmed = cat.trimmingCharacters(in: .whitespaces)
-//            let genreScore = self.ratings[catTrimmed]
-//            scoresArr.append(genreScore!)
-//        }
-//
-//        scoresArr = scoresArr.sorted().reversed()
-//
-//
-//        if catArr.count == 1 {
-//            newScore = (scoresArr[0] * mov.BENZO! * 1.5)/100
-//
-//        }
-//
-//        if catArr.count == 2 {
-//            newScore = (scoresArr[0] * 0.7 + scoresArr[1] * 0.3) * mov.BENZO! * 1.5/100
-//
-//        }
-//
-//        if catArr.count == 3 {
-//            newScore = (scoresArr[0] * 0.7 + scoresArr[1] * 0.2 + scoresArr[2] * 0.1) * mov.BENZO! * 1.5/100
-//
-//
-//        }
-//
-//
-//        return newScore ?? 0.0
-//    }
-//
-//
+
     
     
     // MARK: Filtering Functions
-
     
     func createCatList(mov:Movie) -> String? {
         
@@ -226,11 +166,7 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         
         temp = Array(Set(temp))
         temp.sort()
-        temp[0] = "All"
-        
-//        if self.jBENZO {
-//            temp.insert("J-Benzo", at: 1)
-//        }
+        temp[0] = "BENZO"
         
         return temp
         
@@ -238,7 +174,7 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     
     
     func buildFilteredData() {
-        if self.genre == "All" {
+        if self.genre == "BENZO" {
 //            if self.jBENZO {
 //                self.data.sort(by: { $0.jBENZO! > $1.jBENZO! })
 //            }
@@ -294,12 +230,18 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     // MARK: Prepare Actions
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        if segue.identifier == "jBenzo" {
-            let jBenzoVC = segue.destination as! JBenzoSwipeViewController
-            jBenzoVC.data = self.data
-            jBenzoVC.genres = self.pickerData
+        if segue.identifier == Constants.Segue.genreCalculator {
+            let getGenrePercentagesVC = segue.destination as! GetGenrePercentagesViewController
+            getGenrePercentagesVC.genres = self.pickerData
         }
+        
+        if segue.identifier == Constants.Segue.jBenzoSwipe {
+            let swipeVC = segue.destination as! JBenzoSwipeViewController
+            swipeVC.data = self.data
+            swipeVC.genres = self.pickerData
+            swipeVC.jBenzoData = self.jBenzoData
+        }
+
         
         if segue.identifier == "search" {
             let searchViewController = segue.destination as! SearchViewController
@@ -342,32 +284,88 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     }
     
     
-    
-    
-    // MARK: Button Tapped Functions
 
+    // MARK: J Benzo Tapped
+    
     @IBAction func JBENZOtapped(_ sender: Any) {
+        if self.jBenzoData == nil {
+            self.performSegue(withIdentifier: Constants.Segue.genreCalculator, sender: nil)
+        }
+        if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) {
+            self.performSegue(withIdentifier: Constants.Segue.jBenzoSwipe, sender: nil)
+
+        }
         
-        if self.JBENZObutton.currentImage == UIImage(systemName: "j.circle") {
-            self.JBENZObutton.isEnabled = false
-            self.JBENZObutton.setImage(UIImage(systemName: "j.circle.fill"), for: .normal)
-//            self.jBENZO = true
+        if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && ((self.jBenzoData?.showJBenzo) != nil) {
             
-            // Reload Table
-            self.tableView.reloadData()
-            return
-        }
-        else {
-//            self.jBENZO = false
-
-            self.JBENZObutton.setImage(UIImage(systemName: "j.circle"), for: .normal)
-            self.tableView.reloadData()
-
         }
         
- 
+        
+//        if self.JBENZObutton.currentImage == UIImage(systemName: "j.circle") {
+//            self.JBENZObutton.isEnabled = false
+//            self.JBENZObutton.setImage(UIImage(systemName: "j.circle.fill"), for: .normal)
+////            self.jBENZO = true
+//
+//            // Reload Table
+//            self.tableView.reloadData()
+//            return
+//        }
+//        else {
+////            self.jBENZO = false
+//
+//            self.JBENZObutton.setImage(UIImage(systemName: "j.circle"), for: .normal)
+//            self.tableView.reloadData()
+//
+//        }
     }
     
+
+
+
+    // MARK: SIGN OUT
+    
+    func showSignOutAlert(title:String, message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+            
+            do {
+                try Auth.auth().signOut()
+                
+                LocalStorageService.clearUser()
+                let loginNavVC = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.loginVC)
+                
+                self.view.window?.rootViewController = loginNavVC
+                self.view.window?.makeKeyAndVisible()
+            }
+            catch {
+                // Coulnd't Sign Out
+            }
+        }
+        
+        alert.addAction(yesAction)
+
+        
+        let noAction = UIAlertAction(title: "No", style: .default) { (action) in
+        }
+        
+        alert.addAction(noAction)
+
+        // Show Alert
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    @IBAction func profileTapped(_ sender: Any) {
+        showSignOutAlert(title: "Sign Out", message: "Are you sure?")
+    }
+    
+    
+    
+    
+
     
     
     // MARK: Search Buttons
@@ -396,7 +394,7 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         //print(self.genre)
         self.filtering = true
         
-        if self.genre == "All" {
+        if self.genre == "BENZO" {
             self.filtering = false
             self.title = "BENZO"
         }

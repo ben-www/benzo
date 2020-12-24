@@ -6,30 +6,49 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 
-class BenzoUser {
+struct BenzoUser {
     
     var userId:String?
     var username:String?
-    var hasJBenzo:Bool?
-    var activeJBenzo:Bool?
-
+    var JBenzoData:JBenzoData?
     
-    var rankedMovies:Array<String>?
-    var unrankedMovies:Array<String>?
-    var JBenzoScores = [JBenzoScore]()
     
     
     init(userId:String, username: String) {
         self.userId = userId
         self.username = username
-        self.hasJBenzo = false
-        self.activeJBenzo = false
         
     }
     
+    
+    
+    init? (snapshot:QueryDocumentSnapshot) {
+        
+        // Parse the data out
+        let data = snapshot.data()
 
+        let username = data["username"] as? String
+
+        // Check for missing data
+        if username == nil {
+            return nil
+        }
+        
+        // Set our properties
+        self.username = username
+
+    }
+    
+}
+
+
+
+extension BenzoUser {
+    init() {
+    }
     
 }
 

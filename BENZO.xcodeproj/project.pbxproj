@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,9 +18,14 @@
 		ED053E6825795BF50090F78D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E6725795BF50090F78D /* Constants.swift */; };
 		ED053E6B25795DC70090F78D /* MovieInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E6A25795DC70090F78D /* MovieInfoCell.swift */; };
 		ED053E6E25795E830090F78D /* MovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E6D25795E830090F78D /* MovieInfoViewController.swift */; };
-		ED3A0A49259150E400FF7932 /* JBenzoScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3A0A48259150E400FF7932 /* JBenzoScore.swift */; };
+		ED3A0A49259150E400FF7932 /* JBenzoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3A0A48259150E400FF7932 /* JBenzoData.swift */; };
 		ED3A0A4C2591513E00FF7932 /* BenzoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */; };
 		ED3A0A4F25918FCC00FF7932 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */; };
+		ED4ACF372591A2FE00ED36C2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4ACF362591A2FE00ED36C2 /* LoginViewController.swift */; };
+		ED4ACF3A2591A31D00ED36C2 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4ACF392591A31D00ED36C2 /* CreateProfileViewController.swift */; };
+		ED4ACF4525924F1F00ED36C2 /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4ACF4425924F1F00ED36C2 /* LocalStorageService.swift */; };
+		ED4ACF482592547D00ED36C2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4ACF472592547D00ED36C2 /* UserService.swift */; };
+		ED4ACF4E2592D08700ED36C2 /* JBenzoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4ACF4D2592D08700ED36C2 /* JBenzoService.swift */; };
 		ED8F7CDF25795FC800D12764 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7CDE25795FC800D12764 /* Movie.swift */; };
 		ED8F7CE62579627600D12764 /* moviesJson.json in Resources */ = {isa = PBXBuildFile; fileRef = ED8F7CE52579627600D12764 /* moviesJson.json */; };
 		ED8F7CE92579637B00D12764 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7CE82579637B00D12764 /* MovieData.swift */; };
@@ -30,7 +35,7 @@
 		ED8F7CF8257C622300D12764 /* DirectorMovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7CF7257C622300D12764 /* DirectorMovieListViewController.swift */; };
 		ED8F7D24257C6C3600D12764 /* DirectorMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D23257C6C3600D12764 /* DirectorMovieCell.swift */; };
 		ED8F7D27257C9B3100D12764 /* DirectorMovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D26257C9B3100D12764 /* DirectorMovieInfoViewController.swift */; };
-		ED8F7D2E257F199C00D12764 /* JBENZOCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D2D257F199C00D12764 /* JBENZOCalculatorViewController.swift */; };
+		ED8F7D2E257F199C00D12764 /* GetGenrePercentagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D2D257F199C00D12764 /* GetGenrePercentagesViewController.swift */; };
 		ED8F7D362585D16800D12764 /* JBenzoSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D352585D16800D12764 /* JBenzoSwipeViewController.swift */; };
 		EDEC2FBF2586D3D3001A6648 /* HowToWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */; };
 /* End PBXBuildFile section */
@@ -51,9 +56,14 @@
 		ED053E6725795BF50090F78D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ED053E6A25795DC70090F78D /* MovieInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoCell.swift; sourceTree = "<group>"; };
 		ED053E6D25795E830090F78D /* MovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoViewController.swift; sourceTree = "<group>"; };
-		ED3A0A48259150E400FF7932 /* JBenzoScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBenzoScore.swift; sourceTree = "<group>"; };
+		ED3A0A48259150E400FF7932 /* JBenzoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBenzoData.swift; sourceTree = "<group>"; };
 		ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenzoUser.swift; sourceTree = "<group>"; };
 		ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ED4ACF362591A2FE00ED36C2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ED4ACF392591A31D00ED36C2 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
+		ED4ACF4425924F1F00ED36C2 /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
+		ED4ACF472592547D00ED36C2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		ED4ACF4D2592D08700ED36C2 /* JBenzoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBenzoService.swift; sourceTree = "<group>"; };
 		ED8F7CDE25795FC800D12764 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		ED8F7CE52579627600D12764 /* moviesJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moviesJson.json; sourceTree = "<group>"; };
 		ED8F7CE82579637B00D12764 /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
@@ -63,7 +73,7 @@
 		ED8F7CF7257C622300D12764 /* DirectorMovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorMovieListViewController.swift; sourceTree = "<group>"; };
 		ED8F7D23257C6C3600D12764 /* DirectorMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorMovieCell.swift; sourceTree = "<group>"; };
 		ED8F7D26257C9B3100D12764 /* DirectorMovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorMovieInfoViewController.swift; sourceTree = "<group>"; };
-		ED8F7D2D257F199C00D12764 /* JBENZOCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBENZOCalculatorViewController.swift; sourceTree = "<group>"; };
+		ED8F7D2D257F199C00D12764 /* GetGenrePercentagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGenrePercentagesViewController.swift; sourceTree = "<group>"; };
 		ED8F7D352585D16800D12764 /* JBenzoSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBenzoSwipeViewController.swift; sourceTree = "<group>"; };
 		EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToWatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,7 +104,6 @@
 				6AE6237866651AC6E6EDBCD3 /* Pods-BENZO.debug.xcconfig */,
 				C747D6FBAE0D0F5E616F5A38 /* Pods-BENZO.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -119,6 +128,7 @@
 		ED053E44257958280090F78D /* BENZO */ = {
 			isa = PBXGroup;
 			children = (
+				ED4ACF3E25924EE400ED36C2 /* Services */,
 				ED053E5F257958A80090F78D /* Models */,
 				ED053E5E2579589D0090F78D /* Cells */,
 				ED053E5C257958420090F78D /* Controllers */,
@@ -154,13 +164,15 @@
 		ED053E5C257958420090F78D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				ED4ACF362591A2FE00ED36C2 /* LoginViewController.swift */,
+				ED4ACF392591A31D00ED36C2 /* CreateProfileViewController.swift */,
 				ED053E60257958C10090F78D /* HomeViewController.swift */,
-				ED8F7D26257C9B3100D12764 /* DirectorMovieInfoViewController.swift */,
 				ED053E6D25795E830090F78D /* MovieInfoViewController.swift */,
-				ED8F7CED257999ED00D12764 /* SearchViewController.swift */,
 				ED8F7CF4257C1D5700D12764 /* MovieExtraInfoViewController.swift */,
+				ED8F7D26257C9B3100D12764 /* DirectorMovieInfoViewController.swift */,
 				ED8F7CF7257C622300D12764 /* DirectorMovieListViewController.swift */,
-				ED8F7D2D257F199C00D12764 /* JBENZOCalculatorViewController.swift */,
+				ED8F7CED257999ED00D12764 /* SearchViewController.swift */,
+				ED8F7D2D257F199C00D12764 /* GetGenrePercentagesViewController.swift */,
 				ED8F7D352585D16800D12764 /* JBenzoSwipeViewController.swift */,
 				EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */,
 			);
@@ -183,10 +195,20 @@
 			children = (
 				ED8F7CDE25795FC800D12764 /* Movie.swift */,
 				ED8F7CE82579637B00D12764 /* MovieData.swift */,
-				ED3A0A48259150E400FF7932 /* JBenzoScore.swift */,
+				ED3A0A48259150E400FF7932 /* JBenzoData.swift */,
 				ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		ED4ACF3E25924EE400ED36C2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ED4ACF4425924F1F00ED36C2 /* LocalStorageService.swift */,
+				ED4ACF472592547D00ED36C2 /* UserService.swift */,
+				ED4ACF4D2592D08700ED36C2 /* JBenzoService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,11 +345,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED4ACF372591A2FE00ED36C2 /* LoginViewController.swift in Sources */,
+				ED4ACF4525924F1F00ED36C2 /* LocalStorageService.swift in Sources */,
 				EDEC2FBF2586D3D3001A6648 /* HowToWatchViewController.swift in Sources */,
 				ED8F7CEE257999ED00D12764 /* SearchViewController.swift in Sources */,
 				ED053E6E25795E830090F78D /* MovieInfoViewController.swift in Sources */,
 				ED3A0A4C2591513E00FF7932 /* BenzoUser.swift in Sources */,
-				ED3A0A49259150E400FF7932 /* JBenzoScore.swift in Sources */,
+				ED3A0A49259150E400FF7932 /* JBenzoData.swift in Sources */,
 				ED8F7D24257C6C3600D12764 /* DirectorMovieCell.swift in Sources */,
 				ED053E6B25795DC70090F78D /* MovieInfoCell.swift in Sources */,
 				ED8F7CF12579A06A00D12764 /* SearchTitleCell.swift in Sources */,
@@ -335,11 +359,14 @@
 				ED8F7CF8257C622300D12764 /* DirectorMovieListViewController.swift in Sources */,
 				ED8F7CF5257C1D5800D12764 /* MovieExtraInfoViewController.swift in Sources */,
 				ED053E6825795BF50090F78D /* Constants.swift in Sources */,
-				ED8F7D2E257F199C00D12764 /* JBENZOCalculatorViewController.swift in Sources */,
+				ED4ACF4E2592D08700ED36C2 /* JBenzoService.swift in Sources */,
+				ED8F7D2E257F199C00D12764 /* GetGenrePercentagesViewController.swift in Sources */,
+				ED4ACF3A2591A31D00ED36C2 /* CreateProfileViewController.swift in Sources */,
 				ED8F7CE92579637B00D12764 /* MovieData.swift in Sources */,
 				ED053E46257958280090F78D /* AppDelegate.swift in Sources */,
 				ED053E48257958280090F78D /* SceneDelegate.swift in Sources */,
 				ED053E6525795B4F0090F78D /* MovieCell.swift in Sources */,
+				ED4ACF482592547D00ED36C2 /* UserService.swift in Sources */,
 				ED8F7D362585D16800D12764 /* JBenzoSwipeViewController.swift in Sources */,
 				ED8F7CDF25795FC800D12764 /* Movie.swift in Sources */,
 				ED053E61257958C10090F78D /* HomeViewController.swift in Sources */,

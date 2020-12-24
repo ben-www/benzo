@@ -7,12 +7,13 @@
 
 import UIKit
 
-class JBENZOCalculatorViewController: UIViewController {
+class GetGenrePercentagesViewController: UIViewController {
     
     var jBENZO = false
     var genres = [String]()
-    var ratings: [String:Double] = [:]
+    var genrePercentages: [String:Double] = [:]
     var questionNum = 1
+    
 
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var percentageTextField: UITextField!
@@ -20,6 +21,8 @@ class JBENZOCalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+        self.title = "J BENZO"
         
         self.percentageTextField.keyboardType = .decimalPad
             
@@ -54,20 +57,22 @@ class JBENZOCalculatorViewController: UIViewController {
         }
         else {
 
-            // Entry is VALIDATED: Add Entry to self.Ratings
+            // Entry is VALIDATED: Add Entry to self.genrePercentages
             //var pct = self.percentageTextField.text
             if self.questionNum >= self.genres.count - 2 {
                 self.confirmButton.setTitle("Done", for: .normal)
 
             }
+            // Last Genre to give %
             if self.questionNum >= self.genres.count - 1 {
                 
+                self.genrePercentages[self.genreLabel.text!] = Double(self.percentageTextField.text!)
+                
+                // Create Jbenzo DB entry w/ Genre %(s), using userId & self.genrePercentages
+                _ = JBenzoService.createJBenzoEntry(genrePercentages: self.genrePercentages)
+
                 self.navigationController?.popToRootViewController(animated: true)
                 let homeVC = (self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeVC))! as HomeViewController
-                
-                self.ratings[self.genreLabel.text!] = Double(self.percentageTextField.text!)
-                homeVC.ratings = self.ratings
-                //homeVC.jBENZO = true
 
                 let nav = UINavigationController.init(rootViewController: homeVC)
                 self.view.window?.rootViewController = nav
@@ -75,7 +80,7 @@ class JBENZOCalculatorViewController: UIViewController {
                 return
             }
             
-            self.ratings[self.genreLabel.text!] = Double(self.percentageTextField.text!)
+            self.genrePercentages[self.genreLabel.text!] = Double(self.percentageTextField.text!)
 
             
             // Erease TXTField
@@ -85,8 +90,6 @@ class JBENZOCalculatorViewController: UIViewController {
             self.questionNum += 1
             self.genreLabel.text = self.genres[self.questionNum]
         }
-        
-        
     }
     
     

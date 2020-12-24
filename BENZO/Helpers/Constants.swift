@@ -19,7 +19,12 @@ struct Constants {
     }
     
     struct Storyboard {
+        
+        static let loginVC = "LoginVC"
+        static let loginSuccessful = "LoginSuccessful"
+
         static let homeVC = "HomeVC"
+        
         static let movieInfoStoryboard2 = "MovieInfoStoryboard2"
         
     }
@@ -28,6 +33,13 @@ struct Constants {
     struct LocalStorage {
         static let userIdKey = "storedUserId"
         static let usernameKey = "storedUsername"
+    }
+    
+    struct Segue {
+        static let profileSegue = "goToCreateProfile"
+        static let genreCalculator = "GenreCalculator"
+        static let jBenzoSwipe = "jBenzoSwipe"
+
     }
     
 }
