@@ -39,6 +39,7 @@ struct Constants {
         static let profileSegue = "goToCreateProfile"
         static let genreCalculator = "GenreCalculator"
         static let jBenzoSwipe = "jBenzoSwipe"
+        static let profileSettings = "ProfileSettings"
 
     }
     

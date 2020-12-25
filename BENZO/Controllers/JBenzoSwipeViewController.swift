@@ -26,10 +26,11 @@ class JBenzoSwipeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //self.navigationItem.hidesBackButton = true
-        //self.title = "J BENZO"
         
+        self.data.shuffle()
+        
+        //self.title = "J BENZO"
         titleLabel.text = data[0].Title
         rawScoreLabel.text = "Raw Score: " + String(data[0].Raw!)
         benzoScoreLabel.text = "BENZO: " + String(data[0].BENZO!)
@@ -38,10 +39,52 @@ class JBenzoSwipeViewController: UIViewController {
 
         
         
-        //self.swipe.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("Back to Home Works")
+        
+        // update JBenzoData: genrePercentages & JBenzoScores in db
+        // using JBenzoService
+        
 
     }
+        
+    
+    
+    @IBAction func dontknowTapped(_ sender: Any) {
+        print("Don't Know **")
+    }
+    
+    
+    @IBAction func likeTapped(_ sender: Any) {
+        print("Like **")
+        self.testIndx += 1
+        titleLabel.text = data[self.testIndx].Title
+        rawScoreLabel.text = "Raw Score: " + String(data[self.testIndx].Raw!)
+        benzoScoreLabel.text = "BENZO: " + String(data[self.testIndx].BENZO!)
+        genresLabel.text = JBenzoService.createCatList(mov: data[self.testIndx])
 
+        numOfSwipes += 1
+        numberOfSwipesLabel.text = String(numOfSwipes) + " Movies rated in this session"
+    }
+    
+    
+    @IBAction func dislikeTapped(_ sender: Any) {
+        print("Dislike **")
+    }
+  
+    
+    @IBAction func howToWatchTapped(_ sender: Any) {
+        var newTitle = data[self.testIndx].Title
+        newTitle = newTitle?.replacingOccurrences(of: " ", with: "+")
+        
+        let hyperlink = "https://www.google.com/search?q=" + newTitle! + "+stream"
+        
+        if let url = URL(string: hyperlink) {
+            UIApplication.shared.open(url)
+        }
+    }
     
     @IBAction func swipeLeftHandler(_ gestureRecognizer: UISwipeGestureRecognizer) {
         print("Swiped left")
@@ -49,6 +92,8 @@ class JBenzoSwipeViewController: UIViewController {
         titleLabel.text = data[self.testIndx].Title
         rawScoreLabel.text = "Raw Score: " + String(data[self.testIndx].Raw!)
         benzoScoreLabel.text = "BENZO: " + String(data[self.testIndx].BENZO!)
+        genresLabel.text = JBenzoService.createCatList(mov: data[self.testIndx])
+
         numOfSwipes += 1
         numberOfSwipesLabel.text = String(numOfSwipes) + " Movies rated in this session"
     }
@@ -59,22 +104,15 @@ class JBenzoSwipeViewController: UIViewController {
         titleLabel.text = data[self.testIndx].Title
         rawScoreLabel.text = "Raw Score: " + String(data[self.testIndx].Raw!)
         benzoScoreLabel.text = "BENZO: " + String(data[self.testIndx].BENZO!)
+        genresLabel.text = JBenzoService.createCatList(mov: data[self.testIndx])
+
         numOfSwipes += 1
         numberOfSwipesLabel.text = String(numOfSwipes) + " Movies rated in this session"
     }
     
-    
-    @IBAction func likeTapped(_ sender: Any) {
-        print("Like **")
-    }
-    
-    @IBAction func dislikeTapped(_ sender: Any) {
-        print("Dislike **")
 
-    }
-    @IBAction func dontKnowTapped(_ sender: Any) {
-        print("Don't Know **")
-
-    }
 }
+
+//dislikeTapped
+//        print("Dislike **")
 

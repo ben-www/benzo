@@ -30,8 +30,8 @@
             filePath = "BENZO/Controllers/JBenzoSwipeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -52,7 +52,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "3A972980-5A81-4374-B687-D87297FD9F3C - fd5d2b33f33d6501"
+                  uuid = "3A972980-5A81-4374-B687-D87297FD9F3C - fd5d2b33f33d6560"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -62,12 +62,12 @@
                   urlString = "file:///Users/benjaminweinstock/Desktop/BENZO/BENZO/Controllers/HomeViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "226"
-                  endingLineNumber = "226"
+                  startingLineNumber = "227"
+                  endingLineNumber = "227"
                   offsetFromSymbolStart = "4292">
                </Location>
                <Location
-                  uuid = "3A972980-5A81-4374-B687-D87297FD9F3C - 3c10bfa51da68ab8"
+                  uuid = "3A972980-5A81-4374-B687-D87297FD9F3C - 3c10bfa51da68ad9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -77,11 +77,59 @@
                   urlString = "file:///Users/benjaminweinstock/Desktop/BENZO/BENZO/Controllers/HomeViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "226"
-                  endingLineNumber = "226"
+                  startingLineNumber = "227"
+                  endingLineNumber = "227"
                   offsetFromSymbolStart = "52">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8958B5C3-2697-4BF8-BBC2-B8B6CE015A33"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BENZO/Controllers/JBenzoSwipeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "swipeHandler(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E24BAD5F-5ACE-48A4-8FED-09221BA22F63"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BENZO/Controllers/JBenzoSwipeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "likeTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E27F4494-3505-43CD-99E2-5D00736351D7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BENZO/Controllers/JBenzoSwipeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "swipeLeftHandler(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

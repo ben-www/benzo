@@ -18,6 +18,7 @@
 		ED053E6825795BF50090F78D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E6725795BF50090F78D /* Constants.swift */; };
 		ED053E6B25795DC70090F78D /* MovieInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E6A25795DC70090F78D /* MovieInfoCell.swift */; };
 		ED053E6E25795E830090F78D /* MovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E6D25795E830090F78D /* MovieInfoViewController.swift */; };
+		ED26CB93259572DA007D23D2 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED26CB92259572DA007D23D2 /* ProfileSettingsViewController.swift */; };
 		ED3A0A49259150E400FF7932 /* JBenzoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3A0A48259150E400FF7932 /* JBenzoData.swift */; };
 		ED3A0A4C2591513E00FF7932 /* BenzoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */; };
 		ED3A0A4F25918FCC00FF7932 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */; };
@@ -56,6 +57,7 @@
 		ED053E6725795BF50090F78D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ED053E6A25795DC70090F78D /* MovieInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoCell.swift; sourceTree = "<group>"; };
 		ED053E6D25795E830090F78D /* MovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoViewController.swift; sourceTree = "<group>"; };
+		ED26CB92259572DA007D23D2 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		ED3A0A48259150E400FF7932 /* JBenzoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBenzoData.swift; sourceTree = "<group>"; };
 		ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenzoUser.swift; sourceTree = "<group>"; };
 		ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				ED8F7D2D257F199C00D12764 /* GetGenrePercentagesViewController.swift */,
 				ED8F7D352585D16800D12764 /* JBenzoSwipeViewController.swift */,
 				EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */,
+				ED26CB92259572DA007D23D2 /* ProfileSettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				ED4ACF4E2592D08700ED36C2 /* JBenzoService.swift in Sources */,
 				ED8F7D2E257F199C00D12764 /* GetGenrePercentagesViewController.swift in Sources */,
 				ED4ACF3A2591A31D00ED36C2 /* CreateProfileViewController.swift in Sources */,
+				ED26CB93259572DA007D23D2 /* ProfileSettingsViewController.swift in Sources */,
 				ED8F7CE92579637B00D12764 /* MovieData.swift in Sources */,
 				ED053E46257958280090F78D /* AppDelegate.swift in Sources */,
 				ED053E48257958280090F78D /* SceneDelegate.swift in Sources */,

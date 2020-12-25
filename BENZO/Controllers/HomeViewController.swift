@@ -239,12 +239,18 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         // Call the photo service
         
         self.title = "BENZO"
-        
-//        self.jBENZO = false
         self.JBENZObutton.setImage(UIImage(systemName: "j.circle"), for: .normal)
-        self.JBENZObutton.isEnabled = true
-        
         self.data.sort(by: { $0.BENZO! > $1.BENZO! })
+
+        
+        if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+            self.JBENZObutton.setImage(UIImage(systemName: "j.circle.fill"), for: .normal)
+            self.data.sort(by: { $0.jBENZO! > $1.jBENZO! })
+
+
+        }
+        
+        
 
         self.tableView.reloadData()
 
@@ -258,6 +264,11 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     // MARK: Prepare Actions
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.Segue.profileSettings {
+            let profileSettingsVC = segue.destination as! ProfileSettingsViewController
+            print("prepare func profileSettings")
+        }
+        
         if segue.identifier == Constants.Segue.genreCalculator {
             let getGenrePercentagesVC = segue.destination as! GetGenrePercentagesViewController
             getGenrePercentagesVC.genres = self.pickerData
@@ -384,12 +395,13 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     @IBAction func JBENZOtapped(_ sender: Any) {
         if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!))  {
             //print("Toggled On")
-            showToggleAlert(title: "JBenzo is 'ON'", message: "Turn OFF JBENZO scores?")
+            showToggleAlert(title: "JBENZO is 'ON'", message: "Turn OFF JBENZO scores?")
+
             return
         }
         else if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (!((self.jBenzoData?.showJBenzo)!)) {
             //print("Toggled Off")
-            showToggleAlert(title: "JBenzo is 'OFF'", message: "Turn ON JBENZO scores?")
+            showToggleAlert(title: "JBENZO is 'OFF'", message: "Turn ON JBENZO scores?")
             return
         }
         
@@ -406,43 +418,13 @@ class HomeViewController: UIViewController, MovieDataProtocol {
 
 
 
-    // MARK: SIGN OUT
-    func showSignOutAlert(title:String, message:String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
-            
-            do {
-                try Auth.auth().signOut()
-                
-                LocalStorageService.clearUser()
-                let loginNavVC = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.loginVC)
-                
-                self.view.window?.rootViewController = loginNavVC
-                self.view.window?.makeKeyAndVisible()
-            }
-            catch {
-                // Coulnd't Sign Out
-            }
-        }
-        
-        alert.addAction(yesAction)
 
-        
-        let noAction = UIAlertAction(title: "No", style: .default) { (action) in
-        }
-        
-        alert.addAction(noAction)
-
-        // Show Alert
-        present(alert, animated: true, completion: nil)
-        
-    }
-    
     
     
     @IBAction func profileTapped(_ sender: Any) {
-        showSignOutAlert(title: "Sign Out", message: "Are you sure?")
+        //showSignOutAlert(title: "Sign Out", message: "Are you sure?")
+        //self.performSegue(withIdentifier: Constants.Segue.genreCalculator, sender: nil)
+
     }
     
     
