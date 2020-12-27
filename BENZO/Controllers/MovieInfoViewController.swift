@@ -11,6 +11,10 @@ class MovieInfoViewController: UIViewController {
     
     @IBOutlet weak var titleButton: UIButton!
     @IBOutlet weak var directorButton: UIButton!
+    
+    @IBOutlet weak var thumbsUpButton: UIButton!
+    @IBOutlet weak var thumbsDownButton: UIButton!
+    
     @IBOutlet weak var jBenzoScore: UILabel!
     
     
@@ -160,9 +164,39 @@ class MovieInfoViewController: UIViewController {
         if let url = URL(string: hyperlink) {
             UIApplication.shared.open(url)
         }
+        
     }
     
+    
+    @IBAction func thumbsUpTapped(_ sender: Any) {
+        
+        if self.thumbsUpButton.currentImage == UIImage(systemName: "hand.thumbsup") {
+            self.thumbsUpButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+            if self.thumbsDownButton.currentImage == UIImage(systemName: "hand.thumbsdown.fill") {
+                self.thumbsDownButton.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
 
+            }
+        }
+        else {
+            self.thumbsUpButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+        }
+    
+    }
+    
+    
+    @IBAction func thumbsDownTapped(_ sender: Any) {
+        if self.thumbsDownButton.currentImage == UIImage(systemName: "hand.thumbsdown") {
+            self.thumbsDownButton.setImage(UIImage(systemName: "hand.thumbsdown.fill"), for: .normal)
+            if self.thumbsUpButton.currentImage == UIImage(systemName: "hand.thumbsup.fill") {
+                self.thumbsUpButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+
+            }
+        }
+        else {
+            self.thumbsDownButton.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
+        }
+    }
+    
 }
 
 

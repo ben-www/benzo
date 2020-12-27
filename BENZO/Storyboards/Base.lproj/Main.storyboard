@@ -389,22 +389,50 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akr-CH-9Lk">
-                                <rect key="frame" x="20" y="821" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title=" How to Watch" image="tv" catalog="system">
-                                    <color key="titleColor" systemColor="systemPurpleColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="howToWatchTapped:" destination="rvZ-gS-yAm" eventType="touchUpInside" id="vs3-Qo-Laf"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JBenzo Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsK-sD-vf2">
                                 <rect key="frame" x="20" y="265" width="374" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemPurpleColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="L4G-pA-dhf">
+                                <rect key="frame" x="139" y="773.5" width="136" height="68.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zHT-ls-yky">
+                                        <rect key="frame" x="0.0" y="0.0" width="136" height="22.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoJ-5Z-lxE">
+                                                <rect key="frame" x="0.0" y="0.0" width="64" height="22.5"/>
+                                                <state key="normal" image="hand.thumbsup" catalog="system"/>
+                                                <connections>
+                                                    <action selector="thumbsUpTapped:" destination="rvZ-gS-yAm" eventType="touchUpInside" id="ZYc-0r-3Hf"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIf-C8-Vaf">
+                                                <rect key="frame" x="72" y="0.0" width="64" height="22.5"/>
+                                                <state key="normal" image="hand.thumbsdown" catalog="system"/>
+                                                <connections>
+                                                    <action selector="thumbsDownTapped:" destination="rvZ-gS-yAm" eventType="touchUpInside" id="PR1-30-wlp"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akr-CH-9Lk">
+                                        <rect key="frame" x="0.0" y="47.5" width="136" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title=" How to Watch" image="tv" catalog="system">
+                                            <color key="titleColor" systemColor="systemPurpleColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="howToWatchTapped:" destination="rvZ-gS-yAm" eventType="touchUpInside" id="vs3-Qo-Laf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="zHT-ls-yky" secondAttribute="trailing" id="HU3-BC-xd1"/>
+                                    <constraint firstItem="zHT-ls-yky" firstAttribute="leading" secondItem="L4G-pA-dhf" secondAttribute="leading" id="lzJ-68-pCE"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CWl-hG-Oxh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -412,12 +440,11 @@
                             <constraint firstItem="wsK-sD-vf2" firstAttribute="leading" secondItem="CWl-hG-Oxh" secondAttribute="leading" constant="20" id="8lb-Vh-iwB"/>
                             <constraint firstItem="2OU-IK-aWp" firstAttribute="centerY" secondItem="kYS-6v-a5e" secondAttribute="centerY" id="C1A-AH-dmS"/>
                             <constraint firstItem="2OU-IK-aWp" firstAttribute="top" secondItem="wsK-sD-vf2" secondAttribute="bottom" constant="20" id="EWG-6K-esh"/>
-                            <constraint firstItem="Akr-CH-9Lk" firstAttribute="centerX" secondItem="kYS-6v-a5e" secondAttribute="centerX" id="EvS-PK-PdI"/>
                             <constraint firstAttribute="trailing" secondItem="ujO-cD-nBj" secondAttribute="trailing" constant="40" id="HQv-Ov-aEQ"/>
-                            <constraint firstItem="Akr-CH-9Lk" firstAttribute="leading" secondItem="CWl-hG-Oxh" secondAttribute="leading" constant="20" id="KV2-SE-8y9"/>
                             <constraint firstItem="CWl-hG-Oxh" firstAttribute="trailing" secondItem="wsK-sD-vf2" secondAttribute="trailing" constant="20" id="NKF-Sy-qXy"/>
+                            <constraint firstItem="CWl-hG-Oxh" firstAttribute="bottom" secondItem="L4G-pA-dhf" secondAttribute="bottom" constant="20" id="cNg-AM-Us6"/>
                             <constraint firstAttribute="bottom" secondItem="ujO-cD-nBj" secondAttribute="bottom" constant="40" id="cgh-2T-zdZ"/>
-                            <constraint firstItem="CWl-hG-Oxh" firstAttribute="bottom" secondItem="Akr-CH-9Lk" secondAttribute="bottom" constant="20" id="igM-Od-PGd"/>
+                            <constraint firstItem="L4G-pA-dhf" firstAttribute="centerX" secondItem="kYS-6v-a5e" secondAttribute="centerX" id="hya-al-LAE"/>
                             <constraint firstItem="2OU-IK-aWp" firstAttribute="centerX" secondItem="kYS-6v-a5e" secondAttribute="centerX" id="k3R-LU-Bqo"/>
                             <constraint firstItem="2OU-IK-aWp" firstAttribute="leading" secondItem="CWl-hG-Oxh" secondAttribute="leading" constant="20" id="mGh-vd-ugR"/>
                             <constraint firstItem="CWl-hG-Oxh" firstAttribute="trailing" secondItem="2OU-IK-aWp" secondAttribute="trailing" constant="20" id="n4i-91-ImR"/>
@@ -438,6 +465,8 @@
                         <outlet property="reLabel" destination="R47-dO-1ww" id="7TP-ba-4rT"/>
                         <outlet property="rtALabel" destination="G4M-HP-gf0" id="N9E-e6-gzU"/>
                         <outlet property="rtCLabel" destination="6de-WI-VgK" id="t61-hX-kVc"/>
+                        <outlet property="thumbsDownButton" destination="pIf-C8-Vaf" id="0xm-uv-fwJ"/>
+                        <outlet property="thumbsUpButton" destination="CoJ-5Z-lxE" id="s2J-90-MbA"/>
                         <outlet property="titleButton" destination="hWF-UZ-ML7" id="V1n-ol-SuH"/>
                         <outlet property="yearLabel" destination="AK5-lv-4hz" id="Zw6-r4-aqI"/>
                     </connections>
@@ -1120,6 +1149,8 @@
     <resources>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
+        <image name="hand.thumbsdown" catalog="system" width="128" height="128"/>
+        <image name="hand.thumbsup" catalog="system" width="128" height="128"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="j.circle" catalog="system" width="128" height="121"/>
         <image name="list.star" catalog="system" width="128" height="94"/>

@@ -265,7 +265,7 @@ class HomeViewController: UIViewController, MovieDataProtocol {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.Segue.profileSettings {
-            let profileSettingsVC = segue.destination as! ProfileSettingsViewController
+            _ = segue.destination as! ProfileSettingsViewController
             print("prepare func profileSettings")
         }
         
