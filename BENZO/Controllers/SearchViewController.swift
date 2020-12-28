@@ -16,6 +16,8 @@ class SearchViewController: UIViewController {
     var foundData = [Movie]()
     var scopeIndex = 0
     
+    var jBenzoData:JBenzoData?
+    
     var searching = false
     
     var movieTitles = [String]()
@@ -47,43 +49,38 @@ class SearchViewController: UIViewController {
             }
         }
         
-
-        
+        //self.data.sort(by: { $0.jBENZO! > $1.jBENZO! })
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let movieInfoController = segue.destination as! MovieInfoViewController
-        
-        // SEARCHING FUNCTIONALITY
-        //!!!!!!
-        
-        
-        if tableView.indexPathForSelectedRow != nil {
-            
-            
+        //searchCelltoMovieInfo
+        if segue.identifier == Constants.Segue.searchCelltoMovieInfo {
+            let movieInfoController = segue.destination as! MovieInfoViewController
 
-            // pass on movie
-            if searching {
-                let index = self.data.firstIndex(where: { $0.Title == foundData[tableView.indexPathForSelectedRow!.row].Title })
-                movieInfoController.rank = Int(index!) + 1
-                movieInfoController.data = self.data
+            if tableView.indexPathForSelectedRow != nil {
 
-                
-                movieInfoController.movie = foundData[tableView.indexPathForSelectedRow!.row]
-                
+                if searching {
+                    let index = self.data.firstIndex(where: { $0.Title == foundData[tableView.indexPathForSelectedRow!.row].Title })
+                    movieInfoController.rank = Int(index!) + 1
+                    movieInfoController.data = self.data
 
-            } else {
-                let index = self.data.firstIndex(where: { $0.Title == data[tableView.indexPathForSelectedRow!.row].Title })
-                movieInfoController.rank = Int(index!) + 1
-                
-                movieInfoController.data = self.data
+                    movieInfoController.movie = foundData[tableView.indexPathForSelectedRow!.row]
+                    
 
-                movieInfoController.movie = data[tableView.indexPathForSelectedRow!.row]
+                } else {
+                    let index = self.data.firstIndex(where: { $0.Title == data[tableView.indexPathForSelectedRow!.row].Title })
+                    movieInfoController.rank = Int(index!) + 1
+                    
+                    movieInfoController.data = self.data
+                    movieInfoController.movie = data[tableView.indexPathForSelectedRow!.row]
 
+                }
+                tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: false)
             }
-            tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: false)
+            
         }
+        
     }
         
 
@@ -95,13 +92,31 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching {
+            
             return foundData.count
         }
         else {
+            
+//            switch self.scopeIndex {
+//            case 1:
+//                return self.movieYears.count
+//            case 2:
+//                return self.movieDirectors.count
+//            default:
+//                return self.data.count
+//
+//            }
             return self.data.count
-
         }
         
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("section: \(indexPath.section)")
+        print("row: \(indexPath.row)")
+        self.performSegue(withIdentifier: Constants.Segue.searchCelltoMovieInfo, sender: nil)
+
     }
     
     
@@ -123,6 +138,23 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         if movie != nil {
             cell?.displayMovieTitle(title: (movie?.Title!)!, rank: String((movie?.BENZO!)!))
+            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+                if let score = movie?.jBENZO {
+                    let finalScore = round(10000.0 * score) / 10000.0
+                    cell?.displayMovieTitle(title:(movie?.Title!)!, rank: String(finalScore))
+                }
+                // change color
+
+            }
+            
+//            if self.scopeIndex == 1 {
+//                let year = self.movieYears[indexPath.row]
+//                cell?.displayMovieTitle(title: year, rank: "Avg")
+//            }
+//            if self.scopeIndex == 2 {
+//                let dir = self.movieDirectors[indexPath.row]
+//                cell?.displayMovieTitle(title: dir, rank: "Avg")
+//            }
 
         }
 

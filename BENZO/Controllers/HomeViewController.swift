@@ -203,10 +203,6 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     
     func buildFilteredData() {
         if self.genre == "BENZO" {
-//            if self.jBENZO {
-//                self.data.sort(by: { $0.jBENZO! > $1.jBENZO! })
-//            }
-//
             return
         }
         
@@ -285,6 +281,8 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         if segue.identifier == "search" {
             let searchViewController = segue.destination as! SearchViewController
             searchViewController.data = self.data
+            searchViewController.jBenzoData = self.jBenzoData
+
         
         }
         
@@ -559,7 +557,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
               
                 if let score = movie?.jBENZO {
                     let finalScore = round(10000.0 * score) / 10000.0
-
                     cell?.displayMovieTitle(title:(movie?.Title!)!, rank: String(finalScore),jBenzo: true)
                 }
             }

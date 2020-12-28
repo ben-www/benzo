@@ -12,6 +12,7 @@ import FirebaseFirestore
 struct JBenzoData {
     
     var byId:String?
+    var byUsername:String?
     var hasJBenzo:Bool?
     var showJBenzo:Bool?
     var isGenreLocked:Bool?
@@ -32,7 +33,8 @@ struct JBenzoData {
         let data = snapshot.data()
         
         let byId = data["byId"] as? String
-        
+        let byUsername = data["byUsername"] as? String
+
         let hasJBenzo = data["hasJBenzo"] as? Bool
         let showJBenzo = data["showJBenzo"] as? Bool
         let isGenreLocked = data["isGenreLocked"] as? Bool
@@ -45,11 +47,13 @@ struct JBenzoData {
         let genrePercentages = data["genrePercentages"] as? [String : Double]?
         let JBenzoScores = data["JBenzoScores"] as? [String : Double]?
         
-        if byId == nil || hasJBenzo == nil || showJBenzo == nil || isGenreLocked == nil || swipedMovies == nil || upswipedMovies == nil || genrePercentages == nil || JBenzoScores == nil || numOfMoviesRated == nil{
+        if byId == nil || byUsername == nil || hasJBenzo == nil || showJBenzo == nil || isGenreLocked == nil || swipedMovies == nil || upswipedMovies == nil || genrePercentages == nil || JBenzoScores == nil || numOfMoviesRated == nil{
             return nil
         }
         
         self.byId = byId
+        self.byUsername = byUsername
+        
         self.numOfMoviesRated = numOfMoviesRated
         self.hasJBenzo = hasJBenzo
         self.showJBenzo = showJBenzo

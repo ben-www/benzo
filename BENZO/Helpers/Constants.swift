@@ -40,6 +40,7 @@ struct Constants {
         static let genreCalculator = "GenreCalculator"
         static let jBenzoSwipe = "jBenzoSwipe"
         static let profileSettings = "ProfileSettings"
+        static let searchCelltoMovieInfo = "SearchCelltoMovieInfo"
 
     }
     

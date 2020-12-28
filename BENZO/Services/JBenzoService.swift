@@ -17,8 +17,10 @@ class JBenzoService {
         var JBData = JBenzoData()
                 
         let currentUser = Auth.auth().currentUser!.uid
+        let username = String((LocalStorageService.loadUser()?.username)!)
         
         JBData.byId = currentUser
+        JBData.byUsername = username
         JBData.hasJBenzo = true
         JBData.showJBenzo = true
         JBData.isGenreLocked = true
@@ -30,6 +32,7 @@ class JBenzoService {
         
         // Set metaData
         metaData["byId"] = currentUser
+        metaData["byUsername"] = username
         metaData["hasJBenzo"] = true
         metaData["showJBenzo"] = true
         metaData["isGenreLocked"] = true
@@ -80,6 +83,7 @@ class JBenzoService {
                 var JBD = JBenzoData()
 
                 JBD.byId = profile["byId"] as? String
+                JBD.byUsername = profile["byUsername"] as? String
                 JBD.hasJBenzo = profile["hasJBenzo"] as? Bool
                 JBD.showJBenzo = profile["showJBenzo"] as? Bool
                 JBD.isGenreLocked = profile["isGenreLocked"] as? Bool

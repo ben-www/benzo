@@ -257,7 +257,6 @@
                                         <connections>
                                             <outlet property="benzoScoreLabel" destination="zBd-IR-Gfj" id="VwZ-ML-GAL"/>
                                             <outlet property="movieTitleLabel" destination="for-Jh-0Ra" id="p02-JR-jxQ"/>
-                                            <segue destination="rvZ-gS-yAm" kind="show" id="Ddt-qb-vi7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -276,6 +275,7 @@
                     <connections>
                         <outlet property="searchBar" destination="SYk-at-LEi" id="FcL-jd-yCl"/>
                         <outlet property="tableView" destination="hTF-bF-Fki" id="aWt-29-YDp"/>
+                        <segue destination="rvZ-gS-yAm" kind="show" identifier="SearchCelltoMovieInfo" id="ASE-yP-Vts"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbT-hD-WLg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1143,7 +1143,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2cH-LD-SVy"/>
+        <segue reference="ASE-yP-Vts"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPurpleColor"/>
     <resources>
