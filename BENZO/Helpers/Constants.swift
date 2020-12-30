@@ -15,6 +15,7 @@ struct Constants {
         static let movieInfoCellId = "MovieInfoCell1"
         static let searchTitleCellId = "SearchTitleCell1"
         static let directorMovieCellId = "DirectorMovieCell1"
+        static let yearMovieCellId = "YearMovieCell1"
     
     }
     
@@ -41,6 +42,8 @@ struct Constants {
         static let jBenzoSwipe = "jBenzoSwipe"
         static let profileSettings = "ProfileSettings"
         static let searchCelltoMovieInfo = "SearchCelltoMovieInfo"
+        static let movieDirectorInfo = "MovieDirectorInfo"
+        static let yearMovieList = "YearMovieList"
 
     }
     

@@ -23,9 +23,18 @@ class SearchTitleCell: UITableViewCell {
     }
     
     
-    func displayMovieTitle(title:String, rank:String) {
+    func displayMovieTitle(title:String, rank:String, jBenzo: Bool = false) {
         self.movieTitleLabel.text = title
         self.benzoScoreLabel.text = rank
+        
+        benzoScoreLabel.textColor = .systemGreen
+
+        if jBenzo {
+            benzoScoreLabel.textColor = .systemPurple
+        }
+        else {
+            
+        }
         return
     }
 

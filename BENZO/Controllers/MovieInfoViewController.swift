@@ -14,6 +14,8 @@ class MovieInfoViewController: UIViewController {
     
     @IBOutlet weak var thumbsUpButton: UIButton!
     @IBOutlet weak var thumbsDownButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
+    
     
     @IBOutlet weak var jBenzoScore: UILabel!
     
@@ -98,6 +100,8 @@ class MovieInfoViewController: UIViewController {
       
     }
     
+
+    
     func createCatList() -> String {
         
         var joinedCategories = [String]()
@@ -122,28 +126,62 @@ class MovieInfoViewController: UIViewController {
 
     }
     
+    func itemAdded() {
+        if self.addButton.currentImage == UIImage(systemName: "plus.circle") {
+            self.addButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+        }
+    }
+    
+    
+    // MARK: J Benzo Toggle Msg
+    func showAddAlert(title:String, message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let watchingAction = UIAlertAction(title: "Watching", style: .default) { (action) in
+            self.itemAdded()
+        }
+        let watchLaterAction = UIAlertAction(title: "Watchlist", style: .default) { (action) in
+            self.itemAdded()
+
+        }
+        let seendAction = UIAlertAction(title: "Already Watched", style: .default) { (action) in
+            self.itemAdded()
+
+        }
+
+
+
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
+        }
+        
+        
+        alert.addAction(watchingAction)
+        alert.addAction(watchLaterAction)
+        alert.addAction(seendAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "moveExtraInfo" {
             let movieExtraInfoController = segue.destination as! MovieExtraInfoViewController
             movieExtraInfoController.movie = self.movie
         }
+        
         if segue.identifier == "moveDirectorInfo" {
             let directorController = segue.destination as! DirectorMovieListViewController
             directorController.directorName = self.movie?.Director
+            directorController.directorMovies = LocalBenzoService.getDirectorMovies(data: self.data, directorName: (self.movie?.Director)!)
             directorController.data = self.data
         }
-        
-        if segue.identifier == "howToWatch" {
-//            let howToWatchController = segue.destination as! HowToWatchViewController
-//            howToWatchController.movie = self.movie
 
-        }
-        
-        
-        
-        
-        
     }
+    
     
     
     @IBAction func directorTapped(_ sender: Any) {
@@ -152,6 +190,15 @@ class MovieInfoViewController: UIViewController {
     
     @IBAction func titleTapped(_ sender: Any) {
         print("Title Button Tapped.")
+    }
+    
+    
+    
+    @IBAction func addToListTapped(_ sender: Any) {
+        // \(self.movie!.Title!)
+        showAddAlert(title: "\(self.movie!.Title!)", message: "Which of the following is the status of this movie?")
+        return
+        
     }
     
     

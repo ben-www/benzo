@@ -1,16 +1,16 @@
 //
-//  DirectorMovieCell.swift
+//  YearMovieCell.swift
 //  BENZO
 //
-//  Created by Benjamin Weinstock on 12/5/20.
+//  Created by Benjamin Weinstock on 12/29/20.
 //
 
 import UIKit
 
-class DirectorMovieCell: UITableViewCell {
-
-    @IBOutlet weak var benzoScoreLabel: UILabel!
+class YearMovieCell: UITableViewCell {
+    
     @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var benzoScoreLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,11 +22,11 @@ class DirectorMovieCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
     
     func displayMovieTitle(title:String, rank:String) {
         self.movieTitleLabel.text = title
         self.benzoScoreLabel.text = rank
         return
     }
-
 }

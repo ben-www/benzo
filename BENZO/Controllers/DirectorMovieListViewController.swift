@@ -18,15 +18,15 @@ class DirectorMovieListViewController: UIViewController {
     var directorMovies = [Movie]()
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = directorName
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        // Get Director Movies from self.data
-        self.directorMovies = getDirectorMovies()
+
+        // Get the Average Benzo score for Dir,  MOVIE LIST pass in from last VC
         let avg = getAvgBENZO()
         benzoScoreLabel.text = String(avg)
         
@@ -34,23 +34,6 @@ class DirectorMovieListViewController: UIViewController {
     }
     
     
-    func getDirectorMovies() -> [Movie] {
-        var dirMovies = [Movie]()
-        
-        for mov in self.data {
-            //let title = String(mov.Title!)
-            let dir = String(mov.Director!)
-                    
-            if dir == self.directorName {
-                dirMovies.append(mov)
-            }
-        }
-        
-        
-        return dirMovies
-    
-        
-    }
     
     
     func getAvgBENZO() -> Double {

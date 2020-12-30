@@ -200,6 +200,96 @@
             </objects>
             <point key="canvasLocation" x="546" y="94"/>
         </scene>
+        <!--Year Movie List View Controller-->
+        <scene sceneID="Rdf-ht-F1a">
+            <objects>
+                <viewController id="ziT-Kh-tz2" customClass="YearMovieListViewController" customModule="BENZO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5q6-0R-E1q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXb-qy-DoP">
+                                <rect key="frame" x="40" y="108" width="334" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Iy-FR-DZb">
+                                <rect key="frame" x="0.0" y="152" width="414" height="710"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="YearMovieCell1" id="APg-ci-Cen" customClass="YearMovieCell" customModule="BENZO" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="APg-ci-Cen" id="yQh-Js-Rvc">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2l-d6-LM7">
+                                                    <rect key="frame" x="40" y="11.5" width="334" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdv-Rr-BOp">
+                                                    <rect key="frame" x="341" y="14" width="33" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" systemColor="systemGreenColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vdv-Rr-BOp" firstAttribute="centerY" secondItem="yQh-Js-Rvc" secondAttribute="centerY" id="6Wl-51-Dqh"/>
+                                                <constraint firstItem="R2l-d6-LM7" firstAttribute="leading" secondItem="yQh-Js-Rvc" secondAttribute="leadingMargin" constant="20" id="PdR-Zm-ZQY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="R2l-d6-LM7" secondAttribute="trailing" constant="20" id="Z9V-Uo-2eD"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vdv-Rr-BOp" secondAttribute="trailing" constant="20" id="k7p-fk-jLf"/>
+                                                <constraint firstItem="R2l-d6-LM7" firstAttribute="centerY" secondItem="yQh-Js-Rvc" secondAttribute="centerY" id="rtu-18-u4j"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="benzoScoreLabel" destination="vdv-Rr-BOp" id="yzZ-qx-qSN"/>
+                                            <outlet property="movieTitleLabel" destination="R2l-d6-LM7" id="vep-9l-1t8"/>
+                                            <segue destination="rCG-Ik-JjX" kind="show" id="vKX-CM-qTs"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ojo-Jr-VFs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ojo-Jr-VFs" firstAttribute="trailing" secondItem="2Iy-FR-DZb" secondAttribute="trailing" id="AfQ-LA-tQl"/>
+                            <constraint firstItem="2Iy-FR-DZb" firstAttribute="top" secondItem="bXb-qy-DoP" secondAttribute="bottom" constant="20" id="DNg-SG-MbO"/>
+                            <constraint firstItem="ojo-Jr-VFs" firstAttribute="trailing" secondItem="bXb-qy-DoP" secondAttribute="trailing" constant="40" id="OjG-lJ-c7o"/>
+                            <constraint firstItem="bXb-qy-DoP" firstAttribute="top" secondItem="ojo-Jr-VFs" secondAttribute="top" constant="20" id="Ous-dW-XJb"/>
+                            <constraint firstItem="ojo-Jr-VFs" firstAttribute="bottom" secondItem="2Iy-FR-DZb" secondAttribute="bottom" id="QM5-cs-cwd"/>
+                            <constraint firstItem="bXb-qy-DoP" firstAttribute="centerX" secondItem="5q6-0R-E1q" secondAttribute="centerX" id="dey-A8-eke"/>
+                            <constraint firstItem="bXb-qy-DoP" firstAttribute="leading" secondItem="ojo-Jr-VFs" secondAttribute="leading" constant="40" id="m3g-to-3Ad"/>
+                            <constraint firstItem="2Iy-FR-DZb" firstAttribute="leading" secondItem="ojo-Jr-VFs" secondAttribute="leading" id="sY2-mP-yte"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="KyN-32-t8G">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="jFr-ra-AaA">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xeY-r3-CMN">
+                                <rect key="frame" x="316" y="11" width="78" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <state key="normal" image="house" catalog="system"/>
+                                <connections>
+                                    <action selector="homeTapped:" destination="ziT-Kh-tz2" eventType="touchUpInside" id="3Ok-hR-B74"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="benzoScoreLabel" destination="bXb-qy-DoP" id="iPx-D9-E8u"/>
+                        <outlet property="tableView" destination="2Iy-FR-DZb" id="O0w-oK-iWK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oQ6-3Z-Pwl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="545" y="1546"/>
+        </scene>
         <!--Search-->
         <scene sceneID="MUJ-7Y-ueR">
             <objects>
@@ -276,6 +366,8 @@
                         <outlet property="searchBar" destination="SYk-at-LEi" id="FcL-jd-yCl"/>
                         <outlet property="tableView" destination="hTF-bF-Fki" id="aWt-29-YDp"/>
                         <segue destination="rvZ-gS-yAm" kind="show" identifier="SearchCelltoMovieInfo" id="ASE-yP-Vts"/>
+                        <segue destination="eac-ym-pHz" kind="show" identifier="MovieDirectorInfo" id="4er-eC-99c"/>
+                        <segue destination="ziT-Kh-tz2" kind="show" identifier="YearMovieList" id="FWU-G0-IEe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbT-hD-WLg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -450,8 +542,23 @@
                             <constraint firstItem="CWl-hG-Oxh" firstAttribute="trailing" secondItem="2OU-IK-aWp" secondAttribute="trailing" constant="20" id="n4i-91-ImR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Info" id="hcv-UD-88h"/>
+                    <navigationItem key="navigationItem" title="Info" id="hcv-UD-88h">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="xwr-aK-EoO">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2Ux-ta-soD">
+                                <rect key="frame" x="316" y="11" width="78" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemPurpleColor"/>
+                                <state key="normal" image="plus.circle" catalog="system">
+                                    <color key="titleColor" systemColor="systemPurpleColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="addToListTapped:" destination="rvZ-gS-yAm" eventType="touchUpInside" id="Seb-T7-ill"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="2Ux-ta-soD" id="Y2T-Mk-X2p"/>
                         <outlet property="benzoLabel" destination="KDM-wz-gY2" id="pse-1c-85q"/>
                         <outlet property="deltaLabel" destination="h7U-v0-LJf" id="i7G-ZX-zU0"/>
                         <outlet property="directorButton" destination="r5C-lK-uhE" id="Ara-yc-cbP"/>
@@ -843,7 +950,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cab-6O-YF6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1470" y="1580"/>
+            <point key="canvasLocation" x="1470" y="1546"/>
         </scene>
         <!--Director Movie Info View Controller-->
         <scene sceneID="BDe-AL-WQV">
@@ -960,17 +1067,32 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Gpl-Zd-rqT">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="6Ob-70-kjr">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="S6J-zv-xiN">
-                                <rect key="frame" x="316" y="11" width="78" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemGreenColor"/>
-                                <state key="normal" image="house" catalog="system"/>
-                                <connections>
-                                    <action selector="homeTapped:" destination="rCG-Ik-JjX" eventType="touchUpInside" id="592-3j-XSC"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="6Ob-70-kjr">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="S6J-zv-xiN">
+                                    <rect key="frame" x="316" y="11" width="78" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" systemColor="systemGreenColor"/>
+                                    <state key="normal" image="house" catalog="system"/>
+                                    <connections>
+                                        <action selector="homeTapped:" destination="rCG-Ik-JjX" eventType="touchUpInside" id="592-3j-XSC"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="pvd-Jh-MWZ">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4AT-OO-H0K">
+                                    <rect key="frame" x="230" y="11" width="78" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" systemColor="systemPurpleColor"/>
+                                    <state key="normal" image="plus" catalog="system">
+                                        <color key="titleColor" systemColor="systemPurpleColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="addToListTapped:" destination="rCG-Ik-JjX" eventType="touchUpInside" id="gTo-8x-Jh4"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="benzoLabel" destination="lgq-Ov-V7e" id="GPW-7p-kxa"/>
@@ -990,7 +1112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOT-4p-kBf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2364" y="1580"/>
+            <point key="canvasLocation" x="1006" y="2277"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Hnn-9u-TrR">
@@ -1143,6 +1265,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="EUP-w2-Oe0"/>
+        <segue reference="Jgn-WR-aFM"/>
         <segue reference="ASE-yP-Vts"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPurpleColor"/>
@@ -1157,6 +1281,8 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="movie_" width="18" height="18"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="tv" catalog="system" width="128" height="97"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

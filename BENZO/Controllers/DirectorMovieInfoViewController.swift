@@ -114,4 +114,10 @@ class DirectorMovieInfoViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func addToListTapped(_ sender: Any) {
+    }
+    
+    
+    
 }
