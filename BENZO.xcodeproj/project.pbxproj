@@ -43,6 +43,10 @@
 		ED8F7D27257C9B3100D12764 /* DirectorMovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D26257C9B3100D12764 /* DirectorMovieInfoViewController.swift */; };
 		ED8F7D2E257F199C00D12764 /* GetGenrePercentagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D2D257F199C00D12764 /* GetGenrePercentagesViewController.swift */; };
 		ED8F7D362585D16800D12764 /* JBenzoSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D352585D16800D12764 /* JBenzoSwipeViewController.swift */; };
+		EDC2C733259D14880010CB60 /* WatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C732259D14880010CB60 /* WatchData.swift */; };
+		EDC2C736259D1CCC0010CB60 /* WatchDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C735259D1CCC0010CB60 /* WatchDataService.swift */; };
+		EDC2C739259D43BB0010CB60 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C738259D43BB0010CB60 /* WatchlistViewController.swift */; };
+		EDC2C73C259D468E0010CB60 /* WatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C73B259D468E0010CB60 /* WatchlistCell.swift */; };
 		EDEC2FBF2586D3D3001A6648 /* HowToWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +91,10 @@
 		ED8F7D26257C9B3100D12764 /* DirectorMovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorMovieInfoViewController.swift; sourceTree = "<group>"; };
 		ED8F7D2D257F199C00D12764 /* GetGenrePercentagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGenrePercentagesViewController.swift; sourceTree = "<group>"; };
 		ED8F7D352585D16800D12764 /* JBenzoSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBenzoSwipeViewController.swift; sourceTree = "<group>"; };
+		EDC2C732259D14880010CB60 /* WatchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchData.swift; sourceTree = "<group>"; };
+		EDC2C735259D1CCC0010CB60 /* WatchDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataService.swift; sourceTree = "<group>"; };
+		EDC2C738259D43BB0010CB60 /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
+		EDC2C73B259D468E0010CB60 /* WatchlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistCell.swift; sourceTree = "<group>"; };
 		EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToWatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +197,7 @@
 				EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */,
 				ED26CB92259572DA007D23D2 /* ProfileSettingsViewController.swift */,
 				ED8272D8259BC4D40050235E /* YearMovieListViewController.swift */,
+				EDC2C738259D43BB0010CB60 /* WatchlistViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -201,6 +210,7 @@
 				ED8F7CF02579A06A00D12764 /* SearchTitleCell.swift */,
 				ED8F7D23257C6C3600D12764 /* DirectorMovieCell.swift */,
 				ED8272DB259BC52B0050235E /* YearMovieCell.swift */,
+				EDC2C73B259D468E0010CB60 /* WatchlistCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -214,6 +224,7 @@
 				ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */,
 				ED8272CF259A638B0050235E /* DirectorData.swift */,
 				ED8272D5259B9E670050235E /* YearData.swift */,
+				EDC2C732259D14880010CB60 /* WatchData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,6 +236,7 @@
 				ED4ACF472592547D00ED36C2 /* UserService.swift */,
 				ED4ACF4D2592D08700ED36C2 /* JBenzoService.swift */,
 				ED8272D2259A83F80050235E /* LocalBenzoService.swift */,
+				EDC2C735259D1CCC0010CB60 /* WatchDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -373,6 +385,7 @@
 				ED3A0A4C2591513E00FF7932 /* BenzoUser.swift in Sources */,
 				ED3A0A49259150E400FF7932 /* JBenzoData.swift in Sources */,
 				ED8F7D24257C6C3600D12764 /* DirectorMovieCell.swift in Sources */,
+				EDC2C736259D1CCC0010CB60 /* WatchDataService.swift in Sources */,
 				ED053E6B25795DC70090F78D /* MovieInfoCell.swift in Sources */,
 				ED8272DC259BC52B0050235E /* YearMovieCell.swift in Sources */,
 				ED8F7CF12579A06A00D12764 /* SearchTitleCell.swift in Sources */,
@@ -390,7 +403,10 @@
 				ED053E46257958280090F78D /* AppDelegate.swift in Sources */,
 				ED053E48257958280090F78D /* SceneDelegate.swift in Sources */,
 				ED053E6525795B4F0090F78D /* MovieCell.swift in Sources */,
+				EDC2C73C259D468E0010CB60 /* WatchlistCell.swift in Sources */,
+				EDC2C733259D14880010CB60 /* WatchData.swift in Sources */,
 				ED4ACF482592547D00ED36C2 /* UserService.swift in Sources */,
+				EDC2C739259D43BB0010CB60 /* WatchlistViewController.swift in Sources */,
 				ED8F7D362585D16800D12764 /* JBenzoSwipeViewController.swift in Sources */,
 				ED8F7CDF25795FC800D12764 /* Movie.swift in Sources */,
 				ED053E61257958C10090F78D /* HomeViewController.swift in Sources */,

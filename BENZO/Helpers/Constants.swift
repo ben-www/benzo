@@ -16,7 +16,8 @@ struct Constants {
         static let searchTitleCellId = "SearchTitleCell1"
         static let directorMovieCellId = "DirectorMovieCell1"
         static let yearMovieCellId = "YearMovieCell1"
-    
+        static let watchlistCell = "WatchlistCell"
+
     }
     
     struct Storyboard {
@@ -44,7 +45,7 @@ struct Constants {
         static let searchCelltoMovieInfo = "SearchCelltoMovieInfo"
         static let movieDirectorInfo = "MovieDirectorInfo"
         static let yearMovieList = "YearMovieList"
-
+        static let watchlist = "Watchlist"
     }
     
 }

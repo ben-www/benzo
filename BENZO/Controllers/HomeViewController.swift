@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     var searching = false
     
     var jBenzoData:JBenzoData?
+    var watchData:WatchData?
     
     var filteredData = [Movie]()
     var filtering = false
@@ -76,6 +77,10 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         
         movieData.getMovieData()
         pickerData = getGenres()
+        
+        
+//        // if you cant retrive watchlist
+//        watchData = WatchDataService.createWatchDataEntry()
         
         JBenzoService.retrieveJBenzoData(data: self.data) { (retrievedData) in
             self.jBenzoData = retrievedData
@@ -261,7 +266,11 @@ class HomeViewController: UIViewController, MovieDataProtocol {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.Segue.profileSettings {
-            _ = segue.destination as! ProfileSettingsViewController
+            let profileVC = segue.destination as! ProfileSettingsViewController
+            profileVC.data = self.data
+            profileVC.jBenzoData = self.jBenzoData
+
+            
             print("prepare func profileSettings")
         }
         

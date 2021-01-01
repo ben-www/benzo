@@ -25,6 +25,7 @@ class MovieInfoViewController: UIViewController {
     var movie:Movie?
     var data = [Movie]()
 
+    var watchedData:WatchData?
     
     //@IBOutlet weak var titleLabel: UILabel!
     
@@ -89,13 +90,31 @@ class MovieInfoViewController: UIViewController {
         self.imbdLabel.text = "IMDB: \(movie!.IMDB!)"
         
         self.rawLabel.text = "Raw Score: \(movie!.Raw!)"
-        self.benzoLabel.text = "BENZO: \(movie!.BENZO!) (\(self.rank!))"
+        self.benzoLabel.text = "BENZO: \(movie!.BENZO!)"
         
         var delta = (movie?.BENZO!)! - (movie?.Raw!)!
         delta = round(10000.0 * delta) / 10000.0
         
         self.deltaLabel.text = "Detla: (+)\(String(delta))"
         
+        
+        // Check if movie in Watchlist/Already Watched
+        WatchDataService.retrieveWatchData(data: self.data) { (retrievedData) in
+            
+            // Get the Users WatchedData
+            self.watchedData = retrievedData
+            
+            // If User doesn't have WatedData
+            if self.watchedData == nil {
+                self.watchedData = WatchDataService.createWatchDataEntry()
+            }
+            
+            if ((self.watchedData?.watchlist?.contains((self.movie?.Title)!)) == true) {
+                self.itemAdded()
+            }
+        }
+        
+
     
       
     }
@@ -131,20 +150,34 @@ class MovieInfoViewController: UIViewController {
             self.addButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
         }
     }
-    
+
+    func itemRemoved() {
+        if self.addButton.currentImage == UIImage(systemName: "checkmark.circle.fill") {
+            self.addButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        }
+    }
     
     // MARK: J Benzo Toggle Msg
     func showAddAlert(title:String, message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let watchingAction = UIAlertAction(title: "Watching", style: .default) { (action) in
+        var watchLaterAction = UIAlertAction(title: "+ Watchlist", style: .default) { (action) in
             self.itemAdded()
-        }
-        let watchLaterAction = UIAlertAction(title: "Watchlist", style: .default) { (action) in
-            self.itemAdded()
+            WatchDataService.addToWatchlist(title: title)
 
         }
-        let seendAction = UIAlertAction(title: "Already Watched", style: .default) { (action) in
+        
+        if ((self.watchedData?.watchlist?.contains((self.movie?.Title)!)) == true) {
+            watchLaterAction = UIAlertAction(title: "Remove From Watchlist", style: .default) { (action) in
+                self.itemRemoved()
+                WatchDataService.removeFromWatchlist(title: title)
+
+
+            }
+        }
+        
+
+        let seendAction = UIAlertAction(title: "+ Already Watched", style: .default) { (action) in
             self.itemAdded()
 
         }
@@ -157,7 +190,7 @@ class MovieInfoViewController: UIViewController {
         }
         
         
-        alert.addAction(watchingAction)
+        //alert.addAction(watchingAction)
         alert.addAction(watchLaterAction)
         alert.addAction(seendAction)
         alert.addAction(cancelAction)
@@ -196,7 +229,7 @@ class MovieInfoViewController: UIViewController {
     
     @IBAction func addToListTapped(_ sender: Any) {
         // \(self.movie!.Title!)
-        showAddAlert(title: "\(self.movie!.Title!)", message: "Which of the following is the status of this movie?")
+        showAddAlert(title: "\(self.movie!.Title!)", message: " Which of the following actions?")
         return
         
     }

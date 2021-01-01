@@ -9,10 +9,20 @@ import UIKit
 import FirebaseAuth
 
 
-class ProfileSettingsViewController: UIViewController {
 
+class ProfileSettingsViewController: UIViewController {
+    var data = [Movie]()
+    var jBenzoData:JBenzoData?
+    
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Profile"
+        self.usernameLabel.text = String((LocalStorageService.loadUser()?.username)!)
 
     }
     
@@ -50,10 +60,32 @@ class ProfileSettingsViewController: UIViewController {
     }
     
     
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Constants.Segue.watchlist {
+
+            let watchlistVC = segue.destination as! WatchlistViewController
+            watchlistVC.data = self.data
+            watchlistVC.jBenzoData = self.jBenzoData
+
+
+        }
+        
+        
+    }
+    
+    
 
 
     @IBAction func signOutTapped(_ sender: Any) {
         showSignOutAlert(title: "Sign Out", message: "Are you sure?")
     }
+    
+    
+    
+    
     
 }
