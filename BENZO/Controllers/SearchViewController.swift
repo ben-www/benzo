@@ -394,6 +394,10 @@ extension SearchViewController: UISearchBarDelegate {
         self.foundDirectors.sort(by: { $0.avg! > $1.avg! })
         self.foundData.sort(by: { $0.BENZO! > $1.BENZO! })
         
+        if searchText == "" {
+            searching = false
+        }
+        
         tableView.reloadData()
         self.searchList.removeAll()
 

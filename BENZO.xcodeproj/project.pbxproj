@@ -47,6 +47,10 @@
 		EDC2C736259D1CCC0010CB60 /* WatchDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C735259D1CCC0010CB60 /* WatchDataService.swift */; };
 		EDC2C739259D43BB0010CB60 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C738259D43BB0010CB60 /* WatchlistViewController.swift */; };
 		EDC2C73C259D468E0010CB60 /* WatchlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C73B259D468E0010CB60 /* WatchlistCell.swift */; };
+		EDC2C78325A242D70010CB60 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C78225A242D70010CB60 /* FriendsListViewController.swift */; };
+		EDC2C78625A2484B0010CB60 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C78525A2484B0010CB60 /* FriendCell.swift */; };
+		EDC2C78925A24A670010CB60 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C78825A24A670010CB60 /* AddFriendViewController.swift */; };
+		EDC2C78C25A24B320010CB60 /* AddFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C78B25A24B320010CB60 /* AddFriendCell.swift */; };
 		EDEC2FBF2586D3D3001A6648 /* HowToWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +99,10 @@
 		EDC2C735259D1CCC0010CB60 /* WatchDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataService.swift; sourceTree = "<group>"; };
 		EDC2C738259D43BB0010CB60 /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
 		EDC2C73B259D468E0010CB60 /* WatchlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistCell.swift; sourceTree = "<group>"; };
+		EDC2C78225A242D70010CB60 /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
+		EDC2C78525A2484B0010CB60 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		EDC2C78825A24A670010CB60 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		EDC2C78B25A24B320010CB60 /* AddFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCell.swift; sourceTree = "<group>"; };
 		EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToWatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +206,8 @@
 				ED26CB92259572DA007D23D2 /* ProfileSettingsViewController.swift */,
 				ED8272D8259BC4D40050235E /* YearMovieListViewController.swift */,
 				EDC2C738259D43BB0010CB60 /* WatchlistViewController.swift */,
+				EDC2C78225A242D70010CB60 /* FriendsListViewController.swift */,
+				EDC2C78825A24A670010CB60 /* AddFriendViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -211,6 +221,8 @@
 				ED8F7D23257C6C3600D12764 /* DirectorMovieCell.swift */,
 				ED8272DB259BC52B0050235E /* YearMovieCell.swift */,
 				EDC2C73B259D468E0010CB60 /* WatchlistCell.swift */,
+				EDC2C78525A2484B0010CB60 /* FriendCell.swift */,
+				EDC2C78B25A24B320010CB60 /* AddFriendCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -379,15 +391,18 @@
 				ED4ACF372591A2FE00ED36C2 /* LoginViewController.swift in Sources */,
 				ED8272D6259B9E670050235E /* YearData.swift in Sources */,
 				ED4ACF4525924F1F00ED36C2 /* LocalStorageService.swift in Sources */,
+				EDC2C78325A242D70010CB60 /* FriendsListViewController.swift in Sources */,
 				EDEC2FBF2586D3D3001A6648 /* HowToWatchViewController.swift in Sources */,
 				ED8F7CEE257999ED00D12764 /* SearchViewController.swift in Sources */,
 				ED053E6E25795E830090F78D /* MovieInfoViewController.swift in Sources */,
+				EDC2C78925A24A670010CB60 /* AddFriendViewController.swift in Sources */,
 				ED3A0A4C2591513E00FF7932 /* BenzoUser.swift in Sources */,
 				ED3A0A49259150E400FF7932 /* JBenzoData.swift in Sources */,
 				ED8F7D24257C6C3600D12764 /* DirectorMovieCell.swift in Sources */,
 				EDC2C736259D1CCC0010CB60 /* WatchDataService.swift in Sources */,
 				ED053E6B25795DC70090F78D /* MovieInfoCell.swift in Sources */,
 				ED8272DC259BC52B0050235E /* YearMovieCell.swift in Sources */,
+				EDC2C78C25A24B320010CB60 /* AddFriendCell.swift in Sources */,
 				ED8F7CF12579A06A00D12764 /* SearchTitleCell.swift in Sources */,
 				ED8272D9259BC4D40050235E /* YearMovieListViewController.swift in Sources */,
 				ED8F7D27257C9B3100D12764 /* DirectorMovieInfoViewController.swift in Sources */,
@@ -407,6 +422,7 @@
 				EDC2C733259D14880010CB60 /* WatchData.swift in Sources */,
 				ED4ACF482592547D00ED36C2 /* UserService.swift in Sources */,
 				EDC2C739259D43BB0010CB60 /* WatchlistViewController.swift in Sources */,
+				EDC2C78625A2484B0010CB60 /* FriendCell.swift in Sources */,
 				ED8F7D362585D16800D12764 /* JBenzoSwipeViewController.swift in Sources */,
 				ED8F7CDF25795FC800D12764 /* Movie.swift in Sources */,
 				ED053E61257958C10090F78D /* HomeViewController.swift in Sources */,

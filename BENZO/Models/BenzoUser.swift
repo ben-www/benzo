@@ -31,14 +31,16 @@ struct BenzoUser {
         let data = snapshot.data()
 
         let username = data["username"] as? String
+        let userId = data["userId"] as? String
 
         // Check for missing data
-        if username == nil {
+        if username == nil || userId == nil {
             return nil
         }
         
         // Set our properties
         self.username = username
+        self.userId = userId
 
     }
     

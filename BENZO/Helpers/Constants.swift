@@ -18,6 +18,11 @@ struct Constants {
         static let yearMovieCellId = "YearMovieCell1"
         static let watchlistCell = "WatchlistCell"
 
+        static let friendCell = "FriendCell"
+        static let addFriendCell = "AddFriendCell"
+
+        
+        
     }
     
     struct Storyboard {

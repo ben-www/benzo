@@ -46,7 +46,7 @@ class UserService {
     static func createProfile(userId:String, username:String, completion: @escaping (BenzoUser?) -> Void ) {
     
         // Create a dict for the profile data
-        let profileData = ["username":username]
+        let profileData = ["username":username, "userId":userId]
         
         // Get a firestore reference
         let db = Firestore.firestore()

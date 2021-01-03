@@ -164,6 +164,8 @@ class MovieInfoViewController: UIViewController {
         var watchLaterAction = UIAlertAction(title: "+ Watchlist", style: .default) { (action) in
             self.itemAdded()
             WatchDataService.addToWatchlist(title: title)
+            self.navigationController?.popViewController(animated: true)
+
 
         }
         
@@ -171,6 +173,8 @@ class MovieInfoViewController: UIViewController {
             watchLaterAction = UIAlertAction(title: "Remove From Watchlist", style: .default) { (action) in
                 self.itemRemoved()
                 WatchDataService.removeFromWatchlist(title: title)
+                self.navigationController?.popViewController(animated: true)
+
 
 
             }
