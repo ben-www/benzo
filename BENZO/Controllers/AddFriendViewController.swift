@@ -14,6 +14,7 @@ class AddFriendViewController: UIViewController {
     
     var users = [BenzoUser]()
     var foundUsers = [BenzoUser]()
+    var currentFriends = [String:String]()
     
     var searchList = [String]()
     var searching = false
@@ -32,32 +33,106 @@ class AddFriendViewController: UIViewController {
         
         UserService.retrieveAllProfiles { (retrievedUsers) in
             self.users = retrievedUsers
-            
+
+            // Remove user from ADD list
+            self.removeUserAndFriends()
+
             self.users.sort(by: {$0.username! < $1.username!})
-            
             self.tableView.reloadData()
             }
         
 
     }
     
+    
+    
+    func removeUserAndFriends() {
+        
+        // Remove current User
+        let currentUser = String((LocalStorageService.loadUser()?.username)!)
+        let deleteIndex = self.users.firstIndex(where: {$0.username == currentUser})
+        self.users.remove(at: deleteIndex!)
+        
+        // Remove current friends
+        let keys = Array<String>((self.currentFriends.keys))
 
+        var finalUsers = [BenzoUser]()
+        
+        for user in self.users {
+            if !keys.contains(user.username!) {
+                finalUsers.append(user)
+            }
+        }
+        
+        
+        // Remove IF in FriendRequests
+        
+        self.users = finalUsers
+        
+        
+        
+    }
+    
+    
+    
+    // MARK: Alert
+    func showAddFriendAlert(title:String, message:String, user:BenzoUser) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let addFriendAction = UIAlertAction(title: "Send", style: .default) { (action) in
+            // Add to list to SHOW pending friends
+            UserService.addFriend(user: user)
+            // SEND REQUEST: 
+            UserService.sendFriendRequest(user: user)
+            self.navigationController?.popViewController(animated: true)
 
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
+        }
+        
+        alert.addAction(addFriendAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
 
 }
 
 
+
+
 extension AddFriendViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("section: \(indexPath.section)")
+        print("row: \(indexPath.row)")
+        
+        var user = self.users[indexPath.row]
+        
+        if searching {
+            user = self.foundUsers[indexPath.row]
+
+        }
+        print(user)
+
+        // Prompt User to add selections to Friends list
+        showAddFriendAlert(title: "Add Friend", message: "Would you like to send a friend request to '\(user.username!)'?", user: user)
+        tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: false)
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching {
             return self.foundUsers.count
         }
         else {
-            return self.users.count
+            return self.foundUsers.count
 
         }
         
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.addFriendCell , for: indexPath) as? AddFriendCell
@@ -75,6 +150,7 @@ extension AddFriendViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
 
 // MARK: UISearchBarDelegate
 extension AddFriendViewController: UISearchBarDelegate {
@@ -107,6 +183,14 @@ extension AddFriendViewController: UISearchBarDelegate {
         tableView.reloadData()
         self.searchList.removeAll()
         
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
     }
     
 }

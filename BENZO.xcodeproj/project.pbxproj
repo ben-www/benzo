@@ -51,6 +51,7 @@
 		EDC2C78625A2484B0010CB60 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C78525A2484B0010CB60 /* FriendCell.swift */; };
 		EDC2C78925A24A670010CB60 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C78825A24A670010CB60 /* AddFriendViewController.swift */; };
 		EDC2C78C25A24B320010CB60 /* AddFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C78B25A24B320010CB60 /* AddFriendCell.swift */; };
+		EDC2C7B125A270AD0010CB60 /* FriendListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C7B025A270AD0010CB60 /* FriendListData.swift */; };
 		EDEC2FBF2586D3D3001A6648 /* HowToWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		EDC2C78525A2484B0010CB60 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		EDC2C78825A24A670010CB60 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		EDC2C78B25A24B320010CB60 /* AddFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCell.swift; sourceTree = "<group>"; };
+		EDC2C7B025A270AD0010CB60 /* FriendListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListData.swift; sourceTree = "<group>"; };
 		EDEC2FBE2586D3D3001A6648 /* HowToWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToWatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,6 +239,7 @@
 				ED8272CF259A638B0050235E /* DirectorData.swift */,
 				ED8272D5259B9E670050235E /* YearData.swift */,
 				EDC2C732259D14880010CB60 /* WatchData.swift */,
+				EDC2C7B025A270AD0010CB60 /* FriendListData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				EDC2C739259D43BB0010CB60 /* WatchlistViewController.swift in Sources */,
 				EDC2C78625A2484B0010CB60 /* FriendCell.swift in Sources */,
 				ED8F7D362585D16800D12764 /* JBenzoSwipeViewController.swift in Sources */,
+				EDC2C7B125A270AD0010CB60 /* FriendListData.swift in Sources */,
 				ED8F7CDF25795FC800D12764 /* Movie.swift in Sources */,
 				ED053E61257958C10090F78D /* HomeViewController.swift in Sources */,
 			);

@@ -25,6 +25,8 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     
     var jBenzoData:JBenzoData?
     var watchData:WatchData?
+    var friendListData:FriendListData?
+
     
     var filteredData = [Movie]()
     var filtering = false
@@ -77,10 +79,17 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         
         movieData.getMovieData()
         pickerData = getGenres()
+
+
+        UserService.retrieveFriendListData { (retrievedData) in
+            // Get the Users WatchedData
+            self.friendListData = retrievedData
+            
+            if self.friendListData == nil {
+                self.friendListData = UserService.createFriendListEntry()
+            }
+        }
         
-        
-//        // if you cant retrive watchlist
-//        watchData = WatchDataService.createWatchDataEntry()
         
         JBenzoService.retrieveJBenzoData(data: self.data) { (retrievedData) in
             self.jBenzoData = retrievedData

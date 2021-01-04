@@ -51,6 +51,7 @@ struct Constants {
         static let movieDirectorInfo = "MovieDirectorInfo"
         static let yearMovieList = "YearMovieList"
         static let watchlist = "Watchlist"
+        static let addFriend = "AddFriend"
     }
     
 }

@@ -10,6 +10,7 @@ import UIKit
 class FriendCell: UITableViewCell {
 
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,8 +23,14 @@ class FriendCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func displayUsername(username:String) {
+    func displayUsername(username:String, hasAccepted:Bool = false) {
         self.usernameLabel.text = username
+        statusLabel.text = "Pending"
+        
+        if hasAccepted {
+            statusLabel.alpha = 0
+        }
+        
         return
     }
 
