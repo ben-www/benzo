@@ -136,6 +136,8 @@ class UserService {
     
     
     
+    
+    // MARK: FRIEND Functions
     static func addFriend(user:BenzoUser?) {
         
         let currentUser = Auth.auth().currentUser!.uid
@@ -154,8 +156,6 @@ class UserService {
     }
     
     
-    
-    // MARK: Load Functions
     static func retrieveFriendListData(completion: @escaping (FriendListData?) -> Void) {
         
         // Check that there's a user logged in
@@ -219,36 +219,50 @@ class UserService {
     
     
     
-    static func retrieveAllFriends(completion: @escaping ([BenzoUser]) -> Void) {
-//        let db = Firestore.firestore()
+    static func updateAcceptedFriends(friendRequestUsername:String, friendRequests:[String:String]) {
+        // USER & SENDER
+        let currentUser = Auth.auth().currentUser!.uid
+        let username = String((LocalStorageService.loadUser()?.username)!)
+
         
-//        db.collection("users").getDocuments { (snapshot, error) in
-//            if error != nil {
-//                // error getting users
-//                return
-//            }
-//
-//            let documents = snapshot?.documents
-//
-//            if let documents = documents {
-//
-//                // create array to hold users
-//                var userArr = [BenzoUser]()
-//
-//                for doc in documents {
-//
-//                    let user = BenzoUser(snapshot: doc)
-//
-//                    if user != nil {
-//                        userArr.insert(user!, at: 0)
-//                    }
-//                }
-//
-//                completion(userArr)
-//            }
-//        }
-    }
+        // Get a database reference
+        let db = Firestore.firestore()
+        
+        
+        // Add SENDER to USER's acceptedFriends
+        db.collection("FriendData").document(currentUser).updateData(["acceptedFriends":FieldValue.arrayUnion([friendRequestUsername])])
+
+        // get SENDER userID
+        let sender = friendRequests[friendRequestUsername]!
+        
+        // Add USER to SENDER's acceptedFriends
+        db.collection("FriendData").document(sender).updateData(["acceptedFriends":FieldValue.arrayUnion([username])])
+
     
+        // Use friendRequests & friendRequestUsername (as a KEY)  to add SENDER to USER's friendList
+        db.collection("FriendData").document(currentUser).setData([
+            "friendList": [friendRequestUsername:sender]
+        ], merge: true)
+        
+        
+    }
+
+    static func removeFriendRequest(friendRequestUsername:String, friendRequests:[String:String]) {
+        // USER ONLY
+
+        // Get a database reference
+        let db = Firestore.firestore()
+        
+        let currentUser = Auth.auth().currentUser!.uid
+        let sender = friendRequests[friendRequestUsername]!
+        
+        // delete sender from friendrequest and update Field
+        var temp = friendRequests
+        temp.removeValue(forKey: friendRequestUsername)
+        
+        db.collection("FriendData").document(currentUser).updateData(["friendRequests":temp])
+
+    }
     
 
 }

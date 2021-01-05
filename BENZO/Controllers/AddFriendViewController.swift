@@ -14,10 +14,13 @@ class AddFriendViewController: UIViewController {
     
     var users = [BenzoUser]()
     var foundUsers = [BenzoUser]()
-    var currentFriends = [String:String]()
+    //var currentFriends = [String:String]()
     
     var searchList = [String]()
     var searching = false
+    
+    var friendListData:FriendListData?
+
 
 
     
@@ -25,6 +28,7 @@ class AddFriendViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Add Friends"
+    
 
         
         tableView.delegate = self
@@ -53,19 +57,25 @@ class AddFriendViewController: UIViewController {
         let deleteIndex = self.users.firstIndex(where: {$0.username == currentUser})
         self.users.remove(at: deleteIndex!)
         
-        // Remove current friends
-        let keys = Array<String>((self.currentFriends.keys))
+        
+        // Remove current friends & friend requests for Add User list
+        let currentFriends =  (self.friendListData?.friendList)!
+        let requests =  (self.friendListData?.friendRequests)!
+
+        let friends = Array<String>((currentFriends.keys))
+        let friendRequests = Array<String>((requests.keys))
+
 
         var finalUsers = [BenzoUser]()
         
         for user in self.users {
-            if !keys.contains(user.username!) {
+            if !friends.contains(user.username!) && !friendRequests.contains(user.username!) {
                 finalUsers.append(user)
             }
+
         }
         
         
-        // Remove IF in FriendRequests
         
         self.users = finalUsers
         
@@ -127,7 +137,7 @@ extension AddFriendViewController: UITableViewDelegate, UITableViewDataSource {
             return self.foundUsers.count
         }
         else {
-            return self.foundUsers.count
+            return self.users.count
 
         }
         

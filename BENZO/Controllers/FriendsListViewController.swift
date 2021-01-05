@@ -11,22 +11,47 @@ class FriendsListViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var picker: UIPickerView!
     
+    @IBOutlet var popoverView: UIView!
     @IBOutlet weak var friendRequestsButton: UIButton!
+    
+    var blurEffectView = UIVisualEffectView()
+    var pickerData: [String] = [String]()
+
+    
     
     var friends = [String]()
     var friendListData:FriendListData?
+    var friendRequestUsername:String?
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Friends"
+        self.friendRequestsButton.isEnabled = false
+
         
         tableView.delegate = self
         tableView.dataSource = self
+        self.picker.delegate = self
+        self.picker.dataSource = self
+        
         
         // Set button image
+        
+        self.popoverView.layer.cornerRadius = 24
+        self.popoverView.layer.shadowColor = UIColor.black.cgColor
+        self.popoverView.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        self.popoverView.layer.shadowOpacity = 0.2
+        self.popoverView.layer.shadowRadius = 4.0
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        self.blurEffectView.effect = blurEffect
+        blurEffectView.frame = self.view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                
         
         
         UserService.retrieveFriendListData { (retrievedData) in
@@ -46,6 +71,10 @@ class FriendsListViewController: UIViewController {
             // Do you have any Friend Requests
             if (self.friendListData?.friendRequests?.count)! > 0 {
                 self.friendRequestsButton.setImage(UIImage(systemName: "exclamationmark.circle.fill"), for: .normal)
+                self.pickerData = Array<String>((self.friendListData?.friendRequests!.keys)!)
+                self.friendRequestsButton.isEnabled = true
+
+
             }
 
             
@@ -72,10 +101,13 @@ class FriendsListViewController: UIViewController {
             // Do you have any Friend Requests
             if (self.friendListData?.friendRequests?.count)! > 0 {
                 self.friendRequestsButton.setImage(UIImage(systemName: "exclamationmark.circle.fill"), for: .normal)
+                self.friendRequestsButton.isEnabled = true
             }
 
             if (self.friendListData?.friendRequests?.count)! == 0 {
                 self.friendRequestsButton.setImage(UIImage(systemName: ""), for: .normal)
+                self.friendRequestsButton.isEnabled = false
+
             }
             
             self.tableView.reloadData()
@@ -103,6 +135,74 @@ class FriendsListViewController: UIViewController {
     
     
     
+    
+    
+    @IBAction func friendRequestsTapped(_ sender: Any) {
+        self.blurEffectView.alpha = 0.5
+        print("Friend Requests Tapped")
+        self.view.addSubview(self.blurEffectView)
+        self.view.addSubview(self.popoverView)
+        popoverView.center = self.view.center
+        
+        
+    }
+    
+    
+    
+    @IBAction func acceptTapped(_ sender: Any) {
+        
+        // Add to acceptedFriends for USER & SENDER & Add to friendsList for USER
+        UserService.updateAcceptedFriends(friendRequestUsername: self.friendRequestUsername!, friendRequests:(self.friendListData?.friendRequests)!)
+        
+        // Remove from friendRequests for USER
+        UserService.removeFriendRequest(friendRequestUsername: self.friendRequestUsername!, friendRequests:(self.friendListData?.friendRequests)!)
+
+        
+        // Update local variables so tableView can reload
+        //
+        let senderID = self.friendListData?.friendRequests![friendRequestUsername!]
+        
+        // Add SENDER to self.friendListData.acceptedFriends
+        self.friendListData?.acceptedFriends?.append(friendRequestUsername!)
+
+        // Remove SENDER from self.friendListData.friendRequests
+        self.friendListData?.friendRequests?.removeValue(forKey: friendRequestUsername!)
+        
+        // Add SENDER to friendList
+        self.friendListData?.friendList![friendRequestUsername!] = senderID
+        
+        // Update Friends
+        if self.friendListData?.friendList != nil {
+            self.friends = Array<String>((self.friendListData?.friendList!.keys)!)
+
+        }
+        
+        // update pickerData
+        
+        
+        self.popoverView.removeFromSuperview()
+        self.blurEffectView.removeFromSuperview()
+        tableView.reloadData()
+    }
+    
+    
+    @IBAction func declineTapped(_ sender: Any) {
+        
+        self.popoverView.removeFromSuperview()
+        self.blurEffectView.removeFromSuperview()
+        tableView.reloadData()
+    }
+    
+
+    @IBAction func cancelTapped(_ sender: Any) {
+        self.popoverView.removeFromSuperview()
+        self.blurEffectView.removeFromSuperview()
+        
+    }
+    
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Constants.Segue.addFriend {
@@ -113,7 +213,8 @@ class FriendsListViewController: UIViewController {
             // add BENZO overall rating (pass value)
             
             if self.friendListData?.friendList != nil {
-                addFriendVC.currentFriends = (self.friendListData?.friendList)!
+                //addFriendVC.currentFriends = (self.friendListData?.friendList)!
+                addFriendVC.friendListData = self.friendListData
             }
         
 
@@ -176,5 +277,40 @@ extension FriendsListViewController: UISearchBarDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.endEditing(true)
     }
+    
+}
+
+
+// MARK: UIPickerViewDelegate, UIPickerViewDataSource
+extension FriendsListViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    // Number of columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        self.friendRequestUsername = self.pickerData[0]
+        return pickerData.count
+    }
+    
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    // Capture the picker view selection
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // This method is triggered whenever the user makes a change to the picker selection.
+        // The parameter named row and component represents what was selected.
+        
+        self.friendRequestUsername = pickerData[row]
+
+
+    }
+    
+    
     
 }

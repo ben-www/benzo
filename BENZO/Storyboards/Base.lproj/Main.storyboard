@@ -23,20 +23,20 @@
                                 <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieCell1" id="xEt-Mm-tgG" customClass="MovieCell" customModule="BENZO" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xEt-Mm-tgG" id="lfs-gl-eCE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ask-wm-77x">
-                                                    <rect key="frame" x="40" y="11" width="334" height="21.5"/>
+                                                    <rect key="frame" x="40" y="11" width="334" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH3-bA-JX0">
-                                                    <rect key="frame" x="341" y="14" width="33" height="16"/>
+                                                    <rect key="frame" x="341" y="13.5" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" systemColor="systemGreenColor"/>
                                                     <nil key="highlightedColor"/>
@@ -814,6 +814,9 @@
                                 <state key="normal" title=" Friend Requests">
                                     <color key="titleColor" systemColor="systemPurpleColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="friendRequestsTapped:" destination="r6Y-gY-G5b" eventType="touchUpInside" id="sQT-40-THj"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JlC-nD-siI">
                                 <rect key="frame" x="0.0" y="148" width="414" height="714"/>
@@ -893,11 +896,65 @@
                     </navigationItem>
                     <connections>
                         <outlet property="friendRequestsButton" destination="ymY-Ay-huK" id="3kM-mv-dwx"/>
+                        <outlet property="picker" destination="Hwu-7U-MpX" id="fka-P4-ioM"/>
+                        <outlet property="popoverView" destination="cFx-xn-ChA" id="GP4-Mo-9e2"/>
                         <outlet property="searchBar" destination="dKQ-uu-0gR" id="G0m-Ux-c00"/>
                         <outlet property="tableView" destination="JlC-nD-siI" id="zA8-fl-2AX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5S-67-iYH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="cFx-xn-ChA">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="224"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="g6b-3G-eIR">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="224"/>
+                            <subviews>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hwu-7U-MpX">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="189"/>
+                                </pickerView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fwF-yb-LWr">
+                                    <rect key="frame" x="32" y="189" width="176" height="35"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KuZ-rG-R47">
+                                            <rect key="frame" x="0.0" y="0.0" width="52" height="35"/>
+                                            <state key="normal" title="Accept">
+                                                <color key="titleColor" systemColor="systemGreenColor"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="acceptTapped:" destination="r6Y-gY-G5b" eventType="touchUpInside" id="Kyw-Hu-VsR"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egJ-Mw-FNu">
+                                            <rect key="frame" x="62" y="0.0" width="52" height="35"/>
+                                            <state key="normal" title="Decline"/>
+                                            <connections>
+                                                <action selector="declineTapped:" destination="r6Y-gY-G5b" eventType="touchUpInside" id="4hx-me-bYd"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kf-Gm-Kkn">
+                                            <rect key="frame" x="124" y="0.0" width="52" height="35"/>
+                                            <state key="normal" title="Cancel">
+                                                <color key="titleColor" systemColor="systemRedColor"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="r6Y-gY-G5b" eventType="touchUpInside" id="mVx-h7-6jk"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="Z97-8E-PD2"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Z97-8E-PD2" firstAttribute="bottom" secondItem="g6b-3G-eIR" secondAttribute="bottom" id="FhA-rW-Lbj"/>
+                        <constraint firstItem="g6b-3G-eIR" firstAttribute="leading" secondItem="Z97-8E-PD2" secondAttribute="leading" id="eUA-KB-oCE"/>
+                        <constraint firstItem="g6b-3G-eIR" firstAttribute="top" secondItem="cFx-xn-ChA" secondAttribute="top" id="liE-s8-k2D"/>
+                        <constraint firstAttribute="trailing" secondItem="g6b-3G-eIR" secondAttribute="trailing" id="mau-h0-sRo"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="2364" y="-599"/>
         </scene>
@@ -966,7 +1023,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyC-ms-fDB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3170" y="-607"/>
+            <point key="canvasLocation" x="3170" y="-599"/>
         </scene>
         <!--Get Genre Percentages View Controller-->
         <scene sceneID="Hzw-u1-ryS">
@@ -1552,7 +1609,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="vKX-CM-qTs"/>
         <segue reference="Jgn-WR-aFM"/>
-        <segue reference="ASE-yP-Vts"/>
+        <segue reference="2cH-LD-SVy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPurpleColor"/>
     <resources>

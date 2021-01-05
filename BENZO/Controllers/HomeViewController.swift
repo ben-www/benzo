@@ -67,7 +67,6 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         self.popoverView.layer.shadowOpacity = 0.2
         self.popoverView.layer.shadowRadius = 4.0
         
-
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         self.blurEffectView.effect = blurEffect
         blurEffectView.frame = self.view.bounds
@@ -96,14 +95,18 @@ class HomeViewController: UIViewController, MovieDataProtocol {
             self.data.sort(by: { $0.BENZO! > $1.BENZO! })
 
             
-            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
-
+            
+            // Has and show should have different if Statments ***!!!
+            
+            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil){
                 for (index, mov) in self.data.enumerated() {
                     
                     let title = mov.Title
                     self.data[index].jBENZO = self.jBenzoData?.JBenzoScores![title!]
                 }
-                
+            }
+            
+            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
                 
                 self.data.sort(by: { $0.jBENZO! > $1.jBENZO! })
                 self.JBENZObutton.setImage(UIImage(systemName: "j.circle.fill"), for: .normal)
@@ -216,10 +219,6 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     
     
     func buildFilteredData() {
-        if self.genre == "BENZO" {
-            return
-        }
-        
         var temp = [Movie]()
         
         
@@ -411,13 +410,13 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     @IBAction func JBENZOtapped(_ sender: Any) {
         if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!))  {
             //print("Toggled On")
-            showToggleAlert(title: "JBENZO is 'ON'", message: "Turn OFF JBENZO scores?")
+            showToggleAlert(title: "Turn OFF JBENZO", message: "JBENZO is 'ON' would you like to no longer view JBENZO scores?")
 
             return
         }
         else if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (!((self.jBenzoData?.showJBenzo)!)) {
             //print("Toggled Off")
-            showToggleAlert(title: "JBENZO is 'OFF'", message: "Turn ON JBENZO scores?")
+            showToggleAlert(title: "Turn ON JBENZO", message: "BENZO is 'OFF' would you like to view JBENZO scores?")
             return
         }
         
