@@ -22,6 +22,8 @@
 		ED3A0A49259150E400FF7932 /* JBenzoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3A0A48259150E400FF7932 /* JBenzoData.swift */; };
 		ED3A0A4C2591513E00FF7932 /* BenzoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */; };
 		ED3A0A4F25918FCC00FF7932 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */; };
+		ED3DAEBB25A52A5700DB9680 /* FriendActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DAEBA25A52A5700DB9680 /* FriendActionsViewController.swift */; };
+		ED3DAEBE25A6565700DB9680 /* FriendJBenzoScoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DAEBD25A6565700DB9680 /* FriendJBenzoScoreListViewController.swift */; };
 		ED4ACF372591A2FE00ED36C2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4ACF362591A2FE00ED36C2 /* LoginViewController.swift */; };
 		ED4ACF3A2591A31D00ED36C2 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4ACF392591A31D00ED36C2 /* CreateProfileViewController.swift */; };
 		ED4ACF4525924F1F00ED36C2 /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4ACF4425924F1F00ED36C2 /* LocalStorageService.swift */; };
@@ -75,6 +77,8 @@
 		ED3A0A48259150E400FF7932 /* JBenzoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBenzoData.swift; sourceTree = "<group>"; };
 		ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenzoUser.swift; sourceTree = "<group>"; };
 		ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ED3DAEBA25A52A5700DB9680 /* FriendActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendActionsViewController.swift; sourceTree = "<group>"; };
+		ED3DAEBD25A6565700DB9680 /* FriendJBenzoScoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendJBenzoScoreListViewController.swift; sourceTree = "<group>"; };
 		ED4ACF362591A2FE00ED36C2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ED4ACF392591A31D00ED36C2 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		ED4ACF4425924F1F00ED36C2 /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 				EDC2C738259D43BB0010CB60 /* WatchlistViewController.swift */,
 				EDC2C78225A242D70010CB60 /* FriendsListViewController.swift */,
 				EDC2C78825A24A670010CB60 /* AddFriendViewController.swift */,
+				ED3DAEBA25A52A5700DB9680 /* FriendActionsViewController.swift */,
+				ED3DAEBD25A6565700DB9680 /* FriendJBenzoScoreListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -427,8 +433,10 @@
 				EDC2C739259D43BB0010CB60 /* WatchlistViewController.swift in Sources */,
 				EDC2C78625A2484B0010CB60 /* FriendCell.swift in Sources */,
 				ED8F7D362585D16800D12764 /* JBenzoSwipeViewController.swift in Sources */,
+				ED3DAEBE25A6565700DB9680 /* FriendJBenzoScoreListViewController.swift in Sources */,
 				EDC2C7B125A270AD0010CB60 /* FriendListData.swift in Sources */,
 				ED8F7CDF25795FC800D12764 /* Movie.swift in Sources */,
+				ED3DAEBB25A52A5700DB9680 /* FriendActionsViewController.swift in Sources */,
 				ED053E61257958C10090F78D /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

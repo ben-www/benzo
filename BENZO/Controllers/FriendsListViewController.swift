@@ -65,6 +65,7 @@ class FriendsListViewController: UIViewController {
 
             if self.friendListData?.friendList != nil {
                 self.friends = Array<String>((self.friendListData?.friendList!.keys)!)
+                self.friends.sort()
 
             }
             
@@ -95,12 +96,15 @@ class FriendsListViewController: UIViewController {
 
             if self.friendListData?.friendList != nil {
                 self.friends = Array<String>((self.friendListData?.friendList!.keys)!)
+                self.friends.sort()
+
 
             }
             
             // Do you have any Friend Requests
             if (self.friendListData?.friendRequests?.count)! > 0 {
                 self.friendRequestsButton.setImage(UIImage(systemName: "exclamationmark.circle.fill"), for: .normal)
+                self.pickerData = Array<String>((self.friendListData?.friendRequests!.keys)!)
                 self.friendRequestsButton.isEnabled = true
             }
 
@@ -160,29 +164,68 @@ class FriendsListViewController: UIViewController {
         
         // Update local variables so tableView can reload
         //
-        let senderID = self.friendListData?.friendRequests![friendRequestUsername!]
+//        let senderID = self.friendListData?.friendRequests![friendRequestUsername!]
+//
+//        // Add SENDER to self.friendListData.acceptedFriends
+//        self.friendListData?.acceptedFriends?.append(friendRequestUsername!)
+//
+//        // Remove SENDER from self.friendListData.friendRequests
+//        self.friendListData?.friendRequests?.removeValue(forKey: friendRequestUsername!)
+//
+//        // Add SENDER to friendList
+//        self.friendListData?.friendList![friendRequestUsername!] = senderID
+//
+//        // Update Friends
+//        if self.friendListData?.friendList != nil {
+//            self.friends = Array<String>((self.friendListData?.friendList!.keys)!)
+//
+//        }
         
-        // Add SENDER to self.friendListData.acceptedFriends
-        self.friendListData?.acceptedFriends?.append(friendRequestUsername!)
+        UserService.retrieveFriendListData { (retrievedData) in
+            
+            // Get the Users WatchedData
+            self.friendListData = retrievedData
+            
+            if self.friendListData == nil {
+                self.friendListData = UserService.createFriendListEntry()
+            }
 
-        // Remove SENDER from self.friendListData.friendRequests
-        self.friendListData?.friendRequests?.removeValue(forKey: friendRequestUsername!)
-        
-        // Add SENDER to friendList
-        self.friendListData?.friendList![friendRequestUsername!] = senderID
-        
-        // Update Friends
-        if self.friendListData?.friendList != nil {
-            self.friends = Array<String>((self.friendListData?.friendList!.keys)!)
+            if self.friendListData?.friendList != nil {
+                self.friends = Array<String>((self.friendListData?.friendList!.keys)!)
+                self.friends.sort()
 
+
+            }
+            
+            // Do you have any Friend Requests
+            if (self.friendListData?.friendRequests?.count)! > 0 {
+                self.friendRequestsButton.setImage(UIImage(systemName: "exclamationmark.circle.fill"), for: .normal)
+                
+                self.pickerData = Array<String>((self.friendListData?.friendRequests!.keys)!)
+                self.picker.reloadAllComponents()
+                self.picker.selectRow(0, inComponent: 0, animated: true)
+                
+                self.friendRequestsButton.isEnabled = true
+            }
+
+            if (self.friendListData?.friendRequests?.count)! == 0 {
+                self.friendRequestsButton.setImage(UIImage(systemName: ""), for: .normal)
+                self.friendRequestsButton.isEnabled = false
+
+            }
+            
+            
+            self.popoverView.removeFromSuperview()
+            self.blurEffectView.removeFromSuperview()
+            self.tableView.reloadData()
         }
         
-        // update pickerData
         
         
-        self.popoverView.removeFromSuperview()
-        self.blurEffectView.removeFromSuperview()
-        tableView.reloadData()
+//
+//        self.popoverView.removeFromSuperview()
+//        self.blurEffectView.removeFromSuperview()
+//        tableView.reloadData()
     }
     
     
@@ -209,16 +252,23 @@ class FriendsListViewController: UIViewController {
 
             let addFriendVC = segue.destination as! AddFriendViewController
 
-
-            // add BENZO overall rating (pass value)
-            
             if self.friendListData?.friendList != nil {
                 //addFriendVC.currentFriends = (self.friendListData?.friendList)!
                 addFriendVC.friendListData = self.friendListData
             }
+        }
         
+        if segue.identifier == Constants.Segue.friendListToActions {
+            
+            let friendActionsVC = segue.destination as! FriendActionsViewController
+            
+            let friendTapped = self.friends[tableView.indexPathForSelectedRow!.row]
+            
+            friendActionsVC.friend =  friendTapped
+            friendActionsVC.friendId =  self.friendListData?.friendList![friendTapped]
 
         }
+        
         
         
     }
@@ -229,6 +279,7 @@ class FriendsListViewController: UIViewController {
 }
 
 extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.friendListData?.friendList != nil {
             return (self.friendListData?.friendList?.count)!
@@ -236,6 +287,24 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
         }
         return 0
     }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("section: \(indexPath.section)")
+        print("row: \(indexPath.row)")
+        
+        let user = self.friends[indexPath.row]
+        
+        if ((self.friendListData?.acceptedFriends?.contains(user))!) {
+            self.performSegue(withIdentifier: Constants.Segue.friendListToActions, sender: nil)
+
+        }
+        
+
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.friendCell , for: indexPath) as? FriendCell

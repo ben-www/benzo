@@ -115,6 +115,52 @@ class JBenzoService {
         
     }
     
+    static func retrieveFriendJBenzoData(friendId:String, completion: @escaping (JBenzoData?) -> Void) {
+        
+        // Check that there's a user logged in
+        if Auth.auth().currentUser == nil {
+            return
+        }
+
+        // Get a database reference
+        let db = Firestore.firestore()
+
+        
+        db.collection("JBenzoUserData").document(friendId).getDocument { (snapshot, error) in
+            // Check for errors
+            if error != nil || snapshot == nil {
+                // Something wrong happend
+                return
+            }
+
+            if let profile = snapshot!.data() {
+                // Profile was found, create NEW USER
+                var JBD = JBenzoData()
+
+                JBD.byId = profile["byId"] as? String
+                JBD.byUsername = profile["byUsername"] as? String
+                JBD.hasJBenzo = profile["hasJBenzo"] as? Bool
+                JBD.showJBenzo = profile["showJBenzo"] as? Bool
+                JBD.isGenreLocked = profile["isGenreLocked"] as? Bool
+                JBD.numOfMoviesRated = profile["numOfMoviesRated"] as? Int
+
+                JBD.swipedMovies = profile["swipedMovies"] as? Array<String>
+                JBD.unswipedMovies = profile["unswipedMovies"] as? Array<String>
+                JBD.genrePercentages = profile["genrePercentages"] as? [String:Double]
+                JBD.JBenzoScores = profile["JBenzoScores"] as? [String:Double]
+
+                completion(JBD)
+                // Return the User
+            }
+            else {
+                // Couldn't get profile, NO PROFILE
+                // return nil
+                completion(nil)
+            }
+        }
+        
+    }
+    
     
     
     // MARK: UPDATE Functions
