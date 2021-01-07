@@ -19,7 +19,7 @@ class FriendActionsViewController: UIViewController {
     var userJBenzoData:JBenzoData?
     
     var userMovieList:Array<(key: String, value: Double)>?
-    var finalMovieList:Array<(key: String, value: Double)>?
+    var friendMovieList:Array<(key: String, value: Double)>?
 
     
     override func viewDidLoad() {
@@ -52,7 +52,7 @@ class FriendActionsViewController: UIViewController {
             }
             else {
                 let tempDict = self.friendJBenzoData?.JBenzoScores
-                self.finalMovieList = tempDict!.sorted(by: { $0.value > $1.value })
+                self.friendMovieList = tempDict!.sorted(by: { $0.value > $1.value })
 
             }
         }
@@ -67,26 +67,11 @@ class FriendActionsViewController: UIViewController {
 
             let friendScoreVC = segue.destination as! FriendJBenzoScoreListViewController
 
-            var scoreList = ""
-            for (index,mov) in self.finalMovieList!.enumerated() {
-                
-                let finalScore = round(10000.0 * mov.1) / 10000.0
-                
-                scoreList = scoreList + (String(index+1) + ") " + (mov.0 + ": " + String(finalScore)) + "\n")
-            }
-            
-            var userScoreList = ""
-            for (index,mov) in self.userMovieList!.enumerated() {
-                
-                let finalScore = round(10000.0 * mov.1) / 10000.0
-
-                userScoreList = userScoreList + (String(index+1) + ") " + (mov.0 + ": " + String(finalScore)) + "\n")
-            }
-            
-            
-            friendScoreVC.scoreList = scoreList
-            friendScoreVC.userScoreList = userScoreList
             friendScoreVC.friend = self.friend
+            friendScoreVC.userMovieList = self.userMovieList
+            friendScoreVC.friendMovieList = self.friendMovieList
+            friendScoreVC.userJBenzoData = self.userJBenzoData
+            friendScoreVC.friendJBenzoData = self.friendJBenzoData
 
         }
         

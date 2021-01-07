@@ -24,6 +24,7 @@
 		ED3A0A4F25918FCC00FF7932 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */; };
 		ED3DAEBB25A52A5700DB9680 /* FriendActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DAEBA25A52A5700DB9680 /* FriendActionsViewController.swift */; };
 		ED3DAEBE25A6565700DB9680 /* FriendJBenzoScoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DAEBD25A6565700DB9680 /* FriendJBenzoScoreListViewController.swift */; };
+		ED3DAEE325A681E900DB9680 /* FriendScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DAEE225A681E900DB9680 /* FriendScoreCell.swift */; };
 		ED4ACF372591A2FE00ED36C2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4ACF362591A2FE00ED36C2 /* LoginViewController.swift */; };
 		ED4ACF3A2591A31D00ED36C2 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4ACF392591A31D00ED36C2 /* CreateProfileViewController.swift */; };
 		ED4ACF4525924F1F00ED36C2 /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4ACF4425924F1F00ED36C2 /* LocalStorageService.swift */; };
@@ -79,6 +80,7 @@
 		ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED3DAEBA25A52A5700DB9680 /* FriendActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendActionsViewController.swift; sourceTree = "<group>"; };
 		ED3DAEBD25A6565700DB9680 /* FriendJBenzoScoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendJBenzoScoreListViewController.swift; sourceTree = "<group>"; };
+		ED3DAEE225A681E900DB9680 /* FriendScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendScoreCell.swift; sourceTree = "<group>"; };
 		ED4ACF362591A2FE00ED36C2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ED4ACF392591A31D00ED36C2 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		ED4ACF4425924F1F00ED36C2 /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				EDC2C73B259D468E0010CB60 /* WatchlistCell.swift */,
 				EDC2C78525A2484B0010CB60 /* FriendCell.swift */,
 				EDC2C78B25A24B320010CB60 /* AddFriendCell.swift */,
+				ED3DAEE225A681E900DB9680 /* FriendScoreCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				ED8F7CE92579637B00D12764 /* MovieData.swift in Sources */,
 				ED053E46257958280090F78D /* AppDelegate.swift in Sources */,
 				ED053E48257958280090F78D /* SceneDelegate.swift in Sources */,
+				ED3DAEE325A681E900DB9680 /* FriendScoreCell.swift in Sources */,
 				ED053E6525795B4F0090F78D /* MovieCell.swift in Sources */,
 				EDC2C73C259D468E0010CB60 /* WatchlistCell.swift in Sources */,
 				EDC2C733259D14880010CB60 /* WatchData.swift in Sources */,

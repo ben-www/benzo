@@ -20,7 +20,7 @@ struct Constants {
 
         static let friendCell = "FriendCell"
         static let addFriendCell = "AddFriendCell"
-
+        static let friendScoreCell = "FriendScoreCell"
         
         
     }
