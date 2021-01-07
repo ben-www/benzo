@@ -22,9 +22,11 @@ struct JBenzoData {
     var JBenzoScores:[String : Double]?
     
     // Keep Track of Input
-    var swipedMovies:Array<String>?
     var unswipedMovies:Array<String>?
+    
     var genrePercentages:[String : Double]?
+    var swipedMovies:[String : String]?
+
 
     
     
@@ -41,9 +43,10 @@ struct JBenzoData {
         let numOfMoviesRated = data["numOfMoviesRated"] as? Int
 
         
-        let swipedMovies = data["swipedMovies"] as? Array<String>?
         let upswipedMovies = data["unswipedMovies"] as? Array<String>?
         
+        let swipedMovies = data["swipedMovies"] as? [String : String]?
+
         let genrePercentages = data["genrePercentages"] as? [String : Double]?
         let JBenzoScores = data["JBenzoScores"] as? [String : Double]?
         

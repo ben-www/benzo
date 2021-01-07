@@ -12,7 +12,7 @@ import FirebaseAuth
 
 class JBenzoService {
     
-    static func createJBenzoEntry(genrePercentages: [String : Double]) -> JBenzoData {
+    static func createJBenzoEntry(movies: [String], genrePercentages: [String : Double]) -> JBenzoData {
         
         var JBData = JBenzoData()
                 
@@ -38,8 +38,9 @@ class JBenzoService {
         metaData["isGenreLocked"] = true
         metaData["numOfMoviesRated"] = 0
         
-        metaData["swipedMovies"] = [String]()
-        metaData["unswipedMovies"] = [String]()
+        metaData["swipedMovies"] = [String:String]()
+        
+        metaData["unswipedMovies"] = movies
         metaData["genrePercentages"] = genrePercentages
         metaData["JBenzoScores"] = [String:Double]()
 
@@ -89,7 +90,7 @@ class JBenzoService {
                 JBD.isGenreLocked = profile["isGenreLocked"] as? Bool
                 JBD.numOfMoviesRated = profile["numOfMoviesRated"] as? Int
 
-                JBD.swipedMovies = profile["swipedMovies"] as? Array<String>
+                JBD.swipedMovies = profile["swipedMovies"] as? [String : String]
                 JBD.unswipedMovies = profile["unswipedMovies"] as? Array<String>
                 JBD.genrePercentages = profile["genrePercentages"] as? [String:Double]
                 JBD.JBenzoScores = profile["JBenzoScores"] as? [String:Double]
@@ -144,7 +145,7 @@ class JBenzoService {
                 JBD.isGenreLocked = profile["isGenreLocked"] as? Bool
                 JBD.numOfMoviesRated = profile["numOfMoviesRated"] as? Int
 
-                JBD.swipedMovies = profile["swipedMovies"] as? Array<String>
+                JBD.swipedMovies = profile["swipedMovies"] as? [String : String]
                 JBD.unswipedMovies = profile["unswipedMovies"] as? Array<String>
                 JBD.genrePercentages = profile["genrePercentages"] as? [String:Double]
                 JBD.JBenzoScores = profile["JBenzoScores"] as? [String:Double]

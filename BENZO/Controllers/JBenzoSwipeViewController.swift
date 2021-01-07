@@ -21,7 +21,7 @@ class JBenzoSwipeViewController: UIViewController {
     var jBenzoData:JBenzoData?
 
     
-    var testIndx = 0
+    var movIndex = 0
     var numOfSwipes = 0
 
     override func viewDidLoad() {
@@ -30,53 +30,62 @@ class JBenzoSwipeViewController: UIViewController {
         
         self.data.shuffle()
         
-        //self.title = "J BENZO"
-        titleLabel.text = data[0].Title
-        rawScoreLabel.text = "Raw Score: " + String(data[0].Raw!)
-        benzoScoreLabel.text = "BENZO: " + String(data[0].BENZO!)
-        genresLabel.text = JBenzoService.createCatList(mov: data[0])
-        numberOfSwipesLabel.text = "(#) Movies rated in this session"
+        if self.jBenzoData?.unswipedMovies != nil {
+            self.jBenzoData?.unswipedMovies?.shuffle()
+            titleLabel.text = self.jBenzoData?.unswipedMovies![0]
+            getRawAndBenzoScores(title: titleLabel.text!)
 
-        
-        
+        }
+
+        numberOfSwipesLabel.text = "(#) Movies rated in this session"
     }
     
+    
     override func viewWillDisappear(_ animated: Bool) {
-        print("Back to Home Works")
-        
+        print("BACK to Home Works")
         // update JBenzoData: genrePercentages & JBenzoScores in db
-        // using JBenzoService
         
 
     }
         
+    
+    func getRawAndBenzoScores(title: String) {
+        
+        for mov in self.data {
+            if mov.Title == titleLabel.text {
+                
+                rawScoreLabel.text = "Raw Score: " + String(mov.Raw!)
+                benzoScoreLabel.text = "BENZO: " + String(mov.BENZO!)
+                genresLabel.text = JBenzoService.createCatList(mov: mov)
+            }
+        }
+        
+        titleLabel.fadeTransition(0.3)
+        rawScoreLabel.fadeTransition(0.3)
+        benzoScoreLabel.fadeTransition(0.3)
+        genresLabel.fadeTransition(0.3)
+
+        
+
+    }
+    
     
     
     @IBAction func dontknowTapped(_ sender: Any) {
         print("Don't Know **")
+        self.movIndex += 1
+        
+        titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
+        getRawAndBenzoScores(title: titleLabel.text!)
+        
+        //numOfSwipes += 1
+        //numberOfSwipesLabel.text = String(numOfSwipes) + " Movies rated in this session"
     }
     
     
-    @IBAction func likeTapped(_ sender: Any) {
-        print("Like **")
-        self.testIndx += 1
-        titleLabel.text = data[self.testIndx].Title
-        rawScoreLabel.text = "Raw Score: " + String(data[self.testIndx].Raw!)
-        benzoScoreLabel.text = "BENZO: " + String(data[self.testIndx].BENZO!)
-        genresLabel.text = JBenzoService.createCatList(mov: data[self.testIndx])
-
-        numOfSwipes += 1
-        numberOfSwipesLabel.text = String(numOfSwipes) + " Movies rated in this session"
-    }
-    
-    
-    @IBAction func dislikeTapped(_ sender: Any) {
-        print("Dislike **")
-    }
-  
     
     @IBAction func howToWatchTapped(_ sender: Any) {
-        var newTitle = data[self.testIndx].Title
+        var newTitle = self.jBenzoData?.unswipedMovies![self.movIndex]
         newTitle = newTitle?.replacingOccurrences(of: " ", with: "+")
         
         let hyperlink = "https://www.google.com/search?q=" + newTitle! + "+stream"
@@ -86,33 +95,126 @@ class JBenzoSwipeViewController: UIViewController {
         }
     }
     
-    @IBAction func swipeLeftHandler(_ gestureRecognizer: UISwipeGestureRecognizer) {
-        print("Swiped left")
-        self.testIndx -= 1
-        titleLabel.text = data[self.testIndx].Title
-        rawScoreLabel.text = "Raw Score: " + String(data[self.testIndx].Raw!)
-        benzoScoreLabel.text = "BENZO: " + String(data[self.testIndx].BENZO!)
-        genresLabel.text = JBenzoService.createCatList(mov: data[self.testIndx])
+    
+    
+    
 
+    
+    @IBAction func dislikeTapped(_ sender: Any) {
+        print("Dislike **")
+        self.movIndex += 1
+        
+        // Add to swipedMovies w/title as Key and 'Dislike' as value
+        SwipeService.addToSwipedMovies(title: titleLabel.text, value: "dislike")
+        
+        // Remove from unswipedMovies
+        SwipeService.removeFromUnswipedMovies(title: titleLabel.text)
+        
+        // Update # rated in db
         numOfSwipes += 1
+        let tempNum = numOfSwipes + (self.jBenzoData?.numOfMoviesRated)!
+        SwipeService.updateNumberOfMoviesRated(count: tempNum)
+        
+        
+        // Change Info(Movie) Displayed
+        titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
+        getRawAndBenzoScores(title: titleLabel.text!)
+        numberOfSwipesLabel.text = String(numOfSwipes) + " Movies rated in this session"
+    }
+  
+    
+
+    
+    
+    @IBAction func swipeLeftHandler(_ gestureRecognizer: UISwipeGestureRecognizer) {
+        print("Swiped left (DISLIKE)")
+        self.movIndex += 1
+        
+        // Add to swipedMovies w/title as Key and 'Dislike' as value
+        SwipeService.addToSwipedMovies(title: titleLabel.text, value: "dislike")
+        
+        // Remove from unswipedMovies
+        SwipeService.removeFromUnswipedMovies(title: titleLabel.text)
+        
+        // Update # rated in db
+        numOfSwipes += 1
+        let tempNum = numOfSwipes + (self.jBenzoData?.numOfMoviesRated)!
+        SwipeService.updateNumberOfMoviesRated(count: tempNum)
+        
+
+        titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
+        getRawAndBenzoScores(title: titleLabel.text!)
+        
         numberOfSwipesLabel.text = String(numOfSwipes) + " Movies rated in this session"
     }
     
-    @IBAction func swipeHandler(_ gestureRecognizer: UISwipeGestureRecognizer) {
-        print("Swiped right")
-        self.testIndx += 1
-        titleLabel.text = data[self.testIndx].Title
-        rawScoreLabel.text = "Raw Score: " + String(data[self.testIndx].Raw!)
-        benzoScoreLabel.text = "BENZO: " + String(data[self.testIndx].BENZO!)
-        genresLabel.text = JBenzoService.createCatList(mov: data[self.testIndx])
-
+    
+    
+    
+    
+    @IBAction func likeTapped(_ sender: Any) {
+        print("Like **")
+        self.movIndex += 1
+        
+        // Add to swipedMovies w/title as Key and 'Dislike' as value
+        SwipeService.addToSwipedMovies(title: titleLabel.text, value: "like")
+        
+        // Remove from unswipedMovies
+        SwipeService.removeFromUnswipedMovies(title: titleLabel.text)
+        
+        // Update # rated in db
         numOfSwipes += 1
+        let tempNum = numOfSwipes + (self.jBenzoData?.numOfMoviesRated)!
+        SwipeService.updateNumberOfMoviesRated(count: tempNum)
+        
+        // Update Local Variables
+        
+        
+        titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
+        getRawAndBenzoScores(title: titleLabel.text!)        
+        numberOfSwipesLabel.text = String(numOfSwipes) + " Movies rated in this session"
+    }
+    
+    
+    
+    @IBAction func swipeHandler(_ gestureRecognizer: UISwipeGestureRecognizer) {
+        print("Swiped right (LIKE)")
+        self.movIndex += 1
+        
+        // Add to swipedMovies w/title as Key and 'Dislike' as value
+        SwipeService.addToSwipedMovies(title: titleLabel.text, value: "like")
+        
+        // Remove from unswipedMovies
+        SwipeService.removeFromUnswipedMovies(title: titleLabel.text)
+        
+        // Update # rated in db
+        numOfSwipes += 1
+        let tempNum = numOfSwipes + (self.jBenzoData?.numOfMoviesRated)!
+        SwipeService.updateNumberOfMoviesRated(count: tempNum)
+        
+
+        titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
+        getRawAndBenzoScores(title: titleLabel.text!)
+
         numberOfSwipesLabel.text = String(numOfSwipes) + " Movies rated in this session"
     }
     
 
 }
 
-//dislikeTapped
-//        print("Dislike **")
+
+
+
+
+
+extension UIView {
+    func fadeTransition(_ duration:CFTimeInterval) {
+        let animation = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name:
+            CAMediaTimingFunctionName.easeInEaseOut)
+        animation.type = CATransitionType.fade
+        animation.duration = duration
+        layer.add(animation, forKey: CATransitionType.fade.rawValue)
+    }
+}
 

@@ -149,7 +149,7 @@ extension FriendJBenzoScoreListViewController: UITableViewDelegate, UITableViewD
         self.tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: false)
         
         
-        showComparisonAlert(title: fMovie.0, message: "\(username): #\(String(userRank+1)), \(String(userScore!))\nmiggy: #\(String(friendRank+1)), \(String(friendScore))")
+        showComparisonAlert(title: fMovie.0, message: "\(self.friend!): #\(String(friendRank+1)), \(String(friendScore))\n\(username): #\(String(userRank+1)), \(String(userScore!))")
 
     
     }

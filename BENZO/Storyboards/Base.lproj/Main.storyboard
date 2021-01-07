@@ -23,20 +23,20 @@
                                 <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieCell1" id="xEt-Mm-tgG" customClass="MovieCell" customModule="BENZO" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xEt-Mm-tgG" id="lfs-gl-eCE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ask-wm-77x">
-                                                    <rect key="frame" x="40" y="11" width="334" height="21.5"/>
+                                                    <rect key="frame" x="40" y="11" width="334" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH3-bA-JX0">
-                                                    <rect key="frame" x="341" y="14" width="33" height="16"/>
+                                                    <rect key="frame" x="341" y="13.5" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" systemColor="systemGreenColor"/>
                                                     <nil key="highlightedColor"/>
@@ -642,33 +642,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RBg-cG-lIQ">
-                                <rect key="frame" x="152.5" y="340" width="109" height="96"/>
+                                <rect key="frame" x="20" y="340" width="374" height="96"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rlz-qf-hw8">
-                                        <rect key="frame" x="3.5" y="0.0" width="102" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rlz-qf-hw8">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cci-gN-sv6">
-                                        <rect key="frame" x="21" y="24" width="67" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre(s)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cci-gN-sv6">
+                                        <rect key="frame" x="0.0" y="24" width="374" height="24"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raw Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw3-2F-szx">
+                                        <rect key="frame" x="0.0" y="48" width="374" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raw Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw3-2F-szx">
-                                        <rect key="frame" x="12" y="48" width="85.5" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BENZO Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHL-41-weH">
+                                        <rect key="frame" x="0.0" y="72" width="374" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BENZO Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHL-41-weH">
-                                        <rect key="frame" x="0.0" y="72" width="109" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" systemColor="systemGreenColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="tw3-2F-szx" secondAttribute="trailing" id="1YI-Qg-wIX"/>
+                                    <constraint firstItem="cci-gN-sv6" firstAttribute="leading" secondItem="RBg-cG-lIQ" secondAttribute="leading" id="H6o-Sl-L3m"/>
+                                    <constraint firstItem="tw3-2F-szx" firstAttribute="leading" secondItem="RBg-cG-lIQ" secondAttribute="leading" id="RSw-0R-zFB"/>
+                                    <constraint firstAttribute="trailing" secondItem="cHL-41-weH" secondAttribute="trailing" id="Wl8-ko-Up7"/>
+                                    <constraint firstItem="cHL-41-weH" firstAttribute="leading" secondItem="RBg-cG-lIQ" secondAttribute="leading" id="Wvv-Mv-20e"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rlz-qf-hw8" secondAttribute="trailing" id="XkM-kM-ewN"/>
+                                    <constraint firstItem="Rlz-qf-hw8" firstAttribute="leading" secondItem="RBg-cG-lIQ" secondAttribute="leading" id="gZ2-v9-dDz"/>
+                                    <constraint firstAttribute="trailing" secondItem="cci-gN-sv6" secondAttribute="trailing" id="ybv-qr-DTc"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Rg4-js-vnr">
                                 <rect key="frame" x="0.0" y="162" width="414" height="660"/>
@@ -773,8 +783,10 @@
                             <constraint firstItem="RBg-cG-lIQ" firstAttribute="centerY" secondItem="pI7-CJ-Cku" secondAttribute="centerY" constant="-60" id="lrL-ft-vyf"/>
                             <constraint firstItem="AUb-wA-f08" firstAttribute="centerX" secondItem="pI7-CJ-Cku" secondAttribute="centerX" id="nLk-J6-y0p"/>
                             <constraint firstItem="IFD-oW-SCy" firstAttribute="leading" secondItem="M4z-hZ-Hsv" secondAttribute="leading" constant="40" id="pbI-Sr-Gnm"/>
+                            <constraint firstItem="RBg-cG-lIQ" firstAttribute="leading" secondItem="M4z-hZ-Hsv" secondAttribute="leading" constant="20" id="ui6-Eu-ass"/>
                             <constraint firstItem="IFD-oW-SCy" firstAttribute="top" secondItem="1qn-zX-rSA" secondAttribute="bottom" constant="20" id="wm8-lt-oLG"/>
                             <constraint firstItem="1qn-zX-rSA" firstAttribute="leading" secondItem="M4z-hZ-Hsv" secondAttribute="leading" id="wpB-Ox-4yp"/>
+                            <constraint firstItem="M4z-hZ-Hsv" firstAttribute="trailing" secondItem="RBg-cG-lIQ" secondAttribute="trailing" constant="20" id="ySK-sn-D71"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Swipe/Tap" prompt="Do you like this movie?" id="tlN-LQ-8q5"/>

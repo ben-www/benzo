@@ -285,6 +285,12 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         if segue.identifier == Constants.Segue.genreCalculator {
             let getGenrePercentagesVC = segue.destination as! GetGenrePercentagesViewController
             getGenrePercentagesVC.genres = self.pickerData
+            
+            for mov in self.data {
+                getGenrePercentagesVC.movies.append(mov.Title!)
+            }
+            
+
         }
         
         if segue.identifier == Constants.Segue.jBenzoSwipe {

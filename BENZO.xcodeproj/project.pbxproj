@@ -46,6 +46,7 @@
 		ED8F7D27257C9B3100D12764 /* DirectorMovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D26257C9B3100D12764 /* DirectorMovieInfoViewController.swift */; };
 		ED8F7D2E257F199C00D12764 /* GetGenrePercentagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D2D257F199C00D12764 /* GetGenrePercentagesViewController.swift */; };
 		ED8F7D362585D16800D12764 /* JBenzoSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7D352585D16800D12764 /* JBenzoSwipeViewController.swift */; };
+		EDA72CF425A783EA0017262B /* SwipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA72CF325A783EA0017262B /* SwipeService.swift */; };
 		EDC2C733259D14880010CB60 /* WatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C732259D14880010CB60 /* WatchData.swift */; };
 		EDC2C736259D1CCC0010CB60 /* WatchDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C735259D1CCC0010CB60 /* WatchDataService.swift */; };
 		EDC2C739259D43BB0010CB60 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C738259D43BB0010CB60 /* WatchlistViewController.swift */; };
@@ -102,6 +103,7 @@
 		ED8F7D26257C9B3100D12764 /* DirectorMovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorMovieInfoViewController.swift; sourceTree = "<group>"; };
 		ED8F7D2D257F199C00D12764 /* GetGenrePercentagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGenrePercentagesViewController.swift; sourceTree = "<group>"; };
 		ED8F7D352585D16800D12764 /* JBenzoSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBenzoSwipeViewController.swift; sourceTree = "<group>"; };
+		EDA72CF325A783EA0017262B /* SwipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeService.swift; sourceTree = "<group>"; };
 		EDC2C732259D14880010CB60 /* WatchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchData.swift; sourceTree = "<group>"; };
 		EDC2C735259D1CCC0010CB60 /* WatchDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataService.swift; sourceTree = "<group>"; };
 		EDC2C738259D43BB0010CB60 /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				ED4ACF4D2592D08700ED36C2 /* JBenzoService.swift */,
 				ED8272D2259A83F80050235E /* LocalBenzoService.swift */,
 				EDC2C735259D1CCC0010CB60 /* WatchDataService.swift */,
+				EDA72CF325A783EA0017262B /* SwipeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				EDC2C7B125A270AD0010CB60 /* FriendListData.swift in Sources */,
 				ED8F7CDF25795FC800D12764 /* Movie.swift in Sources */,
 				ED3DAEBB25A52A5700DB9680 /* FriendActionsViewController.swift in Sources */,
+				EDA72CF425A783EA0017262B /* SwipeService.swift in Sources */,
 				ED053E61257958C10090F78D /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

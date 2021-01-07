@@ -14,6 +14,8 @@ class GetGenrePercentagesViewController: UIViewController {
     var genrePercentages: [String:Double] = [:]
     var questionNum = 1
     
+    var movies = [String]()
+    
 
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var percentageTextField: UITextField!
@@ -69,7 +71,7 @@ class GetGenrePercentagesViewController: UIViewController {
                 self.genrePercentages[self.genreLabel.text!] = Double(self.percentageTextField.text!)
                 
                 // Create Jbenzo DB entry w/ Genre %(s), using userId & self.genrePercentages
-                _ = JBenzoService.createJBenzoEntry(genrePercentages: self.genrePercentages)
+                _ = JBenzoService.createJBenzoEntry(movies: self.movies, genrePercentages: self.genrePercentages)
 
                 self.navigationController?.popToRootViewController(animated: true)
                 let homeVC = (self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeVC))! as HomeViewController
