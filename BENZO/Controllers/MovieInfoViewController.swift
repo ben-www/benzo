@@ -165,8 +165,7 @@ class MovieInfoViewController: UIViewController {
             self.itemAdded()
             WatchDataService.addToWatchlist(title: title)
             self.navigationController?.popViewController(animated: true)
-
-
+            
         }
         
         if ((self.watchedData?.watchlist?.contains((self.movie?.Title)!)) == true) {
@@ -174,22 +173,29 @@ class MovieInfoViewController: UIViewController {
                 self.itemRemoved()
                 WatchDataService.removeFromWatchlist(title: title)
                 self.navigationController?.popViewController(animated: true)
-
-
-
+                
             }
         }
         
 
-        let seendAction = UIAlertAction(title: "+ Already Watched", style: .default) { (action) in
-            self.itemAdded()
+        var seendAction = UIAlertAction(title: "+ Already Watched", style: .default) { (action) in
+            //self.itemAdded()
+            
+            WatchDataService.addToAlreadyWatchedlist(title: title)
+            self.navigationController?.popViewController(animated: true)
 
         }
-
-
-
         
+        if ((self.watchedData?.alreadyWatchedMovies?.contains((self.movie?.Title)!)) == true) {
+            seendAction = UIAlertAction(title: "Remove From Already Watched", style: .default) { (action) in
+                WatchDataService.removeFromAlreadyWatchlist(title: title)
+                self.navigationController?.popViewController(animated: true)
+                
+            }
+        }
         
+
+
         let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
         }
         
@@ -232,7 +238,6 @@ class MovieInfoViewController: UIViewController {
     
     
     @IBAction func addToListTapped(_ sender: Any) {
-        // \(self.movie!.Title!)
         showAddAlert(title: "\(self.movie!.Title!)", message: " Which of the following actions?")
         return
         

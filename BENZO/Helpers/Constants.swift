@@ -54,6 +54,8 @@ struct Constants {
         static let addFriend = "AddFriend"
         static let friendListToActions = "FriendListToActions"
         static let friendJBenzoScoreList = "FriendJBenzoScoreList"
+        static let guessingGame = "GuessingGame"
+        static let alreadyWatchedUser = "AlreadyWatchedUser"
     }
     
 }

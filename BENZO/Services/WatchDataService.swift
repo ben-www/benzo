@@ -112,4 +112,26 @@ class WatchDataService {
         
     }
     
+    
+    static func addToAlreadyWatchedlist(title:String?) {
+        
+        let currentUser = Auth.auth().currentUser!.uid
+        
+        // Get a database reference
+        let db = Firestore.firestore()
+        
+        db.collection("WatchData").document(currentUser).updateData(["alreadyWatchedMovies":FieldValue.arrayUnion([title!])])
+    }
+    
+    static func removeFromAlreadyWatchlist(title:String?) {
+        
+        let currentUser = Auth.auth().currentUser!.uid
+        
+        // Get a database reference
+        let db = Firestore.firestore()
+        
+        db.collection("WatchData").document(currentUser).updateData(["alreadyWatchedMovies":FieldValue.arrayRemove([title!])])
+
+    }
+    
 }

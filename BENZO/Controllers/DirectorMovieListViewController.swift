@@ -54,6 +54,8 @@ class DirectorMovieListViewController: UIViewController {
         if segue.identifier == "dirMovieInfo" {
 
             let dirMovieInfoController = segue.destination as! DirectorMovieInfoViewController
+            
+            dirMovieInfoController.data = self.data
 
             if tableView.indexPathForSelectedRow != nil {
                 // add BENZO overall rating (pass value)

@@ -74,6 +74,12 @@ class ProfileSettingsViewController: UIViewController {
 
         }
         
+        if segue.identifier == Constants.Segue.alreadyWatchedUser {
+
+            let alreadyWatechVC = segue.destination as! AlreadyWatchedViewController
+            alreadyWatechVC.data = self.data
+        }
+        
         
     }
     

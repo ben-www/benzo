@@ -160,13 +160,10 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     
     
     // MARK: MovieData Delgate
-    
     func moviesRetrieved(_ movies: [Movie]) {
         print("Movies: retrieved from the MovieData.")
         self.data = movies
         self.data.sort(by: { $0.BENZO! > $1.BENZO! })
-
-        
     }
 
     

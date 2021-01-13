@@ -77,9 +77,7 @@ class JBenzoSwipeViewController: UIViewController {
         
         titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
         getRawAndBenzoScores(title: titleLabel.text!)
-        
-        //numOfSwipes += 1
-        //numberOfSwipesLabel.text = String(numOfSwipes) + " Movies rated in this session"
+
     }
     
     

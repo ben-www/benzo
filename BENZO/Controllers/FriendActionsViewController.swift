@@ -11,6 +11,7 @@ class FriendActionsViewController: UIViewController {
     
     
     @IBOutlet weak var jBenzoButton: UIButton!
+    @IBOutlet weak var gamesButton: UIButton!
     
     var friend:String?
     var friendId:String?
@@ -36,6 +37,7 @@ class FriendActionsViewController: UIViewController {
             if self.userJBenzoData == nil {
                 self.jBenzoButton.isEnabled = false
             }
+            
             else {
                 let tempDict = self.userJBenzoData?.JBenzoScores
                 self.userMovieList = tempDict!.sorted(by: { $0.value > $1.value })
@@ -47,9 +49,26 @@ class FriendActionsViewController: UIViewController {
             
             self.friendJBenzoData = retrievedData
             
+            
+            if self.friendJBenzoData != nil  {
+                if let count = self.friendJBenzoData?.swipedMovies?.count {
+                    if count < 5 {
+                        self.gamesButton.isEnabled = false
+                        self.gamesButton.alpha = 0.5
+                    }
+                } else {
+                    // Count is nil
+                    self.gamesButton.isEnabled = false
+                    self.gamesButton.alpha = 0.5
+                }
+
+            }
+            
+            
             if self.friendJBenzoData == nil {
                 self.jBenzoButton.isEnabled = false
             }
+
             else {
                 let tempDict = self.friendJBenzoData?.JBenzoScores
                 self.friendMovieList = tempDict!.sorted(by: { $0.value > $1.value })
@@ -59,6 +78,25 @@ class FriendActionsViewController: UIViewController {
         
     }
     
+    
+    
+    
+    // MARK: Alert
+    func showGameIntroAlert(title:String, message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let startAction = UIAlertAction(title: "Start", style: .default) { (action) in
+            self.performSegue(withIdentifier: Constants.Segue.guessingGame, sender: nil)
+
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
+        }
+        
+        alert.addAction(startAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,11 +113,26 @@ class FriendActionsViewController: UIViewController {
 
         }
         
+        if segue.identifier == Constants.Segue.guessingGame {
+            
+
+            let gameVC = segue.destination as! GuessingGameViewController
+            gameVC.friendJBenzoData = self.friendJBenzoData
+
+            
+        }
+        
 
         
     }
 
     
-
+    @IBAction func gamesTapped(_ sender: Any) {
+        
+        // Show Alert Explaining the Game
+        self.showGameIntroAlert(title: "What did '\(self.friend!)' like?", message: "In this guessing game you will be given a random list of 5 movies that were swiped on by '\(self.friend!)', see how well you know your friend.")
+        
+    }
+    
 
 }

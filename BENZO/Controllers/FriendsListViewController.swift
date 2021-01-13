@@ -161,25 +161,7 @@ class FriendsListViewController: UIViewController {
         // Remove from friendRequests for USER
         UserService.removeFriendRequest(friendRequestUsername: self.friendRequestUsername!, friendRequests:(self.friendListData?.friendRequests)!)
 
-        
-        // Update local variables so tableView can reload
-        //
-//        let senderID = self.friendListData?.friendRequests![friendRequestUsername!]
-//
-//        // Add SENDER to self.friendListData.acceptedFriends
-//        self.friendListData?.acceptedFriends?.append(friendRequestUsername!)
-//
-//        // Remove SENDER from self.friendListData.friendRequests
-//        self.friendListData?.friendRequests?.removeValue(forKey: friendRequestUsername!)
-//
-//        // Add SENDER to friendList
-//        self.friendListData?.friendList![friendRequestUsername!] = senderID
-//
-//        // Update Friends
-//        if self.friendListData?.friendList != nil {
-//            self.friends = Array<String>((self.friendListData?.friendList!.keys)!)
-//
-//        }
+
         
         UserService.retrieveFriendListData { (retrievedData) in
             
