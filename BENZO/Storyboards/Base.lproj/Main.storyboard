@@ -23,20 +23,20 @@
                                 <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieCell1" id="xEt-Mm-tgG" customClass="MovieCell" customModule="BENZO" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xEt-Mm-tgG" id="lfs-gl-eCE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ask-wm-77x">
-                                                    <rect key="frame" x="40" y="11" width="334" height="21.5"/>
+                                                    <rect key="frame" x="40" y="11" width="334" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH3-bA-JX0">
-                                                    <rect key="frame" x="341" y="14" width="33" height="16"/>
+                                                    <rect key="frame" x="341" y="13.5" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" systemColor="systemGreenColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1184,7 +1184,7 @@
                                         <rect key="frame" x="0.0" y="30" width="97" height="30"/>
                                         <state key="normal" title="Watch History"/>
                                         <connections>
-                                            <segue destination="CQt-MJ-g1m" kind="presentation" id="Z5S-dH-Lva"/>
+                                            <segue destination="CQt-MJ-g1m" kind="presentation" identifier="AlreadyWatchFriend" id="xBv-7j-BSf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P95-vV-Ulf">
@@ -1322,7 +1322,7 @@
                                 <rect key="frame" x="50" y="100" width="314" height="658"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqv-bQ-zlC">
@@ -1344,6 +1344,10 @@
                             <constraint firstItem="mqv-bQ-zlC" firstAttribute="top" secondItem="Vai-U3-qJZ" secondAttribute="top" constant="20" id="xA3-Hd-goR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="b9x-fM-hFr" id="huw-aS-Elr"/>
+                        <outlet property="titleLabel" destination="mqv-bQ-zlC" id="umg-Ac-z5C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1M-NK-oXE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1775,7 +1779,7 @@
                                             <color key="titleColor" systemColor="systemPurpleColor"/>
                                         </state>
                                         <connections>
-                                            <segue destination="r6Y-gY-G5b" kind="show" id="RLB-Nd-Vof"/>
+                                            <segue destination="r6Y-gY-G5b" kind="show" identifier="FriendListView" id="RLB-Nd-Vof"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vzs-Q0-4yR">
@@ -1916,7 +1920,7 @@
                                 <rect key="frame" x="50" y="100" width="314" height="658"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already Watched Movies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grf-R0-0hq">

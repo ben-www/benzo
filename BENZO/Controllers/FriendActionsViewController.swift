@@ -16,6 +16,8 @@ class FriendActionsViewController: UIViewController {
     var friend:String?
     var friendId:String?
     
+    var data = [Movie]()
+
     var friendJBenzoData:JBenzoData?
     var userJBenzoData:JBenzoData?
     
@@ -115,17 +117,28 @@ class FriendActionsViewController: UIViewController {
         
         if segue.identifier == Constants.Segue.guessingGame {
             
-
             let gameVC = segue.destination as! GuessingGameViewController
             gameVC.friendJBenzoData = self.friendJBenzoData
 
             
         }
-        
+
+        if segue.identifier == Constants.Segue.alreadyWatchFriend {
+            
+            let watchHistoryVC = segue.destination as! FriendWatchHistoryViewController
+            watchHistoryVC.data = self.data
+            watchHistoryVC.friend = self.friend
+            watchHistoryVC.friendId = self.friendId
+
+            
+        }
 
         
     }
 
+    
+    @IBAction func watchHistoryTapped(_ sender: Any) {
+    }
     
     @IBAction func gamesTapped(_ sender: Any) {
         

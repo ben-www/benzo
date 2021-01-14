@@ -19,7 +19,7 @@ class FriendsListViewController: UIViewController {
     var blurEffectView = UIVisualEffectView()
     var pickerData: [String] = [String]()
 
-    
+    var data = [Movie]()
     
     var friends = [String]()
     var friendListData:FriendListData?
@@ -248,6 +248,7 @@ class FriendsListViewController: UIViewController {
             
             friendActionsVC.friend =  friendTapped
             friendActionsVC.friendId =  self.friendListData?.friendList![friendTapped]
+            friendActionsVC.data = self.data
 
         }
         

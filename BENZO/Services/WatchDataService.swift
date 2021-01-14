@@ -87,6 +87,50 @@ class WatchDataService {
     }
     
     
+    static func retrieveFriendWatchData(data:[Movie], userId:String, completion: @escaping (WatchData?) -> Void) {
+        
+        // Check that there's a user logged in
+        if Auth.auth().currentUser == nil {
+            return
+        }
+        
+        // Get the user id of the current User
+        //let userId = LocalStorageService.loadUserID()
+        
+        // Get a database reference
+        let db = Firestore.firestore()
+        
+        
+
+        db.collection("WatchData").document(userId).getDocument { (snapshot, error) in
+            // Check for errors
+            if error != nil || snapshot == nil {
+                // Something wrong happend
+                return
+            }
+
+            if let profile = snapshot!.data() {
+                // Profile was found, create NEW USER
+                var watchData = WatchData()
+
+                watchData.byId = profile["byId"] as? String
+                watchData.byUsername = profile["byUsername"] as? String
+                watchData.watchlist = profile["watchlist"] as? Array<String>
+                watchData.alreadyWatchedMovies = profile["alreadyWatchedMovies"] as? Array<String>
+
+
+                completion(watchData)
+                // Return the User
+            }
+            else {
+                // Couldn't get profile, NO PROFILE
+                // return nil
+                completion(nil)
+            }
+        }
+        
+    }
+    
 
     static func addToWatchlist(title:String?) {
         

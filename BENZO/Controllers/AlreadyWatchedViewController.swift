@@ -21,7 +21,6 @@ class AlreadyWatchedViewController: UIViewController {
         super.viewDidLoad()
         
         
-        // Check if movie in Watchlist/Already Watched
         WatchDataService.retrieveWatchData(data: self.data) { (retrievedData) in
             
             // Get the Users WatchedData

@@ -79,7 +79,12 @@ class ProfileSettingsViewController: UIViewController {
             let alreadyWatechVC = segue.destination as! AlreadyWatchedViewController
             alreadyWatechVC.data = self.data
         }
-        
+
+        if segue.identifier == Constants.Segue.friendListView {
+
+            let friendListVC = segue.destination as! FriendsListViewController
+            friendListVC.data = self.data
+        }
         
     }
     
