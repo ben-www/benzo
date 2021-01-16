@@ -10,13 +10,13 @@ import UIKit
 class DirectorMovieListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var benzoScoreLabel: UILabel!
     
     var directorName:String?
     var data = [Movie]()
     var directorMovies = [Movie]()
     
+    var jBenzoData:JBenzoData?
     
     
     override func viewDidLoad() {
@@ -27,9 +27,26 @@ class DirectorMovieListViewController: UIViewController {
         tableView.dataSource = self
 
         // Get the Average Benzo score for Dir,  MOVIE LIST pass in from last VC
-        let avg = getAvgBENZO()
+        var avg = getAvgBENZO()
         benzoScoreLabel.text = String(avg)
         
+        self.directorMovies.sort(by: { $0.BENZO! > $1.BENZO! })
+        
+        
+        JBenzoService.retrieveJBenzoData(data: self.data) { (retrievedData) in
+            self.jBenzoData = retrievedData
+            
+            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+                self.directorMovies.sort(by: { $0.jBENZO! > $1.jBENZO! })
+                avg = self.getAvgBENZO()
+                self.benzoScoreLabel.text = String(avg)
+                self.benzoScoreLabel.textColor = .systemPurple
+
+            }
+            self.tableView.reloadData()
+
+        }
+
 
     }
     
@@ -42,6 +59,13 @@ class DirectorMovieListViewController: UIViewController {
         
         for mov in self.directorMovies {
             avg += mov.BENZO!
+        }
+        
+        if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+            avg = 0.0
+            for mov in self.directorMovies {
+                avg += mov.jBENZO!
+            }
         }
         
         return avg / Double(self.directorMovies.count)
@@ -94,7 +118,13 @@ extension DirectorMovieListViewController: UITableViewDelegate, UITableViewDataS
         let movie = self.directorMovies[indexPath.row]
         
         cell?.displayMovieTitle(title:movie.Title!, rank: String(movie.BENZO!))
-        //self.rank += 1
+        
+        if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+            let avg = round(10000.0 * movie.jBENZO!) / 10000.0
+            cell?.displayMovieTitle(title:movie.Title!, rank: String(avg), jBenzo: true)
+
+        }
+        
         return cell!
         
     }

@@ -22,6 +22,9 @@ class FriendsListViewController: UIViewController {
     var data = [Movie]()
     
     var friends = [String]()
+    var foundFriends = [String]()
+    var searching = false
+
     var friendListData:FriendListData?
     var friendRequestUsername:String?
 
@@ -38,6 +41,8 @@ class FriendsListViewController: UIViewController {
         self.picker.delegate = self
         self.picker.dataSource = self
         
+        
+        //self.searchBar.alpha = 0
         
         // Set button image
         
@@ -244,7 +249,11 @@ class FriendsListViewController: UIViewController {
             
             let friendActionsVC = segue.destination as! FriendActionsViewController
             
-            let friendTapped = self.friends[tableView.indexPathForSelectedRow!.row]
+            var friendTapped = self.friends[tableView.indexPathForSelectedRow!.row]
+            
+            if searching {
+                friendTapped = self.foundFriends[tableView.indexPathForSelectedRow!.row]
+            }
             
             friendActionsVC.friend =  friendTapped
             friendActionsVC.friendId =  self.friendListData?.friendList![friendTapped]
@@ -264,10 +273,14 @@ class FriendsListViewController: UIViewController {
 extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searching {
+            return self.foundFriends.count
+        }
         if self.friendListData?.friendList != nil {
             return (self.friendListData?.friendList?.count)!
 
         }
+
         return 0
     }
     
@@ -277,7 +290,10 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
         print("section: \(indexPath.section)")
         print("row: \(indexPath.row)")
         
-        let user = self.friends[indexPath.row]
+        var user = self.friends[indexPath.row]
+        if searching {
+            user = self.foundFriends[indexPath.row]
+        }
         
         if ((self.friendListData?.acceptedFriends?.contains(user))!) {
             self.performSegue(withIdentifier: Constants.Segue.friendListToActions, sender: nil)
@@ -292,7 +308,12 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.friendCell , for: indexPath) as? FriendCell
         
-        let user = self.friends[indexPath.row]
+        var user = self.friends[indexPath.row]
+        
+        if searching {
+            user = self.foundFriends[indexPath.row]
+        }
+        
         cell?.displayUsername(username: user)
 
         if ((self.friendListData?.acceptedFriends?.contains(user))!) {
@@ -304,22 +325,31 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
         return cell!
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete) {
-            self.showDeleteAlert(title: "Remove Friend", message: "Would you like to remove '\(self.friends[indexPath.row])' from your Friends List?")
-            
-            // Remove from DB
-            
-            
-            tableView.reloadData()
-        }
-    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if (editingStyle == .delete) {
+//            self.showDeleteAlert(title: "Remove Friend", message: "Would you like to remove '\(self.friends[indexPath.row])' from your Friends List?")
+//
+//            // Remove from DB
+//
+//            tableView.reloadData()
+//        }
+//    }
     
     
 }
 
 // MARK: UISearchBarDelegate
 extension FriendsListViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        self.foundFriends = [String]()
+        self.foundFriends = self.friends.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
+        searching = true
+        tableView.reloadData()
+        
+        
+    }
 
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -366,3 +396,5 @@ extension FriendsListViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     
 }
+
+

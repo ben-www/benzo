@@ -9,7 +9,8 @@ import UIKit
 
 class YearMovieListViewController: UIViewController {
     
-    
+    var jBenzoData:JBenzoData?
+
     var year:String?
     var data = [Movie]()
     var yearMovies = [Movie]()
@@ -24,9 +25,47 @@ class YearMovieListViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
         benzoScoreLabel.text = String(avg!)
+        
+        self.yearMovies.sort(by: { $0.BENZO! > $1.BENZO! })
+        
+        JBenzoService.retrieveJBenzoData(data: self.data) { (retrievedData) in
+            self.jBenzoData = retrievedData
+            
+            if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+                self.yearMovies.sort(by: { $0.jBENZO! > $1.jBENZO! })
+                let avg = self.getAvgBENZO()
+                self.benzoScoreLabel.text = String(avg)
+                self.benzoScoreLabel.textColor = .systemPurple
+
+            }
+            self.tableView.reloadData()
+
+        }
+
 
     }
+    
+    
+    func getAvgBENZO() -> Double {
+        
+        var avg = 0.0
+        
+        for mov in self.yearMovies {
+            avg += mov.BENZO!
+        }
+        
+        if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+            avg = 0.0
+            for mov in self.yearMovies {
+                avg += mov.jBENZO!
+            }
+        }
+        
+        return avg / Double(self.yearMovies.count)
+    }
+
     
     
     @IBAction func homeTapped(_ sender: Any) {
@@ -71,7 +110,12 @@ extension YearMovieListViewController: UITableViewDelegate, UITableViewDataSourc
         let movie = self.yearMovies[indexPath.row]
         
         cell?.displayMovieTitle(title:movie.Title!, rank: String(movie.BENZO!))
-        //self.rank += 1
+        
+        if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+            let avg = round(10000.0 * movie.jBENZO!) / 10000.0
+            cell?.displayMovieTitle(title:movie.Title!, rank: String(avg), jBenzo: true)
+
+        }
         return cell!
         
     }

@@ -69,6 +69,8 @@ class FriendActionsViewController: UIViewController {
             
             if self.friendJBenzoData == nil {
                 self.jBenzoButton.isEnabled = false
+                self.gamesButton.isEnabled = false
+                self.gamesButton.alpha = 0.5
             }
 
             else {

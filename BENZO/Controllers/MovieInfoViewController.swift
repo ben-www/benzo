@@ -48,9 +48,16 @@ class MovieInfoViewController: UIViewController {
 //        tableView.dataSource = self
         
         jBenzoScore.alpha = 0
+        thumbsUpButton.alpha = 0
+        thumbsDownButton.alpha = 0
+        
         if self.movie?.jBENZO != nil  {
             jBenzoScore.alpha = 1
             jBenzoScore.text = "\(movie!.jBENZO!)"
+            
+            thumbsUpButton.alpha = 1
+            thumbsDownButton.alpha = 1
+            
             
             }
         

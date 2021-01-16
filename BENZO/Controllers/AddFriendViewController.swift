@@ -137,7 +137,7 @@ extension AddFriendViewController: UITableViewDelegate, UITableViewDataSource {
             return self.foundUsers.count
         }
         else {
-            return self.users.count
+            return self.foundUsers.count
 
         }
         
