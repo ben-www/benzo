@@ -11,8 +11,9 @@ import FirebaseAuth
 class HomeViewController: UIViewController, MovieDataProtocol {
 
     
-    @IBOutlet weak var profileButton: UIButton!
+    @IBOutlet weak var eyeButton: UIButton!
     @IBOutlet weak var JBENZObutton: UIButton!
+    @IBOutlet weak var profileButton: UIButton!
     @IBOutlet var popoverView: UIView!
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
@@ -24,7 +25,7 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     var searching = false
     
     var jBenzoData:JBenzoData?
-    var watchData:WatchData?
+    var watchedData:WatchData?
     var friendListData:FriendListData?
 
     
@@ -56,9 +57,6 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         profileButton.layer.shadowOpacity = 1.0
         profileButton.layer.shadowRadius = 3
 
-        
-        
-        
         addRefreshControl()
 
         self.popoverView.layer.cornerRadius = 24
@@ -72,7 +70,8 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         blurEffectView.frame = self.view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 
-        
+        self.eyeButton.alpha = 0
+
         
         movieData.delegate = self
         
@@ -93,14 +92,14 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         JBenzoService.retrieveJBenzoData(data: self.data) { (retrievedData) in
             self.jBenzoData = retrievedData
             self.data.sort(by: { $0.BENZO! > $1.BENZO! })
-
             
             
             // Has and show should have different if Statments ***!!!
             
             if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil){
                 for (index, mov) in self.data.enumerated() {
-                    
+                    self.eyeButton.alpha = 1
+
                     let title = mov.Title
                     self.data[index].jBENZO = self.jBenzoData?.JBenzoScores![title!]
                 }
@@ -120,6 +119,45 @@ class HomeViewController: UIViewController, MovieDataProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         print("Works")
+        
+        if self.eyeButton.currentImage == UIImage(systemName: "eye.slash.fill") {
+            WatchDataService.retrieveWatchData(data: self.data) { (retrievedData) in
+
+                // Get the Users WatchedData
+                self.watchedData = retrievedData
+
+                // If User doesn't have WatedData
+                if self.watchedData == nil {
+                    self.watchedData = WatchDataService.createWatchDataEntry()
+                }
+                else {
+                    var temp = [Int]()
+                    //  if self.watchedData != nil
+                    for (index,mov) in self.data.enumerated() {
+                        if self.watchedData?.alreadyWatchedMovies?.contains(mov.Title!) ?? false {
+                            temp.append(index)
+                        }
+                    }
+
+                    temp.sort(by: { $1 < $0 })
+                    for indx in temp {
+                        self.data.remove(at: indx)
+                    }
+
+                }
+
+                if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+                    self.data.sort(by: { $0.jBENZO! > $1.jBENZO! })
+
+                }
+
+
+                self.tableView.reloadData()
+
+            }
+            
+        }
+
         
         JBenzoService.retrieveJBenzoData(data: self.data) { (retrievedData) in
             self.jBenzoData = retrievedData
@@ -340,6 +378,10 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         
     }
     
+    func removeSeenMoviesLocal() {
+        
+    }
+    
     
     // MARK: J Benzo Toggle Msg
     func showToggleAlert(title:String, message:String) {
@@ -408,7 +450,7 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         
     }
     
-
+    
     // MARK: J Benzo Tapped
     @IBAction func JBENZOtapped(_ sender: Any) {
         if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!))  {
@@ -427,10 +469,114 @@ class HomeViewController: UIViewController, MovieDataProtocol {
         if self.jBenzoData == nil {
             self.performSegue(withIdentifier: Constants.Segue.genreCalculator, sender: nil)
         }
-
-        
     }
     
+    
+    
+    func removeSeenAlert(title:String, message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+            
+            if self.eyeButton.currentImage == UIImage(systemName: "eye.slash.fill") {
+                self.eyeButton.setImage(UIImage(systemName: "eye"), for: .normal)
+                // Turned Off, show ALL Movies
+                self.movieData.getMovieData()
+                
+                JBenzoService.retrieveJBenzoData(data: self.data) { (retrievedData) in
+                    self.jBenzoData = retrievedData
+                    self.data.sort(by: { $0.BENZO! > $1.BENZO! })
+
+                    if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+
+                        for (index, mov) in self.data.enumerated() {
+                            
+                            let title = mov.Title
+                            self.data[index].jBENZO = self.jBenzoData?.JBenzoScores![title!]
+                        }
+                        
+                        self.data.sort(by: { $0.jBENZO! > $1.jBENZO! })
+                        //self.JBENZObutton.setImage(UIImage(systemName: "j.circle.fill"), for: .normal)
+                    }
+                    
+                    self.tableView.reloadData()
+                    
+                }
+
+
+
+            }
+            else {
+                // If "eye", Turned ON, remove Seen Movies
+                self.eyeButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+                WatchDataService.retrieveWatchData(data: self.data) { (retrievedData) in
+                    
+                    // Get the Users WatchedData
+                    self.watchedData = retrievedData
+                    
+                    // If User doesn't have WatedData
+                    if self.watchedData == nil {
+                        self.watchedData = WatchDataService.createWatchDataEntry()
+                    }
+                    else {
+                        var temp = [Int]()
+                        //  if self.watchedData != nil
+                        for (index,mov) in self.data.enumerated() {
+                            if self.watchedData?.alreadyWatchedMovies?.contains(mov.Title!) ?? false {
+                                temp.append(index)
+                            }
+                        }
+                        
+                        temp.sort(by: { $1 < $0 })
+                        for indx in temp {
+                            self.data.remove(at: indx)
+                        }
+                        
+                    }
+                    
+                    if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
+                        self.data.sort(by: { $0.jBENZO! > $1.jBENZO! })
+
+                    }
+                    
+                    
+                    self.tableView.reloadData()
+    
+                }
+            }
+
+        }
+
+        let noAction = UIAlertAction(title: "No", style: .default) { (action) in
+        }
+        
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+
+    
+    @IBAction func removeSeenMoviesTapped(_ sender: Any) {
+        
+        if self.eyeButton.currentImage == UIImage(systemName: "eye") {
+            
+            // All Movies ON
+            removeSeenAlert(title: "Hide 'Watched Movies'", message: "Would you like to ONLY show movies you haven't seen?")
+            
+
+        }
+        if self.eyeButton.currentImage == UIImage(systemName: "eye.slash.fill") {
+            
+            // All Movies OFF: Already Watched NOT displayed!
+            removeSeenAlert(title: "Show 'Watched Movies'", message: "Would you like to show ALL movies?")
+
+        }
+    }
+    
+    
+
     
     
 

@@ -39,7 +39,7 @@ class FriendJBenzoScoreListViewController: UIViewController {
     func showComparisonAlert(title:String, message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        var okAction = UIAlertAction(title: "Dismiss", style: .default) { (action) in
+        let okAction = UIAlertAction(title: "Dismiss", style: .default) { (action) in
         }
         
         alert.addAction(okAction)

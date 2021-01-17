@@ -102,13 +102,23 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
-                            <barButtonItem style="plain" id="65U-ra-MqO">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QGY-Sh-Bnf">
-                                    <rect key="frame" x="89" y="45" width="74" height="22"/>
+                            <barButtonItem style="plain" id="0az-nU-EA5">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="acZ-iv-sjC">
+                                    <rect key="frame" x="89" y="45" width="26" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="eye" catalog="system"/>
+                                    <connections>
+                                        <action selector="removeSeenMoviesTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Rz-Yq-URJ"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="huO-Sh-es5">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="C8U-8F-ruW">
+                                    <rect key="frame" x="123" y="45" width="20" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="j.circle" catalog="system"/>
                                     <connections>
-                                        <action selector="JBENZOtapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ct9-cm-ZdM"/>
+                                        <action selector="JBENZOtapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IRq-Ox-jPv"/>
                                     </connections>
                                 </button>
                             </barButtonItem>
@@ -127,7 +137,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="JBENZObutton" destination="QGY-Sh-Bnf" id="VCG-Me-UaY"/>
+                        <outlet property="JBENZObutton" destination="C8U-8F-ruW" id="4UA-ZX-prG"/>
+                        <outlet property="eyeButton" destination="acZ-iv-sjC" id="s46-oQ-axM"/>
                         <outlet property="picker" destination="91Y-dL-mvP" id="DaL-Q2-shP"/>
                         <outlet property="popoverView" destination="0KO-ng-J80" id="JY5-Oc-02X"/>
                         <outlet property="profileButton" destination="oYK-U8-o1z" id="wFL-ux-cnV"/>
@@ -1996,6 +2007,7 @@
         <image name="arrow.left.and.right.circle.fill" catalog="system" width="128" height="121"/>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
+        <image name="eye" catalog="system" width="128" height="81"/>
         <image name="gamecontroller" catalog="system" width="128" height="80"/>
         <image name="hand.thumbsdown" catalog="system" width="128" height="128"/>
         <image name="hand.thumbsup" catalog="system" width="128" height="128"/>
