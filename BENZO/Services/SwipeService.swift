@@ -49,6 +49,16 @@ class SwipeService {
         db.collection("JBenzoUserData").document(currentUser).updateData(["numOfMoviesRated":count!])
     }
     
+    static func updateGPs( genrePercentages:[String:Double] ) {
+        
+        let currentUser = Auth.auth().currentUser!.uid
+        
+        // Get a database reference
+        let db = Firestore.firestore()
+        
+        //db.collection("SwipeData").document(currentUser).updateData(["genrePercentages":])
+    }
+    
     
     
     

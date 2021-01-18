@@ -780,7 +780,6 @@
                             <constraint firstItem="M4z-hZ-Hsv" firstAttribute="trailing" secondItem="sxH-rC-que" secondAttribute="trailing" constant="40" id="7gr-sz-Sa3"/>
                             <constraint firstItem="Rg4-js-vnr" firstAttribute="top" secondItem="M4z-hZ-Hsv" secondAttribute="top" constant="40" id="Jp4-Oo-Dg6"/>
                             <constraint firstItem="AUb-wA-f08" firstAttribute="top" secondItem="y2S-ie-VMy" secondAttribute="bottom" constant="20" id="L5r-Ek-7qS"/>
-                            <constraint firstItem="Rg4-js-vnr" firstAttribute="centerY" secondItem="pI7-CJ-Cku" secondAttribute="centerY" id="NN4-2H-j2A"/>
                             <constraint firstItem="y2S-ie-VMy" firstAttribute="centerX" secondItem="pI7-CJ-Cku" secondAttribute="centerX" id="NrE-zn-ijj"/>
                             <constraint firstItem="M4z-hZ-Hsv" firstAttribute="bottom" secondItem="Rg4-js-vnr" secondAttribute="bottom" constant="40" id="QPN-KG-0jb"/>
                             <constraint firstItem="1qn-zX-rSA" firstAttribute="top" secondItem="RBg-cG-lIQ" secondAttribute="bottom" constant="40" id="aK3-FN-nx4"/>
