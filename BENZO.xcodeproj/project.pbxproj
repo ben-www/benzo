@@ -35,6 +35,7 @@
 		ED8272D6259B9E670050235E /* YearData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8272D5259B9E670050235E /* YearData.swift */; };
 		ED8272D9259BC4D40050235E /* YearMovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8272D8259BC4D40050235E /* YearMovieListViewController.swift */; };
 		ED8272DC259BC52B0050235E /* YearMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8272DB259BC52B0050235E /* YearMovieCell.swift */; };
+		ED886C5025B5DBDA00817328 /* SwipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED886C4F25B5DBDA00817328 /* SwipeData.swift */; };
 		ED8F7CDF25795FC800D12764 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7CDE25795FC800D12764 /* Movie.swift */; };
 		ED8F7CE62579627600D12764 /* moviesJson.json in Resources */ = {isa = PBXBuildFile; fileRef = ED8F7CE52579627600D12764 /* moviesJson.json */; };
 		ED8F7CE92579637B00D12764 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F7CE82579637B00D12764 /* MovieData.swift */; };
@@ -95,6 +96,7 @@
 		ED8272D5259B9E670050235E /* YearData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearData.swift; sourceTree = "<group>"; };
 		ED8272D8259BC4D40050235E /* YearMovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearMovieListViewController.swift; sourceTree = "<group>"; };
 		ED8272DB259BC52B0050235E /* YearMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearMovieCell.swift; sourceTree = "<group>"; };
+		ED886C4F25B5DBDA00817328 /* SwipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeData.swift; sourceTree = "<group>"; };
 		ED8F7CDE25795FC800D12764 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		ED8F7CE52579627600D12764 /* moviesJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moviesJson.json; sourceTree = "<group>"; };
 		ED8F7CE82579637B00D12764 /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				ED8272D5259B9E670050235E /* YearData.swift */,
 				EDC2C732259D14880010CB60 /* WatchData.swift */,
 				EDC2C7B025A270AD0010CB60 /* FriendListData.swift */,
+				ED886C4F25B5DBDA00817328 /* SwipeData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				ED3DAEBE25A6565700DB9680 /* FriendJBenzoScoreListViewController.swift in Sources */,
 				EDC2C7B125A270AD0010CB60 /* FriendListData.swift in Sources */,
 				ED8F7CDF25795FC800D12764 /* Movie.swift in Sources */,
+				ED886C5025B5DBDA00817328 /* SwipeData.swift in Sources */,
 				ED3DAEBB25A52A5700DB9680 /* FriendActionsViewController.swift in Sources */,
 				EDA72CF425A783EA0017262B /* SwipeService.swift in Sources */,
 				ED053E61257958C10090F78D /* HomeViewController.swift in Sources */,

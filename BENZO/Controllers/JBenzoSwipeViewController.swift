@@ -20,6 +20,8 @@ class JBenzoSwipeViewController: UIViewController {
     var genres: [String] = [String]()
     var jBenzoData:JBenzoData?
 
+    var swipeData:SwipeData?
+
     
     var movIndex = 0
     var numOfSwipes = 0
@@ -38,6 +40,20 @@ class JBenzoSwipeViewController: UIViewController {
         }
 
         numberOfSwipesLabel.text = "(#) Movies rated in this session"
+        
+        SwipeService.retrieveSwipeData() { (retrievedData) in
+            
+            self.swipeData = retrievedData
+            
+            // If User doesn't have
+            if self.swipeData == nil {
+                self.swipeData = SwipeService.createSwipeDataEntry()
+            }
+            
+
+        }
+        
+        
     }
     
     
@@ -67,6 +83,10 @@ class JBenzoSwipeViewController: UIViewController {
 
         
 
+    }
+    
+    func checkForThreshold() {
+        
     }
     
     
@@ -112,7 +132,7 @@ class JBenzoSwipeViewController: UIViewController {
         numOfSwipes += 1
         let tempNum = numOfSwipes + (self.jBenzoData?.numOfMoviesRated)!
         SwipeService.updateNumberOfMoviesRated(count: tempNum)
-        
+        checkForThreshold()
         
         // Change Info(Movie) Displayed
         titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
@@ -138,7 +158,8 @@ class JBenzoSwipeViewController: UIViewController {
         numOfSwipes += 1
         let tempNum = numOfSwipes + (self.jBenzoData?.numOfMoviesRated)!
         SwipeService.updateNumberOfMoviesRated(count: tempNum)
-        
+        checkForThreshold()
+
 
         titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
         getRawAndBenzoScores(title: titleLabel.text!)
@@ -164,8 +185,7 @@ class JBenzoSwipeViewController: UIViewController {
         numOfSwipes += 1
         let tempNum = numOfSwipes + (self.jBenzoData?.numOfMoviesRated)!
         SwipeService.updateNumberOfMoviesRated(count: tempNum)
-        
-        // Update Local Variables
+        checkForThreshold()
         
         
         titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
@@ -189,7 +209,8 @@ class JBenzoSwipeViewController: UIViewController {
         numOfSwipes += 1
         let tempNum = numOfSwipes + (self.jBenzoData?.numOfMoviesRated)!
         SwipeService.updateNumberOfMoviesRated(count: tempNum)
-        
+        checkForThreshold()
+
 
         titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
         getRawAndBenzoScores(title: titleLabel.text!)
