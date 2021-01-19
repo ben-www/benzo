@@ -1267,7 +1267,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09S-cR-1sK">
-                                                    <rect key="frame" x="40" y="11.5" width="334" height="21"/>
+                                                    <rect key="frame" x="40" y="11.5" width="274" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1282,7 +1282,7 @@
                                             <constraints>
                                                 <constraint firstItem="ONj-xx-SfF" firstAttribute="centerY" secondItem="hYn-Nl-gty" secondAttribute="centerY" id="Pjh-0M-JwX"/>
                                                 <constraint firstItem="09S-cR-1sK" firstAttribute="leading" secondItem="hYn-Nl-gty" secondAttribute="leadingMargin" constant="20" id="Teg-WD-Qi5"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="09S-cR-1sK" secondAttribute="trailing" constant="20" id="VGB-5i-ykg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="09S-cR-1sK" secondAttribute="trailing" constant="80" id="VGB-5i-ykg"/>
                                                 <constraint firstItem="09S-cR-1sK" firstAttribute="centerY" secondItem="hYn-Nl-gty" secondAttribute="centerY" id="nGj-zV-oKz"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ONj-xx-SfF" secondAttribute="trailing" constant="20" id="zWm-o6-m5y"/>
                                             </constraints>

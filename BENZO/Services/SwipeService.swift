@@ -62,7 +62,7 @@ class SwipeService {
     
     
     
-    static func createSwipeDataEntry() -> SwipeData {
+    static func createSwipeDataEntry(OGgpS: [String:Double]) -> SwipeData {
         
         var swipeData = SwipeData()
                 
@@ -77,7 +77,7 @@ class SwipeService {
         // Set metaData
         metaData["byId"] = currentUser
         metaData["byUsername"] = username
-        metaData["genrePercentages"] = [String:Double]()
+        metaData["genrePercentages"] = OGgpS
 
 
 
@@ -133,6 +133,13 @@ class SwipeService {
         }
 
     }
+    
+    
+    
+    
+    // MARK: UPDATE SCORES ( J Benzo )
+    
+    
 
     
     

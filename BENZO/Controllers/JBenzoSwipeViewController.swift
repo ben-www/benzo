@@ -41,15 +41,14 @@ class JBenzoSwipeViewController: UIViewController {
 
         numberOfSwipesLabel.text = "(#) Movies rated in this session"
         
-        getSwipeGPs()
-
         SwipeService.retrieveSwipeData() { (retrievedData) in
             
             self.swipeData = retrievedData
-            
+            self.checkForThresholds()
+
             // If User doesn't have
             if self.swipeData == nil {
-                self.swipeData = SwipeService.createSwipeDataEntry()
+                self.swipeData = SwipeService.createSwipeDataEntry(OGgpS: (self.jBenzoData?.genrePercentages)!)
             }
             
 
@@ -87,31 +86,78 @@ class JBenzoSwipeViewController: UIViewController {
 
     }
     
-    func checkForThreshold() {
-        getSwipeGPs()
+
+    
+    func checkForThresholds() {
         
-//        switch self.numOfSwipes {
-//
-//        case 15:
-//            getSwipeGPs()
-//
-//        case 50:
-//            getSwipeGPs()
-//
-//        case 75:
-//            getSwipeGPs()
-//
-//        case 100:
-//            getSwipeGPs()
-//
-//        default:
-//            return
-//        }
-        
+        let swipeNum = numOfSwipes + (self.jBenzoData?.numOfMoviesRated)!
+            
+        if swipeNum == 25 || swipeNum == 51 || swipeNum == 75 || swipeNum == 100 || swipeNum == 150 || swipeNum == 200 {
+            
+            updateJBScores(swipeNum: swipeNum)
+        }
     }
     
     
-    func getSwipeGPs() {
+    
+    func updateJBScores(swipeNum:Int) {
+        
+        let swipeScores = getSwipeGPs()
+        let inputScores = swipeData?.genrePercentages
+        
+        //let allGPs = Array<String>((self.jBenzoData?.genrePercentages!.keys)!)
+
+        var newScores = [String:Double]()
+
+        
+        var test = 0
+        
+        for (genre,score) in inputScores! {
+            test += 1
+            
+            if let genreSwipeScore = swipeScores[genre] {
+                //print("Genre:",genre,score, genreSwipeScore)
+
+                if swipeNum == 51 {
+                    // 80,20
+                    let newScore = (score)*(0.8) + (genreSwipeScore)*(0.2)
+                    print(test,". NEW:",genre,newScore)
+                    //print()
+                    
+                }
+                else if swipeNum == 50 {
+                    // 70,30
+                    
+                }
+                else if swipeNum == 75 {
+                    // 60,40
+                    
+                }
+                else if swipeNum == 100 {
+                    // 50,50
+                    
+                }
+                else if swipeNum == 150 {
+                    // 30,70
+                    
+                }
+                else if swipeNum == 250 {
+                    // 20,80
+                    
+                }
+                
+            } else {
+                print(test,". OLD:",genre, score)
+
+            }
+            
+
+            
+        }
+        
+    }
+    
+    func getSwipeGPs() -> [String: Double] {
         // For Movies in swiped movies, Get Genres and KEEP tally
         var gpDenominators = [String: Int]()
         var gpNominators = [String: Int]()
@@ -142,8 +188,8 @@ class JBenzoSwipeViewController: UIViewController {
         gpDenominators.removeValue(forKey: "")
         gpNominators.removeValue(forKey: "")
 
-        print(gpDenominators)
-        print(gpNominators)
+//        print(gpDenominators)
+//        print(gpNominators)
         
         
         // Find Like % for each Genre
@@ -154,14 +200,13 @@ class JBenzoSwipeViewController: UIViewController {
                 let deNom = v
                 
                 let score = (Double(nom) / Double(deNom)) * 100
-                print(k, "Swipe SCORE:",score,nom,"/",deNom)
+                
+                gpFinal[k] = score
+//                print(k, "SwipeSCORE:",score, "\(nom)/\(deNom)")
             }
         }
         
-            
-        // Avg with JBenzoData.genrePercentages
-        
-        // Update db
+        return gpFinal
     }
     
     
@@ -210,7 +255,8 @@ class JBenzoSwipeViewController: UIViewController {
         
         // Add to local vars
         self.jBenzoData?.swipedMovies![titleLabel.text!] = "dislike"
-        checkForThreshold()
+        
+        checkForThresholds()
         
         // Change Info(Movie) Displayed
         titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
@@ -239,7 +285,8 @@ class JBenzoSwipeViewController: UIViewController {
 
         // Add to local vars
         self.jBenzoData?.swipedMovies![titleLabel.text!] = "dislike"
-        checkForThreshold()
+        
+        checkForThresholds()
 
         titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
         getRawAndBenzoScores(title: titleLabel.text!)
@@ -268,7 +315,8 @@ class JBenzoSwipeViewController: UIViewController {
 
         // Add to local vars
         self.jBenzoData?.swipedMovies![titleLabel.text!] = "like"
-        checkForThreshold()
+        
+        checkForThresholds()
         
         titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
         getRawAndBenzoScores(title: titleLabel.text!)        
@@ -294,7 +342,8 @@ class JBenzoSwipeViewController: UIViewController {
 
         // Add to local vars
         self.jBenzoData?.swipedMovies![titleLabel.text!] = "like"
-        checkForThreshold()
+        
+        checkForThresholds()
 
         titleLabel.text = self.jBenzoData?.unswipedMovies![self.movIndex]
         getRawAndBenzoScores(title: titleLabel.text!)
