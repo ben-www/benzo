@@ -163,6 +163,14 @@ class JBenzoService {
     }
     
     
+    // MARK: UPDATE Functions
+    static func updateGPs(newScores:[String:Double]) {
+        
+        let docId = LocalStorageService.loadUserID()
+        let db = Firestore.firestore()
+        db.collection("JBenzoUserData").document(docId!).updateData(["genrePercentages" : newScores])
+        
+    }
     
     // MARK: UPDATE Functions
     static func updateJBenzoScores(scoresDict:[String:Double]) {

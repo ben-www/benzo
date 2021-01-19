@@ -271,10 +271,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 yr = self.allYearData[indexPath.row]
             }
             
-            cell?.displayMovieTitle(title: (yr?.year)!, rank: String((yr?.avg!)!))
+            cell?.displayMovieTitle(title: String(indexPath.row+1) + ". " + (yr?.year)!, rank: String((yr?.avg!)!))
             
             if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
-                cell?.displayMovieTitle(title: (yr?.year)!, rank: String((yr?.avg!)!), jBenzo: true)
+                cell?.displayMovieTitle(title: String(indexPath.row+1) + ". " + (yr?.year)!, rank: String((yr?.avg!)!), jBenzo: true)
             }
 
         }
@@ -287,10 +287,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 dir = self.allDirectorData[indexPath.row]
             }
             
-            cell?.displayMovieTitle(title: (dir?.name!)!, rank: String((dir?.avg!)!))
+            cell?.displayMovieTitle(title: String(indexPath.row+1) + ". " + (dir?.name!)!, rank: String((dir?.avg!)!))
             
             if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
-                cell?.displayMovieTitle(title: (dir?.name!)!, rank: String((dir?.avg!)!), jBenzo: true)
+                cell?.displayMovieTitle(title: String(indexPath.row+1) + ". " + (dir?.name!)!, rank: String((dir?.avg!)!), jBenzo: true)
             }
 
         }
@@ -305,12 +305,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             
             
             if movie != nil {
-                cell?.displayMovieTitle(title: (movie?.Title!)!, rank: String((movie?.BENZO!)!))
+                cell?.displayMovieTitle(title: String(indexPath.row+1) + ". " + (movie?.Title!)!, rank: String((movie?.BENZO!)!))
                 
                 if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
                     let score = movie?.jBENZO
                     let finalScore = round(10000.0 * score!) / 10000.0
-                    cell?.displayMovieTitle(title:(movie?.Title!)!, rank: String(finalScore), jBenzo: true)
+                    cell?.displayMovieTitle(title: String(indexPath.row+1) + ". " + (movie?.Title!)!, rank: String(finalScore), jBenzo: true)
                 }
             }
             return cell!

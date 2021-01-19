@@ -92,7 +92,7 @@ class JBenzoSwipeViewController: UIViewController {
         
         let swipeNum = numOfSwipes + (self.jBenzoData?.numOfMoviesRated)!
             
-        if swipeNum == 25 || swipeNum == 51 || swipeNum == 75 || swipeNum == 100 || swipeNum == 150 || swipeNum == 200 {
+        if swipeNum == 25 || swipeNum == 50 || swipeNum == 75 || swipeNum == 100 || swipeNum == 150 || swipeNum == 200 {
             
             updateJBScores(swipeNum: swipeNum)
         }
@@ -103,58 +103,68 @@ class JBenzoSwipeViewController: UIViewController {
     func updateJBScores(swipeNum:Int) {
         
         let swipeScores = getSwipeGPs()
-        let inputScores = swipeData?.genrePercentages
-        
+        let inputScores = jBenzoData?.genrePercentages
         //let allGPs = Array<String>((self.jBenzoData?.genrePercentages!.keys)!)
 
         var newScores = [String:Double]()
 
         
-        var test = 0
         
         for (genre,score) in inputScores! {
-            test += 1
             
             if let genreSwipeScore = swipeScores[genre] {
                 //print("Genre:",genre,score, genreSwipeScore)
+                //print(test,". NEW:",genre,newScore)
 
-                if swipeNum == 51 {
+                if swipeNum == 25 {
                     // 80,20
                     let newScore = (score)*(0.8) + (genreSwipeScore)*(0.2)
-                    print(test,". NEW:",genre,newScore)
-                    //print()
-                    
+                    newScores[genre] = newScore
                 }
                 else if swipeNum == 50 {
                     // 70,30
+                    let newScore = (score)*(0.7) + (genreSwipeScore)*(0.3)
+                    newScores[genre] = newScore
                     
                 }
                 else if swipeNum == 75 {
                     // 60,40
+                    let newScore = (score)*(0.6) + (genreSwipeScore)*(0.4)
+                    newScores[genre] = newScore
                     
                 }
                 else if swipeNum == 100 {
                     // 50,50
+                    let newScore = (score)*(0.5) + (genreSwipeScore)*(0.5)
+                    newScores[genre] = newScore
                     
                 }
                 else if swipeNum == 150 {
                     // 30,70
+                    let newScore = (score)*(0.3) + (genreSwipeScore)*(0.7)
+                    newScores[genre] = newScore
                     
                 }
                 else if swipeNum == 250 {
                     // 20,80
+                    let newScore = (score)*(0.2) + (genreSwipeScore)*(0.8)
+                    newScores[genre] = newScore
                     
                 }
                 
             } else {
-                print(test,". OLD:",genre, score)
+                //print(". OLD:",genre, score)
+                newScores[genre] = score
+                
+
 
             }
-            
-
-            
         }
         
+        //  Update % in db
+        print(newScores)
+        
+        //JBenzoService.updateGPs(newScores: newScores)
     }
     
     func getSwipeGPs() -> [String: Double] {
@@ -202,7 +212,7 @@ class JBenzoSwipeViewController: UIViewController {
                 let score = (Double(nom) / Double(deNom)) * 100
                 
                 gpFinal[k] = score
-//                print(k, "SwipeSCORE:",score, "\(nom)/\(deNom)")
+                print(k, "SwipeSCORE:",score, "\(nom)/\(deNom)")
             }
         }
         

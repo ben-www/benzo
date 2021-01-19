@@ -717,13 +717,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 
         
         if movie != nil {
-            cell?.displayMovieTitle(title:(movie?.Title!)!, rank: String((movie?.BENZO!)!))
+            cell?.displayMovieTitle(title: String(indexPath.row+1) + ". " + (movie?.Title!)!, rank: String((movie?.BENZO!)!))
             
             if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) && (((self.jBenzoData?.showJBenzo)!)) {
               
                 if let score = movie?.jBENZO {
                     let finalScore = round(10000.0 * score) / 10000.0
-                    cell?.displayMovieTitle(title:(movie?.Title!)!, rank: String(finalScore),jBenzo: true)
+                    cell?.displayMovieTitle(title: String(indexPath.row+1) + ". " + (movie?.Title!)!, rank: String(finalScore),jBenzo: true)
                 }
             }
 
