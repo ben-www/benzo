@@ -85,6 +85,17 @@ class JBenzoSwipeViewController: UIViewController {
 
     }
     
+    
+    func resetSwipedMovies() {
+        var allMovies = [String]()
+        
+        for mov in self.data {
+            allMovies.append(mov.Title!)
+        }
+        
+        // Use Temp to reset UnswipedMovies
+        JBenzoService.resetUnswipedMovies(allMovies: allMovies)
+    }
 
     
     func checkForThresholds() {
@@ -133,6 +144,7 @@ class JBenzoSwipeViewController: UIViewController {
                 }
                 else if swipeNum == 100 {
                     // 50,50
+                    self.resetSwipedMovies()
                     let newScore = (score)*(0.5) + (genreSwipeScore)*(0.5)
                     newScores[genre] = newScore
                     

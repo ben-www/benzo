@@ -162,6 +162,15 @@ class JBenzoService {
         
     }
     
+    // MARK: UPDATE Functions
+    static func resetUnswipedMovies(allMovies:[String]) {
+        
+        let docId = LocalStorageService.loadUserID()
+        let db = Firestore.firestore()
+        db.collection("JBenzoUserData").document(docId!).updateData(["unswipedMovies" : allMovies])
+        
+    }
+    
     
     // MARK: UPDATE Functions
     static func updateGPs(newScores:[String:Double]) {
