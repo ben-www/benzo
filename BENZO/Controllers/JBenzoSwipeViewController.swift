@@ -44,7 +44,7 @@ class JBenzoSwipeViewController: UIViewController {
         SwipeService.retrieveSwipeData() { (retrievedData) in
             
             self.swipeData = retrievedData
-            self.checkForThresholds()
+            //self.checkForThresholds()
 
             // If User doesn't have
             if self.swipeData == nil {
@@ -60,7 +60,6 @@ class JBenzoSwipeViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         print("BACK to Home Works")
-        // update JBenzoData: genrePercentages & JBenzoScores in db
         
 
     }
@@ -114,7 +113,6 @@ class JBenzoSwipeViewController: UIViewController {
             
             if let genreSwipeScore = swipeScores[genre] {
                 //print("Genre:",genre,score, genreSwipeScore)
-                //print(test,". NEW:",genre,newScore)
 
                 if swipeNum == 25 {
                     // 80,20
@@ -164,8 +162,10 @@ class JBenzoSwipeViewController: UIViewController {
         //  Update % in db
         print(newScores)
         
-        //JBenzoService.updateGPs(newScores: newScores)
+        JBenzoService.updateGPs(newScores: newScores)
     }
+    
+    
     
     func getSwipeGPs() -> [String: Double] {
         // For Movies in swiped movies, Get Genres and KEEP tally
@@ -198,8 +198,8 @@ class JBenzoSwipeViewController: UIViewController {
         gpDenominators.removeValue(forKey: "")
         gpNominators.removeValue(forKey: "")
 
-//        print(gpDenominators)
-//        print(gpNominators)
+        print(gpDenominators)
+        print(gpNominators)
         
         
         // Find Like % for each Genre
@@ -213,6 +213,11 @@ class JBenzoSwipeViewController: UIViewController {
                 
                 gpFinal[k] = score
                 print(k, "SwipeSCORE:",score, "\(nom)/\(deNom)")
+            }
+            else {
+                gpFinal[k] = 0.0
+                print(k, "SwipeSCORE:",0.0, "\(0)/\(v)")
+
             }
         }
         

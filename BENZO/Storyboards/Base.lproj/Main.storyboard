@@ -501,7 +501,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="L4G-pA-dhf">
                                 <rect key="frame" x="139" y="773.5" width="136" height="68.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zHT-ls-yky">
+                                    <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zHT-ls-yky">
                                         <rect key="frame" x="0.0" y="0.0" width="136" height="22.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoJ-5Z-lxE">
@@ -1998,7 +1998,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="EUP-w2-Oe0"/>
-        <segue reference="4er-eC-99c"/>
+        <segue reference="Jgn-WR-aFM"/>
         <segue reference="2cH-LD-SVy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPurpleColor"/>
