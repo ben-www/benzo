@@ -23,5 +23,11 @@ class WatchPartyCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func displayMovie(title:String, scores:String) {
+        self.titleLabel.text = title
+        self.scoresLabel.text = scores
+        return
+    }
 
 }

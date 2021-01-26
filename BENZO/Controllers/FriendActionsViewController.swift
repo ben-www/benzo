@@ -10,6 +10,7 @@ import UIKit
 class FriendActionsViewController: UIViewController {
     
     
+    @IBOutlet weak var watchPartyButton: UIButton!
     @IBOutlet weak var jBenzoButton: UIButton!
     @IBOutlet weak var gamesButton: UIButton!
     
@@ -39,6 +40,7 @@ class FriendActionsViewController: UIViewController {
 
             if self.userJBenzoData == nil {
                 self.jBenzoButton.isEnabled = false
+                self.watchPartyButton.isEnabled = false
             }
             
             else {
@@ -73,8 +75,11 @@ class FriendActionsViewController: UIViewController {
             if self.friendJBenzoData == nil {
                 self.jBenzoButton.isEnabled = false
                 self.gamesButton.isEnabled = false
+                self.watchPartyButton.isEnabled = false
+                
                 self.gamesButton.alpha = 0.5
                 self.jBenzoButton.alpha = 0.5
+                self.watchPartyButton.alpha = 0.5
 
             }
 
@@ -136,6 +141,19 @@ class FriendActionsViewController: UIViewController {
             watchHistoryVC.data = self.data
             watchHistoryVC.friend = self.friend
             watchHistoryVC.friendId = self.friendId
+
+            
+        }
+        
+        if segue.identifier == Constants.Segue.watchPartyView {
+            
+            let watchPartyVC = segue.destination as! WatchPartyViewController
+
+            watchPartyVC.friend = self.friend
+            watchPartyVC.userMovieList = self.userMovieList
+            watchPartyVC.friendMovieList = self.friendMovieList
+            watchPartyVC.userJBenzoData = self.userJBenzoData
+            watchPartyVC.friendJBenzoData = self.friendJBenzoData
 
             
         }

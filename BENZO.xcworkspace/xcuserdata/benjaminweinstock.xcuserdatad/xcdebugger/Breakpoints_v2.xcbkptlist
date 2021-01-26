@@ -116,14 +116,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "0D2CB15D-BF89-4C16-B627-48B28A7BD1A7 - 51bb072a1e79870"
+                  uuid = "0D2CB15D-BF89-4C16-B627-48B28A7BD1A7 - a042a3d18d7d62fb"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "BENZO.SearchViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
                   moduleName = "BENZO"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/benjaminweinstock/Desktop/BENZO/BENZO/Controllers/SearchViewController.swift"
+                  urlString = "file:///Users/benjaminweinstock/Documents/benzo01262021/benzo/BENZO/Controllers/SearchViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "308"
@@ -131,14 +131,14 @@
                   offsetFromSymbolStart = "11308">
                </Location>
                <Location
-                  uuid = "0D2CB15D-BF89-4C16-B627-48B28A7BD1A7 - 51bb072a1e79870"
+                  uuid = "0D2CB15D-BF89-4C16-B627-48B28A7BD1A7 - a042a3d18d7d62fb"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "BENZO.SearchViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
                   moduleName = "BENZO"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/benjaminweinstock/Desktop/BENZO/BENZO/Controllers/SearchViewController.swift"
+                  urlString = "file:///Users/benjaminweinstock/Documents/benzo01262021/benzo/BENZO/Controllers/SearchViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "308"
@@ -161,6 +161,38 @@
             startingLineNumber = "218"
             endingLineNumber = "218"
             landmarkName = "getSwipeGPs()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "29D7C82C-FFFD-4E00-B9E7-F7BBFF1DC361"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BENZO/Controllers/WatchPartyViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "getRanks(title:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86363993-8EF8-4366-9529-8F1942707912"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BENZO/Controllers/WatchPartyViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "getRanks(title:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
