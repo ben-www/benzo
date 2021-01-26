@@ -31,6 +31,7 @@ class FriendActionsViewController: UIViewController {
         self.title = friend
         
         
+        // USERid
         let userId = LocalStorageService.loadUserID()
         JBenzoService.retrieveFriendJBenzoData(friendId: userId!) { (retrievedData) in
 
@@ -47,6 +48,8 @@ class FriendActionsViewController: UIViewController {
             }
         }
         
+        
+        // FRIENDid
         JBenzoService.retrieveFriendJBenzoData(friendId: friendId!) { (retrievedData) in
             
             self.friendJBenzoData = retrievedData
@@ -71,6 +74,8 @@ class FriendActionsViewController: UIViewController {
                 self.jBenzoButton.isEnabled = false
                 self.gamesButton.isEnabled = false
                 self.gamesButton.alpha = 0.5
+                self.jBenzoButton.alpha = 0.5
+
             }
 
             else {

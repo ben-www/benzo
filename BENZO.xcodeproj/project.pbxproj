@@ -51,6 +51,8 @@
 		EDA72CF725AF6CE50017262B /* GuessingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA72CF625AF6CE50017262B /* GuessingGameViewController.swift */; };
 		EDA72D1C25AFBB440017262B /* AlreadyWatchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA72D1B25AFBB440017262B /* AlreadyWatchedViewController.swift */; };
 		EDA72D1F25AFBEEF0017262B /* FriendWatchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA72D1E25AFBEEF0017262B /* FriendWatchHistoryViewController.swift */; };
+		EDAA9CB525C07D8A0023604C /* WatchPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAA9CB425C07D8A0023604C /* WatchPartyViewController.swift */; };
+		EDAA9CB825C07EAC0023604C /* WatchPartyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAA9CB725C07EAC0023604C /* WatchPartyCell.swift */; };
 		EDC2C733259D14880010CB60 /* WatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C732259D14880010CB60 /* WatchData.swift */; };
 		EDC2C736259D1CCC0010CB60 /* WatchDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C735259D1CCC0010CB60 /* WatchDataService.swift */; };
 		EDC2C739259D43BB0010CB60 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2C738259D43BB0010CB60 /* WatchlistViewController.swift */; };
@@ -112,6 +114,8 @@
 		EDA72CF625AF6CE50017262B /* GuessingGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessingGameViewController.swift; sourceTree = "<group>"; };
 		EDA72D1B25AFBB440017262B /* AlreadyWatchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlreadyWatchedViewController.swift; sourceTree = "<group>"; };
 		EDA72D1E25AFBEEF0017262B /* FriendWatchHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWatchHistoryViewController.swift; sourceTree = "<group>"; };
+		EDAA9CB425C07D8A0023604C /* WatchPartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPartyViewController.swift; sourceTree = "<group>"; };
+		EDAA9CB725C07EAC0023604C /* WatchPartyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPartyCell.swift; sourceTree = "<group>"; };
 		EDC2C732259D14880010CB60 /* WatchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchData.swift; sourceTree = "<group>"; };
 		EDC2C735259D1CCC0010CB60 /* WatchDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataService.swift; sourceTree = "<group>"; };
 		EDC2C738259D43BB0010CB60 /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 				EDA72CF625AF6CE50017262B /* GuessingGameViewController.swift */,
 				EDA72D1B25AFBB440017262B /* AlreadyWatchedViewController.swift */,
 				EDA72D1E25AFBEEF0017262B /* FriendWatchHistoryViewController.swift */,
+				EDAA9CB425C07D8A0023604C /* WatchPartyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 				EDC2C78525A2484B0010CB60 /* FriendCell.swift */,
 				EDC2C78B25A24B320010CB60 /* AddFriendCell.swift */,
 				ED3DAEE225A681E900DB9680 /* FriendScoreCell.swift */,
+				EDAA9CB725C07EAC0023604C /* WatchPartyCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -433,6 +439,7 @@
 				EDC2C78C25A24B320010CB60 /* AddFriendCell.swift in Sources */,
 				ED8F7CF12579A06A00D12764 /* SearchTitleCell.swift in Sources */,
 				EDA72CF725AF6CE50017262B /* GuessingGameViewController.swift in Sources */,
+				EDAA9CB525C07D8A0023604C /* WatchPartyViewController.swift in Sources */,
 				ED8272D9259BC4D40050235E /* YearMovieListViewController.swift in Sources */,
 				ED8F7D27257C9B3100D12764 /* DirectorMovieInfoViewController.swift in Sources */,
 				ED8F7CF8257C622300D12764 /* DirectorMovieListViewController.swift in Sources */,
@@ -461,6 +468,7 @@
 				ED886C5025B5DBDA00817328 /* SwipeData.swift in Sources */,
 				ED3DAEBB25A52A5700DB9680 /* FriendActionsViewController.swift in Sources */,
 				EDA72CF425A783EA0017262B /* SwipeService.swift in Sources */,
+				EDAA9CB825C07EAC0023604C /* WatchPartyCell.swift in Sources */,
 				ED053E61257958C10090F78D /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1179,30 +1179,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="BvH-n9-ox8">
-                                <rect key="frame" x="20" y="407" width="374" height="82"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fUs-SR-SD1">
+                                <rect key="frame" x="20" y="762" width="374" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5R-76-oRz">
-                                        <rect key="frame" x="0.0" y="0.0" width="102" height="30"/>
-                                        <state key="normal" title="JBenzo Scores"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P95-vV-Ulf">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="38"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <state key="normal" title="  Do you know what I like?" image="gamecontroller" catalog="system">
+                                            <color key="titleColor" systemColor="systemGreenColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="c99-6g-m4K" kind="presentation" identifier="FriendJBenzoScoreList" id="gUl-vV-nq5"/>
+                                            <action selector="gamesTapped:" destination="WkM-lh-HjS" eventType="touchUpInside" id="Zth-Hv-t9S"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRr-kd-EkD">
+                                        <rect key="frame" x="0.0" y="42" width="374" height="38"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <state key="normal" title="  Watch Party" image="tv" catalog="system">
+                                            <color key="titleColor" systemColor="systemGreenColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="AzF-Na-TKi" kind="presentation" id="wBS-gN-GQG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="71K-gQ-qnC"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="BvH-n9-ox8">
+                                <rect key="frame" x="20" y="418" width="374" height="60"/>
+                                <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqh-Lt-GDC">
-                                        <rect key="frame" x="0.0" y="30" width="97" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
                                         <state key="normal" title="Watch History"/>
                                         <connections>
                                             <segue destination="CQt-MJ-g1m" kind="presentation" identifier="AlreadyWatchFriend" id="xBv-7j-BSf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P95-vV-Ulf">
-                                        <rect key="frame" x="0.0" y="60" width="229" height="22"/>
-                                        <state key="normal" title=" Do you know what I like?" image="gamecontroller" catalog="system">
-                                            <color key="titleColor" systemColor="systemGreenColor"/>
-                                        </state>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5R-76-oRz">
+                                        <rect key="frame" x="0.0" y="30" width="102" height="30"/>
+                                        <state key="normal" title="JBenzo Scores"/>
                                         <connections>
-                                            <action selector="gamesTapped:" destination="WkM-lh-HjS" eventType="touchUpInside" id="Zth-Hv-t9S"/>
+                                            <segue destination="c99-6g-m4K" kind="presentation" identifier="FriendJBenzoScoreList" id="gUl-vV-nq5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1211,8 +1244,11 @@
                         <viewLayoutGuide key="safeArea" id="xZF-Xy-KsZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="xZF-Xy-KsZ" firstAttribute="bottom" secondItem="fUs-SR-SD1" secondAttribute="bottom" constant="20" id="6Vd-tZ-tQS"/>
                             <constraint firstItem="BvH-n9-ox8" firstAttribute="leading" secondItem="xZF-Xy-KsZ" secondAttribute="leading" constant="20" id="UQy-vF-Qlb"/>
+                            <constraint firstItem="fUs-SR-SD1" firstAttribute="leading" secondItem="xZF-Xy-KsZ" secondAttribute="leading" constant="20" id="e7Q-V4-LNa"/>
                             <constraint firstItem="BvH-n9-ox8" firstAttribute="centerY" secondItem="XHH-1k-G2z" secondAttribute="centerY" id="gcY-4x-97e"/>
+                            <constraint firstItem="xZF-Xy-KsZ" firstAttribute="trailing" secondItem="fUs-SR-SD1" secondAttribute="trailing" constant="20" id="gdR-ZE-Bgf"/>
                             <constraint firstItem="xZF-Xy-KsZ" firstAttribute="trailing" secondItem="BvH-n9-ox8" secondAttribute="trailing" constant="20" id="gph-xr-Y27"/>
                             <constraint firstItem="BvH-n9-ox8" firstAttribute="centerX" secondItem="XHH-1k-G2z" secondAttribute="centerX" id="kaM-Wd-IjQ"/>
                         </constraints>
@@ -1361,6 +1397,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1M-NK-oXE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5048" y="-1211"/>
+        </scene>
+        <!--Watch Party View Controller-->
+        <scene sceneID="YrA-0h-GKD">
+            <objects>
+                <viewController id="AzF-Na-TKi" customClass="WatchPartyViewController" customModule="BENZO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bmI-Eg-2aZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WATCH PARTY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpj-aE-siN">
+                                <rect key="frame" x="20" y="20" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" systemColor="systemPurpleColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q6X-Cb-2LH">
+                                <rect key="frame" x="0.0" y="64" width="414" height="744"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WatchPartyCell" id="cF2-c7-Ch8" customClass="WatchPartyCell" customModule="BENZO" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cF2-c7-Ch8" id="tax-Vp-hh2">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLZ-76-dIX">
+                                                    <rect key="frame" x="40" y="11" width="274" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rj1-v5-EOa">
+                                                    <rect key="frame" x="341" y="14" width="33" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" systemColor="systemPurpleColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PLZ-76-dIX" secondAttribute="trailing" constant="80" id="4xx-wA-Nlf"/>
+                                                <constraint firstItem="rj1-v5-EOa" firstAttribute="centerY" secondItem="tax-Vp-hh2" secondAttribute="centerY" id="Dm4-ot-v0G"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="rj1-v5-EOa" secondAttribute="trailing" constant="20" id="Muz-1n-Xue"/>
+                                                <constraint firstItem="PLZ-76-dIX" firstAttribute="leading" secondItem="tax-Vp-hh2" secondAttribute="leadingMargin" constant="20" id="Sxa-fu-cei"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="scoresLabel" destination="rj1-v5-EOa" id="bKX-Ul-oks"/>
+                                            <outlet property="titleLabel" destination="PLZ-76-dIX" id="BUb-AP-5Rk"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Lhg-aE-xtG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lhg-aE-xtG" firstAttribute="trailing" secondItem="Jpj-aE-siN" secondAttribute="trailing" constant="20" id="Buc-Ly-kAg"/>
+                            <constraint firstItem="Lhg-aE-xtG" firstAttribute="trailing" secondItem="Q6X-Cb-2LH" secondAttribute="trailing" id="PmJ-kT-wMm"/>
+                            <constraint firstItem="Q6X-Cb-2LH" firstAttribute="top" secondItem="Jpj-aE-siN" secondAttribute="bottom" constant="20" id="dhm-cA-SJi"/>
+                            <constraint firstItem="Q6X-Cb-2LH" firstAttribute="leading" secondItem="Lhg-aE-xtG" secondAttribute="leading" id="fZX-UD-XTn"/>
+                            <constraint firstItem="Jpj-aE-siN" firstAttribute="leading" secondItem="Lhg-aE-xtG" secondAttribute="leading" constant="20" id="hWh-94-vcw"/>
+                            <constraint firstItem="Jpj-aE-siN" firstAttribute="top" secondItem="Lhg-aE-xtG" secondAttribute="top" constant="20" id="vML-4W-I0B"/>
+                            <constraint firstItem="Lhg-aE-xtG" firstAttribute="bottom" secondItem="Q6X-Cb-2LH" secondAttribute="bottom" id="xSs-ui-Oh8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Q6X-Cb-2LH" id="aGX-OC-qXF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xUc-Qp-kxW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5048" y="-504"/>
         </scene>
         <!--Get Genre Percentages View Controller-->
         <scene sceneID="Hzw-u1-ryS">
@@ -1999,7 +2108,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="EUP-w2-Oe0"/>
         <segue reference="Jgn-WR-aFM"/>
-        <segue reference="2cH-LD-SVy"/>
+        <segue reference="CZf-fD-iSO"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPurpleColor"/>
     <resources>
