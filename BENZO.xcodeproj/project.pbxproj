@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5BFE47F63D4850C579C4063C /* Pods_BENZO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FDB8313DBCABB296802B7AE /* Pods_BENZO.framework */; };
+		79CA803525B8CCDB0071F7F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79CA803425B8CCDB0071F7F7 /* GoogleService-Info.plist */; };
 		ED053E46257958280090F78D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E45257958280090F78D /* AppDelegate.swift */; };
 		ED053E48257958280090F78D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED053E47257958280090F78D /* SceneDelegate.swift */; };
 		ED053E4D257958280090F78D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED053E4B257958280090F78D /* Main.storyboard */; };
@@ -21,7 +22,6 @@
 		ED26CB93259572DA007D23D2 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED26CB92259572DA007D23D2 /* ProfileSettingsViewController.swift */; };
 		ED3A0A49259150E400FF7932 /* JBenzoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3A0A48259150E400FF7932 /* JBenzoData.swift */; };
 		ED3A0A4C2591513E00FF7932 /* BenzoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */; };
-		ED3A0A4F25918FCC00FF7932 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */; };
 		ED3DAEBB25A52A5700DB9680 /* FriendActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DAEBA25A52A5700DB9680 /* FriendActionsViewController.swift */; };
 		ED3DAEBE25A6565700DB9680 /* FriendJBenzoScoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DAEBD25A6565700DB9680 /* FriendJBenzoScoreListViewController.swift */; };
 		ED3DAEE325A681E900DB9680 /* FriendScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DAEE225A681E900DB9680 /* FriendScoreCell.swift */; };
@@ -65,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		6AE6237866651AC6E6EDBCD3 /* Pods-BENZO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BENZO.debug.xcconfig"; path = "Target Support Files/Pods-BENZO/Pods-BENZO.debug.xcconfig"; sourceTree = "<group>"; };
+		79CA803425B8CCDB0071F7F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9FDB8313DBCABB296802B7AE /* Pods_BENZO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BENZO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C747D6FBAE0D0F5E616F5A38 /* Pods-BENZO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BENZO.release.xcconfig"; path = "Target Support Files/Pods-BENZO/Pods-BENZO.release.xcconfig"; sourceTree = "<group>"; };
 		ED053E42257958280090F78D /* BENZO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BENZO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,7 +83,6 @@
 		ED26CB92259572DA007D23D2 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		ED3A0A48259150E400FF7932 /* JBenzoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBenzoData.swift; sourceTree = "<group>"; };
 		ED3A0A4B2591513E00FF7932 /* BenzoUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenzoUser.swift; sourceTree = "<group>"; };
-		ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED3DAEBA25A52A5700DB9680 /* FriendActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendActionsViewController.swift; sourceTree = "<group>"; };
 		ED3DAEBD25A6565700DB9680 /* FriendJBenzoScoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendJBenzoScoreListViewController.swift; sourceTree = "<group>"; };
 		ED3DAEE225A681E900DB9680 /* FriendScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendScoreCell.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 				ED8F7CE52579627600D12764 /* moviesJson.json */,
 				ED053E47257958280090F78D /* SceneDelegate.swift */,
 				ED053E4E257958290090F78D /* Assets.xcassets */,
-				ED3A0A4E25918FCC00FF7932 /* GoogleService-Info.plist */,
+				79CA803425B8CCDB0071F7F7 /* GoogleService-Info.plist */,
 				ED053E53257958290090F78D /* Info.plist */,
 			);
 			path = BENZO;
@@ -342,7 +342,7 @@
 			files = (
 				ED8F7CE62579627600D12764 /* moviesJson.json in Resources */,
 				ED053E52257958290090F78D /* LaunchScreen.storyboard in Resources */,
-				ED3A0A4F25918FCC00FF7932 /* GoogleService-Info.plist in Resources */,
+				79CA803525B8CCDB0071F7F7 /* GoogleService-Info.plist in Resources */,
 				ED053E4F257958290090F78D /* Assets.xcassets in Resources */,
 				ED053E4D257958280090F78D /* Main.storyboard in Resources */,
 			);
@@ -610,13 +610,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 28XNS47Q3J;
+				DEVELOPMENT_TEAM = DYSGKGK4D3;
 				INFOPLIST_FILE = BENZO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bsonollc.BENZO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pkpholdingsllc.BENZO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -630,13 +630,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 28XNS47Q3J;
+				DEVELOPMENT_TEAM = DYSGKGK4D3;
 				INFOPLIST_FILE = BENZO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bsonollc.BENZO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pkpholdingsllc.BENZO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

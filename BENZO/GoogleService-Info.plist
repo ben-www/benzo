@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>817022045744-bdpnkv3ehfn5qtkgghbq7m9tu7mk3lj3.apps.googleusercontent.com</string>
+	<string>817022045744-9f89i6ggrmnolf2o9pb524oaff659uro.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.817022045744-bdpnkv3ehfn5qtkgghbq7m9tu7mk3lj3</string>
+	<string>com.googleusercontent.apps.817022045744-9f89i6ggrmnolf2o9pb524oaff659uro</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDgS-SqZAC9h2FPczuGmlb7TwAEh5KMHU4</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,22 +13,22 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.bsonollc.BENZO</string>
+	<string>com.pkpholdingsllc.BENZO</string>
 	<key>PROJECT_ID</key>
 	<string>benzo-97b4e</string>
 	<key>STORAGE_BUCKET</key>
 	<string>benzo-97b4e.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:817022045744:ios:41274f3c0e5dec7f7b27f5</string>
+	<string>1:817022045744:ios:977c8433d8aea31c7b27f5</string>
 </dict>
 </plist>
