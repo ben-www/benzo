@@ -157,6 +157,7 @@ class JBenzoSwipeViewController: UIViewController {
                 }
                 else if swipeNum == 250 {
                     // 20,80
+                    self.resetSwipedMovies()
                     let newScore = (score)*(0.2) + (genreSwipeScore)*(0.8)
                     newScores[genre] = newScore
                     

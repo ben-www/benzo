@@ -501,7 +501,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="L4G-pA-dhf">
                                 <rect key="frame" x="139" y="773.5" width="136" height="68.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zHT-ls-yky">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zHT-ls-yky">
                                         <rect key="frame" x="0.0" y="0.0" width="136" height="22.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoJ-5Z-lxE">
@@ -1169,7 +1169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpl-Qy-4SF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4296" y="-868"/>
+            <point key="canvasLocation" x="5142" y="-563"/>
         </scene>
         <!--Friend Actions View Controller-->
         <scene sceneID="Clr-Td-wmG">
@@ -1354,7 +1354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBH-Tf-4AB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4297" y="-1547"/>
+            <point key="canvasLocation" x="4296" y="-1286"/>
         </scene>
         <!--Friend Watch History View Controller-->
         <scene sceneID="TlO-X2-muH">
@@ -1364,7 +1364,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Already Watched Movies" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="b9x-fM-hFr">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Already Watched Movies" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="b9x-fM-hFr">
                                 <rect key="frame" x="50" y="100" width="314" height="658"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -1397,7 +1397,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1M-NK-oXE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5048" y="-1211"/>
+            <point key="canvasLocation" x="4296" y="-2013"/>
         </scene>
         <!--Watch Party View Controller-->
         <scene sceneID="YrA-0h-GKD">
@@ -1447,7 +1447,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch Party: Movies in your Top 50 with the closest JBENZO rank (FriendScore, UserScore)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5j-4Y-E3s">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch Party: Movies in your Top 25 with the closest JBENZO rank (FriendScore, UserScore)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5j-4Y-E3s">
                                 <rect key="frame" x="30" y="64" width="354" height="31.5"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1481,7 +1481,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xUc-Qp-kxW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5048" y="-504"/>
+            <point key="canvasLocation" x="4296" y="-563"/>
         </scene>
         <!--Get Genre Percentages View Controller-->
         <scene sceneID="Hzw-u1-ryS">

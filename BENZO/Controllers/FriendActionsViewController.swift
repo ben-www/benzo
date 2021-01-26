@@ -22,6 +22,8 @@ class FriendActionsViewController: UIViewController {
     var friendJBenzoData:JBenzoData?
     var userJBenzoData:JBenzoData?
     
+    var userGameData:GameData?
+    
     var userMovieList:Array<(key: String, value: Double)>?
     var friendMovieList:Array<(key: String, value: Double)>?
 
@@ -31,6 +33,17 @@ class FriendActionsViewController: UIViewController {
         
         self.title = friend
         
+        GameService.retrieveGameData { (retrievedData) in
+            
+            self.userGameData = retrievedData
+            
+            DispatchQueue.main.async {
+                if self.userGameData == nil {
+                    self.userGameData = GameService.createGameDataEntry()
+                }
+            }
+            
+        }
         
         // USERid
         let userId = LocalStorageService.loadUserID()
@@ -38,16 +51,21 @@ class FriendActionsViewController: UIViewController {
 
             self.userJBenzoData = retrievedData
 
-            if self.userJBenzoData == nil {
-                self.jBenzoButton.isEnabled = false
-                self.watchPartyButton.isEnabled = false
+            DispatchQueue.main.async {
+                if self.userJBenzoData == nil {
+                    self.jBenzoButton.isEnabled = false
+                    self.watchPartyButton.isEnabled = false
+                    self.watchPartyButton.alpha = 0.5
+
+                }
+                
+                else {
+                    let tempDict = self.userJBenzoData?.JBenzoScores
+                    self.userMovieList = tempDict!.sorted(by: { $0.value > $1.value })
+
+                }
             }
             
-            else {
-                let tempDict = self.userJBenzoData?.JBenzoScores
-                self.userMovieList = tempDict!.sorted(by: { $0.value > $1.value })
-
-            }
         }
         
         
@@ -56,38 +74,40 @@ class FriendActionsViewController: UIViewController {
             
             self.friendJBenzoData = retrievedData
             
-            
-            if self.friendJBenzoData != nil  {
-                if let count = self.friendJBenzoData?.swipedMovies?.count {
-                    if count < 5 {
+            DispatchQueue.main.async {
+                if self.friendJBenzoData != nil  {
+                    if let count = self.friendJBenzoData?.swipedMovies?.count {
+                        if count < 5 {
+                            self.gamesButton.isEnabled = false
+                            self.gamesButton.alpha = 0.5
+                        }
+                    } else {
+                        // Count is nil
                         self.gamesButton.isEnabled = false
                         self.gamesButton.alpha = 0.5
                     }
-                } else {
-                    // Count is nil
+
+                }
+                
+                
+                if self.friendJBenzoData == nil {
+                    self.jBenzoButton.isEnabled = false
                     self.gamesButton.isEnabled = false
+                    self.watchPartyButton.isEnabled = false
+                    
                     self.gamesButton.alpha = 0.5
+                    self.jBenzoButton.alpha = 0.5
+                    self.watchPartyButton.alpha = 0.5
+
                 }
 
+                else {
+                    let tempDict = self.friendJBenzoData?.JBenzoScores
+                    self.friendMovieList = tempDict!.sorted(by: { $0.value > $1.value })
+
+                }
             }
             
-            
-            if self.friendJBenzoData == nil {
-                self.jBenzoButton.isEnabled = false
-                self.gamesButton.isEnabled = false
-                self.watchPartyButton.isEnabled = false
-                
-                self.gamesButton.alpha = 0.5
-                self.jBenzoButton.alpha = 0.5
-                self.watchPartyButton.alpha = 0.5
-
-            }
-
-            else {
-                let tempDict = self.friendJBenzoData?.JBenzoScores
-                self.friendMovieList = tempDict!.sorted(by: { $0.value > $1.value })
-
-            }
         }
         
     }

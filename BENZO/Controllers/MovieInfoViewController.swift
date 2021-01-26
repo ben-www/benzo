@@ -25,6 +25,7 @@ class MovieInfoViewController: UIViewController {
     var movie:Movie?
     var data = [Movie]()
 
+    var jBenzoData:JBenzoData?
     var watchedData:WatchData?
     
     //@IBOutlet weak var titleLabel: UILabel!
@@ -59,7 +60,20 @@ class MovieInfoViewController: UIViewController {
             thumbsDownButton.alpha = 1
             
             
+            // Check swipedMovies for like or dislike
+            if let mov = self.jBenzoData?.swipedMovies![(self.movie?.Title)!] {
+                
+                if mov == "like" {
+                    self.thumbsUpButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+                }
+                else {
+                    self.thumbsDownButton.setImage(UIImage(systemName: "hand.thumbsdown.fill"), for: .normal)
+
+                }
             }
+           
+        
+        }
         
         
         var dir = "n/a"
@@ -152,20 +166,27 @@ class MovieInfoViewController: UIViewController {
 
     }
     
+    
+    
     func itemAdded() {
         if self.addButton.currentImage == UIImage(systemName: "plus.circle") {
             self.addButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
         }
     }
 
+    
+    
     func itemRemoved() {
         if self.addButton.currentImage == UIImage(systemName: "checkmark.circle.fill") {
             self.addButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         }
     }
     
+    
+    
     // MARK: J Benzo Toggle Msg
     func showAddAlert(title:String, message:String) {
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         var watchLaterAction = UIAlertAction(title: "+ Watchlist", style: .default) { (action) in
@@ -216,6 +237,9 @@ class MovieInfoViewController: UIViewController {
     }
     
     
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "moveExtraInfo" {
@@ -234,13 +258,17 @@ class MovieInfoViewController: UIViewController {
     
     
     
+    
+    
     @IBAction func directorTapped(_ sender: Any) {
         print("Director! Button Tapped.")
     }
     
+    
     @IBAction func titleTapped(_ sender: Any) {
         print("Title Button Tapped.")
     }
+    
     
     
     
@@ -249,6 +277,7 @@ class MovieInfoViewController: UIViewController {
         return
         
     }
+    
     
     
     @IBAction func howToWatchTapped(_ sender: Any) {
@@ -268,48 +297,41 @@ class MovieInfoViewController: UIViewController {
         
         if self.thumbsUpButton.currentImage == UIImage(systemName: "hand.thumbsup") {
             self.thumbsUpButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+            // Update DB to like
+            SwipeService.addToSwipedMovies(title: movie?.Title, value: "like")
+            
             if self.thumbsDownButton.currentImage == UIImage(systemName: "hand.thumbsdown.fill") {
+                // If previously Thumbs DOWN, unfill
                 self.thumbsDownButton.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
-
             }
         }
         else {
-            self.thumbsUpButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+            //self.thumbsUpButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+            // Delete from SwipedMovies, add back to UnswipedMovies
         }
     
     }
     
     
     @IBAction func thumbsDownTapped(_ sender: Any) {
+        
         if self.thumbsDownButton.currentImage == UIImage(systemName: "hand.thumbsdown") {
             self.thumbsDownButton.setImage(UIImage(systemName: "hand.thumbsdown.fill"), for: .normal)
+            // Update DB to dilike
+            SwipeService.addToSwipedMovies(title: movie?.Title, value: "dislike")
+            
             if self.thumbsUpButton.currentImage == UIImage(systemName: "hand.thumbsup.fill") {
+                // If previously Thumbs UP, unfill
                 self.thumbsUpButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
 
             }
         }
         else {
-            self.thumbsDownButton.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
+            //self.thumbsDownButton.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
+            // Delete from SwipedMovies, add back to UnswipedMovies
+
         }
     }
     
 }
 
-
-
-
-//extension MovieInfoViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.movieInfoCellId , for: indexPath) as? MovieInfoCell
-//        cell?.displayInfo(title: (self.movie?.Title!)!)
-//        return cell!
-//
-//    }
-//
-//
-//}

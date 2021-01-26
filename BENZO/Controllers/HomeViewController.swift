@@ -355,6 +355,11 @@ class HomeViewController: UIViewController, MovieDataProtocol {
                     movieInfoController.rank = Int(index!) + 1
                     movieInfoController.movie = filteredData[tableView.indexPathForSelectedRow!.row]
                     movieInfoController.data = self.data
+                    
+                    if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) {
+                        movieInfoController.jBenzoData = self.jBenzoData
+                    }
+                    
                     tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: false)
                 }
             }
@@ -369,6 +374,11 @@ class HomeViewController: UIViewController, MovieDataProtocol {
                     movieInfoController.rank = Int(index!) + 1
                     movieInfoController.movie = data[tableView.indexPathForSelectedRow!.row]
                     movieInfoController.data = self.data
+                    
+                    if self.jBenzoData != nil && ((self.jBenzoData?.hasJBenzo) != nil) {
+                        movieInfoController.jBenzoData = self.jBenzoData
+                    }
+                    
                     tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: false)
                 }
             }

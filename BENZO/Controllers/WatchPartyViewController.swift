@@ -43,8 +43,8 @@ class WatchPartyViewController: UIViewController {
     
     func createTable() {
         
-        let userTopMovies = self.userMovieList![0...50]
-        let friendTopMovies = self.friendMovieList![0...50]
+        let userTopMovies = self.userMovieList![0...24]
+        let friendTopMovies = self.friendMovieList![0...24]
         
         var userRanks = [String:Int]()
         var friendRanks = [String:Int]()
@@ -128,7 +128,7 @@ extension WatchPartyViewController: UITableViewDelegate, UITableViewDataSource {
             let title = self.tableMovieList![indexPath.row]
             
             let movieRanks = self.getRanks(title: title.0)
-            
+            //String(indexPath.row+1) + ". " +
             cell?.displayMovie(title: String(indexPath.row+1) + ". " + title.0, scores: movieRanks)
 
         }
