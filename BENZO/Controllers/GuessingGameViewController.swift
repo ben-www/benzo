@@ -16,7 +16,10 @@ class GuessingGameViewController: UIViewController, MovieDataProtocol {
     
     var movieData = MovieData()
     var data = [Movie]()
+    
     var friendJBenzoData:JBenzoData?
+    var userGameData:GameData?
+
     var swipedMovies:[String]?
     var wrongGuesses = [String]()
     
@@ -103,6 +106,31 @@ class GuessingGameViewController: UIViewController, MovieDataProtocol {
         if self.currentQuestion == 6 {
             // DONE
             let results = self.wrongGuesses.joined(separator: ", ")
+            
+            // Update db
+            let currentScore = self.userGameData?.gameScores![(self.friendJBenzoData?.byId)!]
+            
+            if currentScore == "0/0" {
+                let overallScore = "\(self.correctAnswers)/5"
+                self.userGameData?.gameScores![(self.friendJBenzoData?.byId)!] = overallScore
+            }
+            else {
+                let scoreArr = currentScore?.components(separatedBy: "/")
+
+                var nom = Int(scoreArr![0])
+                var denom = Int(scoreArr![1])
+                
+                nom! += self.correctAnswers
+                denom! += 5
+                
+                let overallScore = "\(nom!)/\(denom!)"
+
+                self.userGameData?.gameScores![(self.friendJBenzoData?.byId)!] = overallScore
+            }
+
+            GameService.addUpdateNewGame(gameScores: (self.userGameData?.gameScores)!)
+
+            // Show Results
             resultsAlert(title: "\(self.correctAnswers) out of 5 correct!", message: "You guessed wrong for the following Movie(s): \(results)")
         }
         else {
@@ -131,6 +159,31 @@ class GuessingGameViewController: UIViewController, MovieDataProtocol {
         if self.currentQuestion == 6 {
             // DONE
             let results = self.wrongGuesses.joined(separator: ", ")
+            
+            // Update db
+            let currentScore = self.userGameData?.gameScores![(self.friendJBenzoData?.byId)!]
+            
+            if currentScore == "0/0" {
+                let overallScore = "\(self.correctAnswers)/5"
+                self.userGameData?.gameScores![(self.friendJBenzoData?.byId)!] = overallScore
+            }
+            else {
+                let scoreArr = currentScore?.components(separatedBy: "/")
+
+                var nom = Int(scoreArr![0])
+                var denom = Int(scoreArr![1])
+                
+                nom! += self.correctAnswers
+                denom! += 5
+                
+                let overallScore = "\(nom!)/\(denom!)"
+
+                self.userGameData?.gameScores![(self.friendJBenzoData?.byId)!] = overallScore
+            }
+
+            GameService.addUpdateNewGame(gameScores: (self.userGameData?.gameScores)!)
+
+            // Show Results
             resultsAlert(title: "\(self.correctAnswers) out of 5 correct!", message: "You guessed wrong for the following Movie(s): \(results)")
         }
         else {

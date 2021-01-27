@@ -1180,10 +1180,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fUs-SR-SD1">
-                                <rect key="frame" x="20" y="762" width="374" height="80"/>
+                                <rect key="frame" x="20" y="722" width="374" height="120"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hml-Vh-mub">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="37.5"/>
+                                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="20"/>
+                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P95-vV-Ulf">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="38"/>
+                                        <rect key="frame" x="0.0" y="41.5" width="374" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
@@ -1200,7 +1206,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRr-kd-EkD">
-                                        <rect key="frame" x="0.0" y="42" width="374" height="38"/>
+                                        <rect key="frame" x="0.0" y="82.5" width="374" height="37.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
@@ -1218,7 +1224,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="71K-gQ-qnC"/>
+                                    <constraint firstAttribute="height" constant="120" id="71K-gQ-qnC"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="BvH-n9-ox8">
@@ -1257,6 +1263,7 @@
                     <connections>
                         <outlet property="gamesButton" destination="P95-vV-Ulf" id="pyS-Ri-S9n"/>
                         <outlet property="jBenzoButton" destination="f5R-76-oRz" id="UNA-zG-k7q"/>
+                        <outlet property="scoreLabel" destination="Hml-Vh-mub" id="Rol-dS-h7S"/>
                         <outlet property="watchPartyButton" destination="nRr-kd-EkD" id="Zee-3i-PyX"/>
                         <segue destination="rbW-gu-oGU" kind="show" identifier="GuessingGame" id="xer-Qp-PtJ"/>
                     </connections>

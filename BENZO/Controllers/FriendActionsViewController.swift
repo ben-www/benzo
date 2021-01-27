@@ -13,6 +13,7 @@ class FriendActionsViewController: UIViewController {
     @IBOutlet weak var watchPartyButton: UIButton!
     @IBOutlet weak var jBenzoButton: UIButton!
     @IBOutlet weak var gamesButton: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var friend:String?
     var friendId:String?
@@ -39,8 +40,39 @@ class FriendActionsViewController: UIViewController {
             
             DispatchQueue.main.async {
                 if self.userGameData == nil {
-                    self.userGameData = GameService.createGameDataEntry()
+                    // Create GameData for USER, 1st Time w/friend
+                    self.userGameData = GameService.createGameDataEntry(friendId: self.friendId!)
                 }
+                
+                else {
+                    // USER has GameData and friend is already added
+                    if let gameScore = self.userGameData?.gameScores![self.friendId!] {
+                        let currentScore = self.userGameData?.gameScores![(self.friendJBenzoData?.byId)!]
+                        let scoreArr = currentScore?.components(separatedBy: "/")
+
+                        let nom = Double(scoreArr![0])
+                        let denom = Double(scoreArr![1])
+                        
+                        if denom == 0 {
+                            self.scoreLabel.text = gameScore + "(0.0%)"
+
+                        }
+                        else {
+                            let percentage = (nom! / denom!)
+                        
+                            self.scoreLabel.text = gameScore + "(" + String(format: "%.2f", percentage*100) + "%)"
+                        }
+                    }
+                    else {
+                        // USER has GameData and friend is **NOT**already added
+                        
+                        // Add new Game
+                        self.userGameData?.gameScores![self.friendId!] = "0/0"
+                        GameService.addUpdateNewGame(gameScores: (self.userGameData?.gameScores)!)
+                        self.scoreLabel.text = "0/0 (0.0%)"
+                    }
+                }
+
             }
             
         }
@@ -80,11 +112,15 @@ class FriendActionsViewController: UIViewController {
                         if count < 5 {
                             self.gamesButton.isEnabled = false
                             self.gamesButton.alpha = 0.5
+                            self.scoreLabel.alpha = 0.5
+
                         }
                     } else {
                         // Count is nil
                         self.gamesButton.isEnabled = false
                         self.gamesButton.alpha = 0.5
+                        self.scoreLabel.alpha = 0.5
+
                     }
 
                 }
@@ -98,6 +134,7 @@ class FriendActionsViewController: UIViewController {
                     self.gamesButton.alpha = 0.5
                     self.jBenzoButton.alpha = 0.5
                     self.watchPartyButton.alpha = 0.5
+                    self.scoreLabel.alpha = 0.5
 
                 }
 
@@ -106,6 +143,53 @@ class FriendActionsViewController: UIViewController {
                     self.friendMovieList = tempDict!.sorted(by: { $0.value > $1.value })
 
                 }
+            }
+            
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        GameService.retrieveGameData { (retrievedData) in
+            
+            self.userGameData = retrievedData
+            
+            DispatchQueue.main.async {
+                if self.userGameData == nil {
+                    // Create GameData for USER, 1st Time w/friend
+                    self.userGameData = GameService.createGameDataEntry(friendId: self.friendId!)
+                }
+                
+                else {
+                    // USER has GameData and friend is already added
+                    if let gameScore = self.userGameData?.gameScores![self.friendId!] {
+                        let currentScore = self.userGameData?.gameScores![(self.friendJBenzoData?.byId)!]
+                        let scoreArr = currentScore?.components(separatedBy: "/")
+
+                        let nom = Double(scoreArr![0])
+                        let denom = Double(scoreArr![1])
+                        
+                        if denom == 0 {
+                            self.scoreLabel.text = gameScore + "(0.0%)"
+
+                        }
+                        else {
+                            let percentage = (nom! / denom!)
+                        
+                            self.scoreLabel.text = gameScore + "(" + String(format: "%.2f", percentage*100) + "%)"
+                        }
+                       
+                    }
+                    else {
+                        // USER has GameData and friend is **NOT**already added
+                        
+                        // Add new Game
+                        self.userGameData?.gameScores![self.friendId!] = "0/0"
+                        GameService.addUpdateNewGame(gameScores: (self.userGameData?.gameScores)!)
+                        self.scoreLabel.text = "0/0 (0.0%)"
+                    }
+                }
+
             }
             
         }
@@ -151,6 +235,7 @@ class FriendActionsViewController: UIViewController {
             
             let gameVC = segue.destination as! GuessingGameViewController
             gameVC.friendJBenzoData = self.friendJBenzoData
+            gameVC.userGameData = self.userGameData
 
             
         }

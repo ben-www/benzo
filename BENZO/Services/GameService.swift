@@ -12,7 +12,7 @@ import FirebaseAuth
 
 class GameService {
     
-    static func createGameDataEntry() -> GameData {
+    static func createGameDataEntry(friendId: String) -> GameData {
         
         var gameData = GameData()
                 
@@ -27,7 +27,7 @@ class GameService {
         // Set metaData
         metaData["byId"] = currentUser
         metaData["byUsername"] = username
-        metaData["gameScores"] = [String:String]()
+        metaData["gameScores"] = [friendId:"0/0"]
 
 
         let db = Firestore.firestore()
@@ -81,5 +81,13 @@ class GameService {
         }
 
     }
+    
+    static func addUpdateNewGame(gameScores: [String:String]) {
+        let docId = LocalStorageService.loadUserID()
+        let db = Firestore.firestore()
+        db.collection("GameData").document(docId!).updateData(["gameScores" : gameScores])
+    }
+    
+
     
 }
