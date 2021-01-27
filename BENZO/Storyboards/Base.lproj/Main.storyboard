@@ -1179,18 +1179,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fUs-SR-SD1">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fUs-SR-SD1">
                                 <rect key="frame" x="20" y="722" width="374" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hml-Vh-mub">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="37.5"/>
-                                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwu-5T-opK">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGreenColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bz-hB-i9B">
+                                        <rect key="frame" x="0.0" y="25.5" width="374" height="17.5"/>
+                                        <state key="normal" image="gamecontroller.fill" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXW-Y9-7XD">
+                                        <rect key="frame" x="0.0" y="51" width="374" height="18"/>
+                                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="17"/>
+                                        <state key="normal" title="Game Score">
+                                            <color key="titleColor" systemColor="systemGreenColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="scoreTapped:" destination="WkM-lh-HjS" eventType="touchUpInside" id="jgL-TC-cm3"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P95-vV-Ulf">
-                                        <rect key="frame" x="0.0" y="41.5" width="374" height="37"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="77" width="374" height="17.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
                                         <state key="normal" title="  Do you know what I like?" image="gamecontroller" catalog="system">
@@ -1206,8 +1219,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRr-kd-EkD">
-                                        <rect key="frame" x="0.0" y="82.5" width="374" height="37.5"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="102.5" width="374" height="17.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
                                         <state key="normal" title="  Watch Party" image="tv" catalog="system">
@@ -1263,7 +1275,7 @@
                     <connections>
                         <outlet property="gamesButton" destination="P95-vV-Ulf" id="pyS-Ri-S9n"/>
                         <outlet property="jBenzoButton" destination="f5R-76-oRz" id="UNA-zG-k7q"/>
-                        <outlet property="scoreLabel" destination="Hml-Vh-mub" id="Rol-dS-h7S"/>
+                        <outlet property="scoreButton" destination="NXW-Y9-7XD" id="SzN-d5-dMw"/>
                         <outlet property="watchPartyButton" destination="nRr-kd-EkD" id="Zee-3i-PyX"/>
                         <segue destination="rbW-gu-oGU" kind="show" identifier="GuessingGame" id="xer-Qp-PtJ"/>
                     </connections>
@@ -2136,6 +2148,7 @@
         <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
         <image name="eye" catalog="system" width="128" height="81"/>
         <image name="gamecontroller" catalog="system" width="128" height="80"/>
+        <image name="gamecontroller.fill" catalog="system" width="128" height="80"/>
         <image name="hand.thumbsdown" catalog="system" width="128" height="128"/>
         <image name="hand.thumbsup" catalog="system" width="128" height="128"/>
         <image name="house" catalog="system" width="128" height="106"/>

@@ -129,7 +129,7 @@ extension WatchPartyViewController: UITableViewDelegate, UITableViewDataSource {
             
             let movieRanks = self.getRanks(title: title.0)
             //String(indexPath.row+1) + ". " +
-            cell?.displayMovie(title: String(indexPath.row+1) + ". " + title.0, scores: movieRanks)
+            cell?.displayMovie(title: title.0, scores: movieRanks)
 
         }
         else {
