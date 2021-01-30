@@ -10,6 +10,7 @@ import UIKit
 class FriendActionsViewController: UIViewController {
     
     
+    @IBOutlet weak var controllerBtn: UIButton!
     @IBOutlet weak var watchPartyButton: UIButton!
     @IBOutlet weak var jBenzoButton: UIButton!
     @IBOutlet weak var gamesButton: UIButton!
@@ -33,6 +34,7 @@ class FriendActionsViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = friend
+        self.controllerBtn.blink()
         
         GameService.retrieveGameData { (retrievedData) in
             
@@ -45,6 +47,7 @@ class FriendActionsViewController: UIViewController {
                 }
                 
                 else {
+
                     // USER has GameData and friend is already added
                     if let gameScore = self.userGameData?.gameScores![self.friendId!] {
                         let currentScore = self.userGameData?.gameScores![self.friendId!]
@@ -73,6 +76,7 @@ class FriendActionsViewController: UIViewController {
                         self.scoreButton.setTitle("0/0 (0.0%)", for: .normal)
                     }
                 }
+                
 
             }
             
@@ -112,15 +116,21 @@ class FriendActionsViewController: UIViewController {
                     if let count = self.friendJBenzoData?.swipedMovies?.count {
                         if count < 5 {
                             self.gamesButton.isEnabled = false
+                            self.scoreButton.isEnabled = false
+
                             self.gamesButton.alpha = 0.5
                             self.scoreButton.alpha = 0.5
-
+                            self.controllerBtn.stopBlink()
                         }
+
                     } else {
                         // Count is nil
                         self.gamesButton.isEnabled = false
+                        self.scoreButton.isEnabled = false
                         self.gamesButton.alpha = 0.5
                         self.scoreButton.alpha = 0.5
+                        self.controllerBtn.stopBlink()
+
 
                     }
 
@@ -128,14 +138,20 @@ class FriendActionsViewController: UIViewController {
                 
                 
                 if self.friendJBenzoData == nil {
+                    
                     self.jBenzoButton.isEnabled = false
                     self.gamesButton.isEnabled = false
                     self.watchPartyButton.isEnabled = false
+                    self.scoreButton.isEnabled = false
+                    
                     
                     self.gamesButton.alpha = 0.5
-                    self.jBenzoButton.alpha = 0.5
                     self.watchPartyButton.alpha = 0.5
                     self.scoreButton.alpha = 0.5
+                    
+
+                    self.controllerBtn.stopBlink()
+
 
                 }
 
@@ -270,13 +286,16 @@ class FriendActionsViewController: UIViewController {
     
     
     @IBAction func scoreTapped(_ sender: Any) {
-        if scoreButton.currentTitleColor == UIColor.systemGreen {
-            self.scoreButton.setTitleColor(.systemPurple, for: .normal)
+        if scoreButton.currentTitleColor == UIColor.systemPurple {
+            self.scoreButton.setTitleColor(.systemGreen, for: .normal)
+            
+            // Set TITLE TO FRIENDS score
             self.scoreButton.setTitle("0/0 (0.0%)", for: .normal)
+            //self.gamesButton.stopBlink()
 
         }
         else {
-            self.scoreButton.setTitleColor(.systemGreen, for: .normal)
+            self.scoreButton.setTitleColor(.systemPurple, for: .normal)
             if let gameScore = self.userGameData?.gameScores![self.friendId!] {
                 let currentScore = self.userGameData?.gameScores![self.friendId!]
                 let scoreArr = currentScore?.components(separatedBy: "/")
@@ -293,17 +312,18 @@ class FriendActionsViewController: UIViewController {
                 
                     self.scoreButton.setTitle(gameScore + "(" + String(format: "%.2f", percentage*100) + "%)", for: .normal)
                 }
+
                
             }
-            else {
-                // USER has GameData and friend is **NOT**already added
-                
-                // Add new Game
-                self.userGameData?.gameScores![self.friendId!] = "0/0"
-                GameService.addUpdateNewGame(gameScores: (self.userGameData?.gameScores)!)
-                
-                self.scoreButton.setTitle("0/0 (0.0%)", for: .normal)
-            }
+//            else {
+//                // USER has GameData and friend is **NOT**already added
+//
+//                // Add new Game
+//                self.userGameData?.gameScores![self.friendId!] = "0/0"
+//                GameService.addUpdateNewGame(gameScores: (self.userGameData?.gameScores)!)
+//
+//                self.scoreButton.setTitle("0/0 (0.0%)", for: .normal)
+//            }
 
         }
         
@@ -323,4 +343,23 @@ class FriendActionsViewController: UIViewController {
     }
     
 
+}
+
+
+extension UIButton {
+    func blink() {
+        self.alpha = 0.0;
+        UIView.animate(withDuration: 1.6, //Time duration you want,
+            delay: 0.0,
+            options: [.curveEaseInOut, .autoreverse, .repeat],
+            animations: { [weak self] in self?.alpha = 1.0 },
+            completion: { [weak self] _ in self?.alpha = 0.0 })
+    }
+    
+    func stopBlink() {
+        self.layer.removeAllAnimations()
+        self.alpha = 1.0;
+        self.isHidden = false
+        // [self.layer removeAllAnimations];
+    }
 }
