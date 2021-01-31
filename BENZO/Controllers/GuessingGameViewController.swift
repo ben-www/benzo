@@ -108,6 +108,11 @@ class GuessingGameViewController: UIViewController, MovieDataProtocol {
             let results = self.wrongGuesses.joined(separator: ", ")
             
             // Update db
+            if (self.userGameData?.gameScores) != nil {
+            } else {
+                self.userGameData?.gameScores = [self.friendJBenzoData!.byId!:"0/0"]
+            }
+            
             let currentScore = self.userGameData?.gameScores![(self.friendJBenzoData?.byId)!]
             
             if currentScore == "0/0" {

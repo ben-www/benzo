@@ -34,13 +34,12 @@ class FriendActionsViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = friend
-        self.controllerBtn.blink()
         
         GameService.retrieveGameData { (retrievedData) in
             
             self.userGameData = retrievedData
             
-            DispatchQueue.main.async {
+            //DispatchQueue.main.async {
                 if self.userGameData == nil {
                     // Create GameData for USER, 1st Time w/friend
                     self.userGameData = GameService.createGameDataEntry(friendId: self.friendId!)
@@ -78,7 +77,7 @@ class FriendActionsViewController: UIViewController {
                 }
                 
 
-            }
+            //}
             
         }
         
@@ -88,10 +87,11 @@ class FriendActionsViewController: UIViewController {
 
             self.userJBenzoData = retrievedData
 
-            DispatchQueue.main.async {
+           // DispatchQueue.main.async {
                 if self.userJBenzoData == nil {
                     self.jBenzoButton.isEnabled = false
                     self.watchPartyButton.isEnabled = false
+                    self.jBenzoButton.alpha = 0.5
                     self.watchPartyButton.alpha = 0.5
 
                 }
@@ -101,7 +101,7 @@ class FriendActionsViewController: UIViewController {
                     self.userMovieList = tempDict!.sorted(by: { $0.value > $1.value })
 
                 }
-            }
+            //}
             
         }
         
@@ -111,30 +111,9 @@ class FriendActionsViewController: UIViewController {
             
             self.friendJBenzoData = retrievedData
             
-            DispatchQueue.main.async {
-                if self.friendJBenzoData != nil  {
-                    if let count = self.friendJBenzoData?.swipedMovies?.count {
-                        if count < 5 {
-                            self.gamesButton.isEnabled = false
-                            self.scoreButton.isEnabled = false
-
-                            self.gamesButton.alpha = 0.5
-                            self.scoreButton.alpha = 0.5
-                            self.controllerBtn.stopBlink()
-                        }
-
-                    } else {
-                        // Count is nil
-                        self.gamesButton.isEnabled = false
-                        self.scoreButton.isEnabled = false
-                        self.gamesButton.alpha = 0.5
-                        self.scoreButton.alpha = 0.5
-                        self.controllerBtn.stopBlink()
-
-
-                    }
-
-                }
+            //DispatchQueue.main.async {
+//                if self.friendJBenzoData != nil  {
+//                }
                 
                 
                 if self.friendJBenzoData == nil {
@@ -143,26 +122,62 @@ class FriendActionsViewController: UIViewController {
                     self.gamesButton.isEnabled = false
                     self.watchPartyButton.isEnabled = false
                     self.scoreButton.isEnabled = false
+                    self.controllerBtn.isEnabled = false
                     
-                    
+                    self.jBenzoButton.alpha = 0.5
                     self.gamesButton.alpha = 0.5
                     self.watchPartyButton.alpha = 0.5
                     self.scoreButton.alpha = 0.5
                     
-
                     self.controllerBtn.stopBlink()
+                    self.controllerBtn.alpha = 0.5
+
 
 
                 }
 
                 else {
+                    self.controllerBtn.blink()
+                    
+                    if let count = self.friendJBenzoData?.swipedMovies?.count {
+                        if count < 5 {
+                            self.gamesButton.isEnabled = false
+                            self.scoreButton.isEnabled = false
+                            self.controllerBtn.isEnabled = false
+
+
+                            self.gamesButton.alpha = 0.5
+                            self.scoreButton.alpha = 0.5
+                            
+                            self.controllerBtn.stopBlink()
+                            self.controllerBtn.alpha = 0.5
+
+                        }
+
+                    } else {
+                        // Count is nil
+                        self.gamesButton.isEnabled = false
+                        self.scoreButton.isEnabled = false
+                        self.controllerBtn.isEnabled = false
+
+                        self.gamesButton.alpha = 0.5
+                        self.scoreButton.alpha = 0.5
+
+                        self.controllerBtn.stopBlink()
+                        self.controllerBtn.alpha = 0.5
+
+
+
+                    }
+                    
+
                     let tempDict = self.friendJBenzoData?.JBenzoScores
                     self.friendMovieList = tempDict!.sorted(by: { $0.value > $1.value })
 
                 }
             }
             
-        }
+        //}
         
     }
     
@@ -171,13 +186,15 @@ class FriendActionsViewController: UIViewController {
             
             self.userGameData = retrievedData
             
-            DispatchQueue.main.async {
+
                 if self.userGameData == nil {
                     // Create GameData for USER, 1st Time w/friend
+                    self.scoreButton.setTitle("0/0 (0.0%)", for: .normal)
                     self.userGameData = GameService.createGameDataEntry(friendId: self.friendId!)
                 }
                 
                 else {
+
                     // USER has GameData and friend is already added
                     if let gameScore = self.userGameData?.gameScores![self.friendId!] {
                         let currentScore = self.userGameData?.gameScores![self.friendId!]
@@ -208,7 +225,7 @@ class FriendActionsViewController: UIViewController {
                     }
                 }
 
-            }
+            
             
         }
         
@@ -349,7 +366,7 @@ class FriendActionsViewController: UIViewController {
 extension UIButton {
     func blink() {
         self.alpha = 0.0;
-        UIView.animate(withDuration: 1.6, //Time duration you want,
+        UIView.animate(withDuration: 2.24, //Time duration you want,
             delay: 0.0,
             options: [.curveEaseInOut, .autoreverse, .repeat],
             animations: { [weak self] in self?.alpha = 1.0 },
